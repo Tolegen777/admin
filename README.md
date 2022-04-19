@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Hello Hitba! I'm using ShymGit!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
