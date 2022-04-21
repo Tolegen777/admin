@@ -7,7 +7,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import MainPage from "../../components/pages/main/MainPage";
+import HomePage from "../../components/pages/home/HomePage";
 
 export default function Home() {
   const location = useLocation();
@@ -26,7 +26,7 @@ export default function Home() {
       <Suspense fallback={<div>Загрузка...</div>}>
         <Paper elevation={1} sx={{ padding: "15px" }}>
           <Routes>
-            <Route index element={<MainPage />} />
+            <Route index element={<HomePage />} />
           </Routes>
         </Paper>
       </Suspense>
