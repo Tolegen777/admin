@@ -6,8 +6,8 @@ import ComplaintUserPage from "./views/ComplaintUserPage";
 function App() {
   return (
     <div>
-      {/*<ComplaintUserPage/>*/}
-      <ComplaintsList/>
+      <ComplaintUserPage/>
+      {/*<ComplaintsList/>*/}
     </div>
   );
 }
