@@ -112,11 +112,11 @@ const DrawerAdmin = () => {
       <Stack>
         <List>
           <StyledNavLink to="">
-            <StyledListItem>
+            <StyledListItem sx={{ color: "#F18989", mb: "35px" }}>
               <StyledListItemIcon>
                 <LogoutLogo />
               </StyledListItemIcon>
-              <StyledItemText sx={"color: #F18989"} primary={"Выйти"} />
+              Выйти
             </StyledListItem>
           </StyledNavLink>
         </List>
