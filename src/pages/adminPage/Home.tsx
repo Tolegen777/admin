@@ -18,17 +18,26 @@ export default function Home() {
 
   return (
     <Box>
-      <Box mb={2} sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box
+        sx={{ mb: "40px", display: "flex", justifyContent: "space-between" }}
+      >
         <Stack>
-          <Typography>Главная</Typography>
+          <Typography
+            sx={{
+              fontSize: "42px",
+              fontWeight: 800,
+              color: "primary.main",
+              lineHeight: "40px",
+            }}
+          >
+            Главная
+          </Typography>
         </Stack>
       </Box>
       <Suspense fallback={<div>Загрузка...</div>}>
-        <Paper elevation={1} sx={{ padding: "15px" }}>
-          <Routes>
-            <Route index element={<HomePage />} />
-          </Routes>
-        </Paper>
+        <Routes>
+          <Route index element={<HomePage />} />
+        </Routes>
       </Suspense>
     </Box>
   );
