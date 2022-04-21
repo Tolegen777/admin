@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navigate, Route, Routes } from "react-router-dom";
+import AdminRoutes from "./pages/adminPage/AdminRoutes";
+import Error from "./pages/Error";
 
 function App() {
+  // const { isAuth } = useTypedSelector((state) => state.auth);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <Routes>
+        <Route path="/" element={<Navigate to={isAuth ? "/app" : "/auth"} />} />
+
+        <Route
+          path="/app/*"
+          element={isAuth ? <AdminPage /> : <Navigate to="/" />}
+        />
+        <Route path="/auth" element={<LoginPage />} />
+
+        <Route path="*" element={<Error />} />
+      </Routes> */}
+
+      <Routes>
+        <Route path="/*" element={<AdminRoutes />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </>
   );
 }
 
