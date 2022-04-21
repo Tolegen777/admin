@@ -7,6 +7,8 @@ import {createTheme, ThemeProvider} from "@mui/material";
 import {BrowserRouter} from "react-router-dom";
 
 
+
+
 const theme = createTheme({
     palette: {
         primary: {
@@ -33,7 +35,6 @@ root.render(
           <BrowserRouter>
               <App />
           </BrowserRouter>
-
 
       </ThemeProvider>
 
