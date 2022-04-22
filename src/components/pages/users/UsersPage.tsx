@@ -1,58 +1,29 @@
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
-import { StyledText, StyledUsers } from "./StyledUsers";
-//@ts-ignore
-import { ReactComponent as GrowSvg } from "../../../assets/svg/Vectorgrow.svg";
+import { Box, Grid, Paper } from "@mui/material";
+import { StyledUsers } from "./StyledUsers";
+import { UserFilter } from "./UserFilter";
+import UserTable from "./UserTable/UserTable";
 
 const UsersPage = () => {
   const Item = (props: any) => <Paper {...props} />;
 
   return (
     <Box>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ mb: "30px" }}>
         <Grid item xs>
-          <StyledUsers>
-            <StyledText>Всего пользователей</StyledText>
-            <Stack
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Typography sx={{ fontSize: "48px", fontWeight: 600 }}>
-                57 462
-              </Typography>
-              <Stack
-                direction={"row"}
-                sx={{ display: "flex", alignItems: "center" }}
-              >
-                <GrowSvg />
-                <Typography
-                  sx={{ ml: "7px", fontSize: "26px", fontWeight: 600 }}
-                >
-                  +5%
-                </Typography>
-              </Stack>
-            </Stack>
-          </StyledUsers>
+          <StyledUsers text={"Всего пользователей"} price={"57 462"} />
         </Grid>
         <Grid item xs>
-          <StyledUsers>
-            <StyledText>Новые пользователи</StyledText>
-          </StyledUsers>
+          <StyledUsers text={"Новые пользователи"} price={"+8 400"} />
         </Grid>
         <Grid item xs>
-          <StyledUsers>
-            <StyledText>Активные пользователей</StyledText>
-          </StyledUsers>
+          <StyledUsers text={"Активные пользователей"} price={"19 200"} />
         </Grid>
         <Grid item xs>
-          <StyledUsers>
-            <StyledText>Рост пользователей</StyledText>
-          </StyledUsers>
+          <StyledUsers text={"Рост пользователей"} price={"+9 900"} />
         </Grid>
       </Grid>
+      <UserFilter />
+      <UserTable />
     </Box>
   );
 };
