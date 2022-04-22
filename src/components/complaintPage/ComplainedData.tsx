@@ -6,8 +6,10 @@ import {Button, Grid, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Paper from "@mui/material/Paper";
+// @ts-ignore
 import userPhoto from "./../../assets/images/peoplePhoto.jpeg"
 import {commonColors} from "../../common_styles/commonStyles";
+import {useNavigate} from "react-router-dom";
 
 const StyledButton1 = styled(Button)({
 
@@ -77,22 +79,20 @@ const colors = {
 }
 
 const ComplainedData = React.memo(() => {
-    console.log("info")
+    const navigate = useNavigate()
     return (
         <>
             {rows.map((row) => (
                 <TableRow
                     component={Paper}
                     key={row.name}
-                    sx={{marginTop:"15px", borderBottom:"30px solid #E4FFF9" } }
+                    sx={{borderBottom:"20px solid #E4FFF9" }}
                 >
                     <TableCell align="left">
                         <Grid container>
-                            <Grid><img src={userPhoto} alt="user" style = {{width:'40px', height:'40px'}}/></Grid>
+                            <Grid><img src={userPhoto} alt="user" style = {{width:'50px', height:'50px'}}/></Grid>
                             <Grid><Typography sx = {{marginTop:"5%"}}>{row.name}</Typography></Grid>
                         </Grid>
-
-
                     </TableCell>
                     <TableCell align="left">
                         <StyledButton2>{row.category}</StyledButton2>
@@ -101,15 +101,15 @@ const ComplainedData = React.memo(() => {
                     <TableCell align="left"><Typography sx = {{color:commonColors.primary}}>{row.comments}</Typography></TableCell>
                     <TableCell align="right" sx = {{color:colors.cancelled, fontSize:'16px'}}>{row.status}</TableCell>
                     <TableCell align="right">
-                        <Grid container>
-                            <Grid item xs={5}><VisibilityOutlinedIcon
+                        <Grid container spacing={0.5}>
+                            <Grid item xs={3}><VisibilityOutlinedIcon
                                 sx = {{border:'2px solid #2398AB', height:'32px', width:'34px', color: commonColors.primary,
                                     borderRadius:'5px',
                                     '&:hover': {
                                         backgroundColor: commonColors.primary,
                                         color: commonColors.white
                                     }}}/></Grid>
-                            <Grid item xs={7}><StyledButton1>Подробнее</StyledButton1></Grid>
+                            <Grid item xs={9}><StyledButton1 onClick={()=>navigate('user')}>Подробнее</StyledButton1></Grid>
                         </Grid>
                     </TableCell>
                 </TableRow>

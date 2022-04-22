@@ -1,15 +1,30 @@
-import React from 'react';
-import './App.css';
-import ComplaintsList from "./views/ComplaintsList";
-import ComplaintUserPage from "./views/ComplaintUserPage";
+import {Navigate, Route, Routes} from "react-router-dom";
+import AdminRoutes from "./pages/adminPage/AdminRoutes";
+import Error from "./pages/Error";
 
 function App() {
-  return (
-    <div>
-      <ComplaintUserPage/>
-      {/*<ComplaintsList/>*/}
-    </div>
-  );
+    // const { isAuth } = useTypedSelector((state) => state.auth);
+
+    return (
+        <>
+            {/* <Routes>
+        <Route path="/" element={<Navigate to={isAuth ? "/app" : "/auth"} />} />
+
+        <Route
+          path="/app/*"
+          element={isAuth ? <AdminPage /> : <Navigate to="/" />}
+        />
+        <Route path="/auth" element={<LoginPage />} />
+
+        <Route path="*" element={<Error />} />
+      </Routes> */}
+
+            <Routes>
+                <Route path="/*" element={<AdminRoutes/>}/>
+                <Route path="*" element={<Error/>}/>
+            </Routes>
+        </>
+    );
 }
 
 export default App;

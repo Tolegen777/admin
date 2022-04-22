@@ -9,7 +9,6 @@ import ComplainedData from "./ComplainedData";
 
 
 const ComplainedInfo = React.memo(() => {
-    console.log("info")
     return (
 
         <>

@@ -1,10 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 import {commonColors} from "../../common_styles/commonStyles";
-import userPhoto from "./../../assets/images/peoplePhoto.jpeg"
-import UserMessageCard from "./UserMessageCard";
-import VisitDiagram from "./VisitDiagram";
 import OneUserMessage from "./OneUserMessage";
+import UserMessageCard from "./UserMessageCard";
 
 const message = {
     id: 1,
@@ -16,6 +14,7 @@ const message = {
 
 
 const ComplaintUserMessages = () => {
+
     return (
         <Box sx={{backgroundColor: commonColors.white, margin: "20px auto"}}>
             <Typography sx={{
@@ -24,8 +23,11 @@ const ComplaintUserMessages = () => {
                 textTransform: 'capitalize',
                 margin: "10px auto"
             }}>Сообщение</Typography>
-            {/*<UserMessageCard/>*/}
-            <OneUserMessage message = {message}/>
+            {
+
+            }
+            <UserMessageCard/>
+
 
 
 

@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {commonColors, commonTextStyle} from "../common_styles/commonStyles";
 import ComplainedInfo from "../components/complaintPage/ComplainedInfo";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -30,14 +31,15 @@ const movingButtons = [
 
 
 const ComplaintsList = () => {
+
     console.log("render")
 
     const [isActiveValue, setActiveValue] = useState('Весь список')
 
 
     return (
-        <Box sx={{padding: '40px', backgroundColor: commonColors.secondary}}>
-            <Typography sx={commonTextStyle}>Список жалоб</Typography>
+        <Box sx={{padding: '20px 40px', backgroundColor: commonColors.secondary}}>
+            {/*<Typography sx={commonTextStyle}>Список жалоб</Typography>*/}
             <Grid container spacing={1}>
                 {movingButtons.map(btn => {
                     return <Grid key={btn.buttonName} sx={{marginLeft: '10px'}}>
@@ -58,7 +60,7 @@ const ComplaintsList = () => {
 
             <Grid container
                   component="form"
-                  sx={{width: '100%', border: '20px solid #fff', margin: '20px auto', backgroundColor: commonColors.white}}
+                  sx={{border: '10px solid #fff', margin: '20px auto', backgroundColor: commonColors.white}}
             >
                 <Grid item xs={10}>
                     <TextField
@@ -84,7 +86,7 @@ const ComplaintsList = () => {
                         }}
                     />
                 </Grid>
-                <Grid item xs={1.8} sx={{marginLeft: "20px"}}>
+                <Grid item xs={1.5} sx={{marginLeft: "20px"}}>
                     <Grid container
                           sx={{backgroundColor: commonColors.secondary,
                               height: "55px",
