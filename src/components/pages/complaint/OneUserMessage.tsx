@@ -2,7 +2,6 @@ import React from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 // @ts-ignore
 import userPhoto from "../../../assets/images/peoplePhoto.jpeg";
-import {commonColors} from "../../../common_styles/commonStyles";
 
 interface PropsType {
     message: {
@@ -21,7 +20,7 @@ interface PropsType {
 
 const OneUserMessage:React.FC<PropsType> = ({message}) => {
     return (
-        <Box sx = {{width:"100%", backgroundColor:commonColors.secondary, border:"20px solid #fff"}}>
+        <Box sx = {{width:"100%", backgroundColor:"primary.light", border:"20px solid #fff"}}>
             <Grid container key={message.id} sx={{borderBottom: "10px solid #fff"}}>
                 <Grid item xs={1.2}><img src={message.img ? message.img : userPhoto} alt="user avatar"
                                          style={{width: "80px", height: "80px", border: "10px solid #E4FFF9"}}/></Grid>
@@ -50,10 +49,10 @@ const OneUserMessage:React.FC<PropsType> = ({message}) => {
                         marginLeft: '15px',
                         marginBottom:'10px',
                         border: '1px solid #e0e0e0',
-                        backgroundColor:commonColors.white
+                        backgroundColor:"#fff"
                     }}>
                         <Typography sx={{padding: '5px 8px 0px 8px'}}>Здраствуйте, у вас запись в 12:00</Typography>
-                        <Typography component="span" sx={{float:"right",fontWeight: "400",fontSize:"12px",color:commonColors.primary}}>10.32</Typography>
+                        <Typography component="span" sx={{float:"right",fontWeight: "400",fontSize:"12px",color:"primary.main"}}>10.32</Typography>
 
 
                     </Box>
@@ -69,10 +68,10 @@ const OneUserMessage:React.FC<PropsType> = ({message}) => {
                         marginRight: '15px',
                         marginBottom:'10px',
                         border: '1px solid #e0e0e0',
-                        backgroundColor:commonColors.primary
+                        backgroundColor:"primary.main"
                     }}>
-                        <Typography sx={{padding: '5px 8px',color:commonColors.white}}>Здраствуйте, хорошо</Typography>
-                        <Typography component="span" sx={{float:"right",fontWeight: "400",fontSize:"12px",color:commonColors.white}}>10:32</Typography>
+                        <Typography sx={{padding: '5px 8px',color:"#fff"}}>Здраствуйте, хорошо</Typography>
+                        <Typography component="span" sx={{float:"right",fontWeight: "400",fontSize:"12px",color:"#fff"}}>10:32</Typography>
                     </Box>
                 </Grid>
             </Grid>
@@ -87,10 +86,10 @@ const OneUserMessage:React.FC<PropsType> = ({message}) => {
                         marginLeft: '15px',
                         marginBottom:'10px',
                         border: '1px solid #e0e0e0',
-                        backgroundColor:commonColors.white
+                        backgroundColor:"#fff"
                     }}>
                         <Typography sx={{padding: '5px 8px 0px 8px'}}>Здраствуйте, у вас запись в 12:00</Typography>
-                        <Typography component="span" sx={{float:"right",fontWeight: "400",fontSize:"12px",color:commonColors.primary,paddingRight:"2px"}}>10.32</Typography>
+                        <Typography component="span" sx={{float:"right",fontWeight: "400",fontSize:"12px",color:"primary.main",paddingRight:"2px"}}>10.32</Typography>
 
 
                     </Box>
@@ -106,10 +105,10 @@ const OneUserMessage:React.FC<PropsType> = ({message}) => {
                         marginRight: '15px',
                         marginBottom:'10px',
                         border: '1px solid #e0e0e0',
-                        backgroundColor:commonColors.primary
+                        backgroundColor:"primary.main"
                     }}>
-                        <Typography sx={{padding: '5px 8px 0px 8px',color:commonColors.white}}>Здраствуйте, хорошо</Typography>
-                        <Typography component="span" sx={{float:"right",fontWeight: "400",fontSize:"12px",color:commonColors.white, paddingRight:"2px"}}>10:32</Typography>
+                        <Typography sx={{padding: '5px 8px 0px 8px',color:"#fff"}}>Здраствуйте, хорошо</Typography>
+                        <Typography component="span" sx={{float:"right",fontWeight: "400",fontSize:"12px",color:"#fff", paddingRight:"2px"}}>10:32</Typography>
                     </Box>
                 </Grid>
             </Grid>

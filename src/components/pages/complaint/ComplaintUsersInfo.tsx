@@ -1,18 +1,17 @@
 import React from 'react';
 import {Box, Button, Grid, Stack, Typography} from "@mui/material";
 import styled from "@emotion/styled";
-import {commonColors} from "../../../common_styles/commonStyles";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
-const StyledBordTypography = styled(Typography)({
+const StyledBoldTypography = styled(Typography)({
     fontSize:'15px',
     fontWeight:'800',
-    color:commonColors.primary,
+    color:"primary.main",
 
 });
 const StyledTypography = styled(Typography)({
     fontSize:'13px',
-    color:commonColors.primary,
+    color:"primary.main",
 
 });
 
@@ -49,16 +48,16 @@ const ComplaintUsersInfo = () => {
 
     return (
         <>
-            <Box sx = {{padding:"15px", backgroundColor:commonColors.white, margin:"20px auto"}}>
+            <Box sx = {{padding:"15px", backgroundColor:"#fff", margin:"20px auto"}}>
                 <Grid container>
                     <Grid container xs = {6}>
-                        <Grid sx={{backgroundColor:"#E2E2E2"}}><PersonOutlineIcon sx={{width:100,height:100, color:commonColors.white, border:"10px solid #E2E2E2"}}/></Grid>
+                        <Grid sx={{backgroundColor:"#E2E2E2"}}><PersonOutlineIcon sx={{width:100,height:100, color:"#fff", border:"10px solid #E2E2E2"}}/></Grid>
                         <Grid sx = {{margin: '5px 20px'}} >
                             <StyledTypography>Информация на пользователя</StyledTypography>
-                            <Typography sx={{margin:"10px auto", fontSize:'20px', color:commonColors.primary, fontWeight:'800'}}>A. Адильбекович</Typography>
+                            <Typography sx={{margin:"10px auto", fontSize:'20px', color:"primary.main", fontWeight:'800'}}>A. Адильбекович</Typography>
                             <Stack direction={"row"} spacing={2} sx={{marginTop:"20px"}}>
                                 <MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF"}}>Заблокировать</MyStyledButton>
-                                <MyStyledButton sx={{color:commonColors.primary, backgroundColor:commonColors.secondary}}>Отклонить</MyStyledButton>
+                                <MyStyledButton sx={{color:"primary.main", backgroundColor:"primary.light"}}>Отклонить</MyStyledButton>
 
                             </Stack>
 
@@ -86,8 +85,8 @@ type PropsType2 = {
 const InfoBlock:React.FC<PropsType2> = React.memo(({textData, description}) => {
     return (
         <Grid item xs={4}>
-            <StyledTypography>{textData}</StyledTypography>
-            <StyledBordTypography>{description}</StyledBordTypography>
+            <StyledTypography sx = {{fontSize:'13px', color:"primary.main",}}>{textData}</StyledTypography>
+            <StyledBoldTypography sx = {{fontSize:'15px', fontWeight:'800', color:"primary.main",}}>{description}</StyledBoldTypography>
         </Grid>
     )
 })

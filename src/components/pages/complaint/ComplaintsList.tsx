@@ -4,8 +4,6 @@ import styled from "@emotion/styled";
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import {useNavigate} from "react-router-dom";
-import { commonColors } from '../../../common_styles/commonStyles';
 import ComplainedInfo from './ComplainedInfo';
 
 
@@ -17,8 +15,8 @@ const StyledButton = styled(Button)({
     borderRadius: '5px',
     // border:'1px solid #2398AB',
     '&:hover': {
-        color: commonColors.white,
-        background: commonColors.primary
+        color: "#fff",
+        background: "primary.main"
     },
 });
 
@@ -32,13 +30,11 @@ const movingButtons = [
 
 const ComplaintsList = () => {
 
-    console.log("render")
-
     const [isActiveValue, setActiveValue] = useState('Весь список')
 
 
     return (
-        <Box sx={{padding: '20px 40px', backgroundColor: commonColors.secondary}}>
+        <Box sx={{padding: '20px 40px', backgroundColor: "primary.light"}}>
             {/*<Typography sx={commonTextStyle}>Список жалоб</Typography>*/}
             <Grid container spacing={1}>
                 {movingButtons.map(btn => {
@@ -46,12 +42,12 @@ const ComplaintsList = () => {
                         <StyledButton sx={{
                             color:
                                 isActiveValue === btn.buttonName
-                                    ? commonColors.white
-                                    : commonColors.primary,
+                                    ? "#fff"
+                                    : "primary.main",
                             backgroundColor:
                                 isActiveValue === btn.buttonName
-                                    ? commonColors.primary
-                                    : commonColors.white,
+                                    ? "primary.main"
+                                    : "#fff",
                         }} onClick={() => setActiveValue(btn.buttonName)}>{btn.buttonName}</StyledButton>
                     </Grid>
                 })}
@@ -60,7 +56,7 @@ const ComplaintsList = () => {
 
             <Grid container
                   component="form"
-                  sx={{border: '10px solid #fff', margin: '20px auto', backgroundColor: commonColors.white}}
+                  sx={{border: '10px solid #fff', margin: '20px auto', backgroundColor: "#fff"}}
             >
                 <Grid item xs={10}>
                     <TextField
@@ -68,7 +64,7 @@ const ComplaintsList = () => {
                         placeholder="Поиск по имени, фамилий, телефону"
                         size="medium"
                         sx={{
-                            backgroundColor: commonColors.secondary, color: commonColors.primary, '&::placeholder': {
+                            backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {
                                 textOverflow: 'ellipsis !important',
                                 color: 'blue'
                             }
@@ -78,9 +74,9 @@ const ComplaintsList = () => {
 
 
                         InputProps={{
-                            style: {color: commonColors.primary},
+                            style: {color: "primary.main"},
                             startAdornment: <InputAdornment position="start"><IconButton
-                                sx={{p: '10px', color: commonColors.primary}}>
+                                sx={{p: '10px', color: "primary.main"}}>
                                 <SearchIcon/>
                             </IconButton></InputAdornment>
                         }}
@@ -88,7 +84,7 @@ const ComplaintsList = () => {
                 </Grid>
                 <Grid item xs={1.5} sx={{marginLeft: "20px"}}>
                     <Grid container
-                          sx={{backgroundColor: commonColors.secondary,
+                          sx={{backgroundColor: "primary.light",
                               height: "55px",
                               borderRadius: "5px",
                               paddingTop:"8%",
@@ -98,8 +94,8 @@ const ComplaintsList = () => {
                               },
                               cursor:"pointer"
                           }}>
-                        <Grid item xs={9}><Typography sx={{color:commonColors.primary}}>Фильтры</Typography></Grid>
-                        <Grid item xs={1}><ChevronRightIcon sx={{backgroundColor: commonColors.white}}/></Grid>
+                        <Grid item xs={9}><Typography sx={{color:"primary.main"}}>Фильтры</Typography></Grid>
+                        <Grid item xs={1}><ChevronRightIcon sx={{backgroundColor: "#fff"}}/></Grid>
                     </Grid>
                 </Grid>
 

@@ -7,8 +7,7 @@ import styled from "@emotion/styled";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Paper from "@mui/material/Paper";
 // @ts-ignore
-import userPhoto from "../../../assets/images/peoplePhoto.jpeg"
-import {commonColors} from "../../../common_styles/commonStyles";
+import userPhoto from "./../../../assets/images/peoplePhoto.jpeg"
 import {useNavigate} from "react-router-dom";
 
 const StyledButton1 = styled(Button)({
@@ -16,11 +15,11 @@ const StyledButton1 = styled(Button)({
     width: '160px',
     height:'35px',
     borderRadius: '5px',
-    color: commonColors.white,
-    background: commonColors.primary,
+    color: "#fff",
+    backgroundColor: "primary.main",
     '&:hover': {
         border: "1px solid #2398AB",
-        color: commonColors.primary
+        color: "primary.main"
     },
     textTransform:"lowercase"
 });
@@ -34,7 +33,7 @@ const StyledButton2 = styled(Button)({
     border: "1px solid red",
     '&:hover': {
         backgroundColor: "red",
-        color: commonColors.white
+        color: "#fff"
     },
     textTransform:"lowercase"
 });
@@ -98,18 +97,18 @@ const ComplainedData = React.memo(() => {
                         <StyledButton2>{row.category}</StyledButton2>
 
                     </TableCell>
-                    <TableCell align="left"><Typography sx = {{color:commonColors.primary}}>{row.comments}</Typography></TableCell>
+                    <TableCell align="left"><Typography sx = {{color:"primary.main"}}>{row.comments}</Typography></TableCell>
                     <TableCell align="right" sx = {{color:colors.cancelled, fontSize:'16px'}}>{row.status}</TableCell>
                     <TableCell align="right">
                         <Grid container spacing={0.5}>
                             <Grid item xs={3}><VisibilityOutlinedIcon
-                                sx = {{border:'2px solid #2398AB', height:'32px', width:'34px', color: commonColors.primary,
+                                sx = {{border:'2px solid #2398AB', height:'32px', width:'34px', color: "primary.main",
                                     borderRadius:'5px',
                                     '&:hover': {
-                                        backgroundColor: commonColors.primary,
-                                        color: commonColors.white
+                                        backgroundColor: "primary.main",
+                                        color: "#fff"
                                     }}}/></Grid>
-                            <Grid item xs={9}><StyledButton1 onClick={()=>navigate('user')}>Подробнее</StyledButton1></Grid>
+                            <Grid item xs={9}><StyledButton1 variant="contained" onClick={()=>navigate('user')}>Подробнее</StyledButton1></Grid>
                         </Grid>
                     </TableCell>
                 </TableRow>

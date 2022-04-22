@@ -1,7 +1,6 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {Box, Grid, Typography} from "@mui/material";
-import {commonColors} from "../../../common_styles/commonStyles";
-import OneUserMessage from "./OneUserMessage";
+import React from 'react';
+import {Box, Typography} from "@mui/material";
+
 import UserMessageCard from "./UserMessageCard";
 
 const message = {
@@ -16,9 +15,9 @@ const message = {
 const ComplaintUserMessages = () => {
 
     return (
-        <Box sx={{backgroundColor: commonColors.white, margin: "20px auto"}}>
+        <Box sx={{backgroundColor: "#fff", margin: "20px auto"}}>
             <Typography sx={{
-                color: commonColors.primary,
+                color: "primary.main",
                 fontWeight: "800",
                 textTransform: 'capitalize',
                 margin: "10px auto"

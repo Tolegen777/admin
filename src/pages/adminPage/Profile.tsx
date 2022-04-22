@@ -8,8 +8,9 @@ import {
   useNavigate,
 } from "react-router-dom";
 import HomePage from "../../components/pages/home/HomePage";
+import ProfilePage from "../../components/pages/profile/ProfilePage";
 
-export default function Home() {
+export default function Profile() {
   const location = useLocation();
   const navigate = useNavigate();
   const goBack = () => {
@@ -30,13 +31,13 @@ export default function Home() {
               lineHeight: "40px",
             }}
           >
-            Главная
+            Профиль
           </Typography>
         </Stack>
       </Box>
       <Suspense fallback={<div>Загрузка...</div>}>
         <Routes>
-          <Route index element={<HomePage />} />
+          <Route index element={<ProfilePage />} />
         </Routes>
       </Suspense>
     </Box>
