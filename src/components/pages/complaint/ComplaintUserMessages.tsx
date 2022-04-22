@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Box, Grid, Typography} from "@mui/material";
-import {commonColors} from "../../common_styles/commonStyles";
+import {commonColors} from "../../../common_styles/commonStyles";
 import OneUserMessage from "./OneUserMessage";
 import UserMessageCard from "./UserMessageCard";
 

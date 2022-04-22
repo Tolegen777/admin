@@ -1,16 +1,16 @@
 import { Box, Drawer, List, Stack, Toolbar, Typography } from "@mui/material";
 // @ts-ignore: Ts че ты хочешь?
-import { ReactComponent as ProfileLogo } from "../../../assets/svg/Vectorprofile.svg";
+import { ReactComponent as ProfileLogo } from "./../../assets/svg/Vectorprofile.svg"
 // @ts-ignore: Ts че ты хочешь?
-import { ReactComponent as HomeLogo } from "../../../assets/svg/Vectorhome.svg";
+import { ReactComponent as HomeLogo } from "./../../assets/svg/Vectorhome.svg";
 // @ts-ignore: Ts че ты хочешь?
-import { ReactComponent as UsersLogo } from "../../../assets/svg/Vectorusers.svg";
+import { ReactComponent as UsersLogo } from "./../../assets/svg/Vectorusers.svg";
 // @ts-ignore: Ts че ты хочешь?
-import { ReactComponent as ComplainsLogo } from "../../../assets/svg/Vectorcomplains.svg";
+import { ReactComponent as ComplainsLogo } from "./../../assets/svg/Vectorcomplains.svg";
 // @ts-ignore: Ts че ты хочешь?
-import { ReactComponent as EmployeesLogo } from "../../../assets/svg/Vectoremployees.svg";
+import { ReactComponent as EmployeesLogo } from "./../../assets/svg/Vectoremployees.svg";
 // @ts-ignore: Ts че ты хочешь?
-import { ReactComponent as LogoutLogo } from "../../../assets/svg/Vectorlogout.svg";
+import { ReactComponent as LogoutLogo } from "./../../assets/svg/Vectorlogout.svg";
 
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";

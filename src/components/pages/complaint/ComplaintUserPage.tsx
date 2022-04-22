@@ -1,12 +1,12 @@
 import React from 'react';
 import {Box, Button, Grid, InputAdornment, TextField, Typography} from "@mui/material";
-import {commonColors, commonTextStyle} from "../common_styles/commonStyles";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import styled from "@emotion/styled";
-import ComplaintUsersInfo from "../components/complaintPage/ComplaintUsersInfo";
-import ComplaintUserMessages from "../components/complaintPage/ComplaintUserMessages";
-import UserMessageCard from "../components/complaintPage/UserMessageCard";
-import VisitDiagram from "../components/complaintPage/VisitDiagram";
+import {commonColors, commonTextStyle } from '../../../common_styles/commonStyles';
+import ComplaintUsersInfo from './ComplaintUsersInfo';
+import ComplaintUserMessages from './ComplaintUserMessages';
+import VisitDiagram from './VisitDiagram';
+
 
 const buttonStyle = {
     backgroundColor:commonColors.white,

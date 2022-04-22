@@ -1,5 +1,5 @@
 import React from 'react';
-import {commonColors} from "../../common_styles/commonStyles";
+import {commonColors} from "../../../common_styles/commonStyles";
 import {Box, Button, Container, Grid, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";

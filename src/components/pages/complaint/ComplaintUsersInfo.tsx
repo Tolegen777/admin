@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Button, Grid, Stack, Typography} from "@mui/material";
 import styled from "@emotion/styled";
-import {commonColors} from "../../common_styles/commonStyles";
+import {commonColors} from "../../../common_styles/commonStyles";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
 const StyledBordTypography = styled(Typography)({

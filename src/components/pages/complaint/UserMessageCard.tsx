@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Box, Grid, Typography} from "@mui/material";
-import {commonColors} from "../../common_styles/commonStyles";
+import {commonColors} from "../../../common_styles/commonStyles";
 // @ts-ignore
-import userPhoto from "../../assets/images/peoplePhoto.jpeg";
+import userPhoto from "../../../assets/images/peoplePhoto.jpeg";
 import {useNavigate} from "react-router-dom";
 import OneUserMessage from "./OneUserMessage";
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Box, Grid, Typography} from "@mui/material";
 // @ts-ignore
-import userPhoto from "../../assets/images/peoplePhoto.jpeg";
-import {commonColors} from "../../common_styles/commonStyles";
+import userPhoto from "../../../assets/images/peoplePhoto.jpeg";
+import {commonColors} from "../../../common_styles/commonStyles";
 
 interface PropsType {
     message: {

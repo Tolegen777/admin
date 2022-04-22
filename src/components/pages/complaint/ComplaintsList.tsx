@@ -4,9 +4,9 @@ import styled from "@emotion/styled";
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import {commonColors, commonTextStyle} from "../common_styles/commonStyles";
-import ComplainedInfo from "../components/complaintPage/ComplainedInfo";
 import {useNavigate} from "react-router-dom";
+import { commonColors } from '../../../common_styles/commonStyles';
+import ComplainedInfo from './ComplainedInfo';
 
 
 

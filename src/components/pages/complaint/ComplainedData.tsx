@@ -7,8 +7,8 @@ import styled from "@emotion/styled";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Paper from "@mui/material/Paper";
 // @ts-ignore
-import userPhoto from "./../../assets/images/peoplePhoto.jpeg"
-import {commonColors} from "../../common_styles/commonStyles";
+import userPhoto from "../../../assets/images/peoplePhoto.jpeg"
+import {commonColors} from "../../../common_styles/commonStyles";
 import {useNavigate} from "react-router-dom";
 
 const StyledButton1 = styled(Button)({
