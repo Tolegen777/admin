@@ -91,7 +91,7 @@ const DrawerAdmin = () => {
               Пользователи
             </StyledListItem>
           </StyledNavLink>
-          <StyledNavLink to="complains">
+          <StyledNavLink to="complaints">
             <StyledListItem>
               <StyledListItemIcon>
                 <ComplainsLogo />
