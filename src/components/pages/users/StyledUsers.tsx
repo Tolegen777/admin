@@ -1,7 +1,15 @@
-import { Paper, Typography } from "@mui/material";
+import { Paper, Stack, Typography } from "@mui/material";
+import React from "react";
+//@ts-ignore
+import { ReactComponent as GrowSvg } from "../../../assets/svg/Vectorgrow.svg";
 
-export const StyledUsers = (props: any) => (
+interface Props {
+  text: string;
+  price: string;
+}
+export const StyledUsers: React.FC<Props> = ({ text, price }) => (
   <Paper
+    elevation={0}
     sx={{
       height: "150px",
       color: "primary.main",
@@ -10,10 +18,29 @@ export const StyledUsers = (props: any) => (
       paddingLeft: "25px",
       paddingRight: "25px",
     }}
-    {...props}
-  />
+  >
+    <StyledText>{text}</StyledText>
+    <Stack
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <Typography sx={{ fontSize: "48px", fontWeight: 600 }}>
+        {price}
+      </Typography>
+      <Stack direction={"row"} sx={{ display: "flex", alignItems: "center" }}>
+        <GrowSvg />
+        <Typography sx={{ ml: "7px", fontSize: "26px", fontWeight: 600 }}>
+          +5%
+        </Typography>
+      </Stack>
+    </Stack>
+  </Paper>
 );
-export const StyledText = (props: any) => (
+const StyledText = (props: any) => (
   <Typography
     sx={{
       color: "primary.main",
