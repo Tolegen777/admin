@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import ComplaintUsersInfo from './ComplaintUsersInfo';
 import ComplaintUserMessages from './ComplaintUserMessages';
 import VisitDiagram from './VisitDiagram';
+import {useNavigate} from "react-router-dom";
 
 
 const buttonStyle = {
@@ -24,18 +25,21 @@ const StyledButton = styled(Button)({
 });
 
 const ComplaintUserPage = () => {
+
+    const navigate = useNavigate()
+
     return (
         <Box sx={{padding: '20px 40px 0px 40px', backgroundColor: '#E4FFF9'}}>
-            <Typography><Typography component={"span"} sx = {{
-                fontFamily: "roboto",
-                fontWeight: '400',
-                fontSize: '35px',
-                color: '#2398AB',
-                letterSpacing: '0.05em',
-                lineHeight: '51px',
-                marginBottom: '20px'
-            }}>Список жалоб</Typography> {">"} Пользователь</Typography>
-            <StyledButton startIcon={<ChevronLeftIcon sx={{color:"primary.main"
+            {/*<Typography><Typography component={"span"} sx = {{*/}
+            {/*    fontFamily: "roboto",*/}
+            {/*    fontWeight: '400',*/}
+            {/*    fontSize: '35px',*/}
+            {/*    color: '#2398AB',*/}
+            {/*    letterSpacing: '0.05em',*/}
+            {/*    lineHeight: '51px',*/}
+            {/*    marginBottom: '20px'*/}
+            {/*}}>Список жалоб</Typography> {">"} Пользователь</Typography>*/}
+            <StyledButton onClick={()=>navigate('/complaints')} startIcon={<ChevronLeftIcon sx={{color:"primary.main"
                 }}/>}>
                 <Typography sx = {{fontWeight:"800", textTransform:'capitalize'}}>Назад</Typography>
             </StyledButton>

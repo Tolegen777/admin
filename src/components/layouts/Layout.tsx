@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <Box sx={{ display: "flex" }}>
       <DrawerAdmin />
-      <Box width={"100%"} sx={{ padding: "65px 50px 50px 50px" }}>
+      <Box width={"100%"} sx={{ padding: "50px 50px 50px 50px" }}>
         <Outlet />
       </Box>
     </Box>

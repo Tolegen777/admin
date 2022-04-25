@@ -4,6 +4,12 @@ import {Box, Grid, Typography} from "@mui/material";
 import userPhoto from "../../../assets/images/peoplePhoto.jpeg";
 import {useNavigate} from "react-router-dom";
 import OneUserMessage from "./OneUserMessage";
+import {
+    setButtonVisibility,
+    setOneUserMessageVisibility
+} from "../../../store/reducers/complaint/complaint.slice";
+import {useDispatch} from "react-redux";
+import {useTypedSelector} from "../../../store";
 
 interface IMessage {
     id: number,
@@ -65,13 +71,26 @@ const messages = [
 ]
 
 const UserMessageCard = React.memo(() => {
+
+    const isHideOneMessage = useTypedSelector(state => state.complaint.isOneUserMessage)
+
     const navigate = useNavigate()
     const bottomRef = React.useRef<HTMLDivElement>(null);
 
     const [messageData, setMessageData] = useState<IMessage>()
 
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(setOneUserMessageVisibility(true))
+    },[])
+
+
+
     const showMessagePageWithData = (message: IMessage) => {
         setMessageData(message)
+        dispatch(setOneUserMessageVisibility(false))
+
     }
 
     const scrollToBottom = () => {
@@ -84,26 +103,29 @@ const UserMessageCard = React.memo(() => {
 
     };
 
+
     useEffect(() => {
         scrollToBottom()
     }, [])
 
+
+
     return (
         <>
             {
-                messageData ? <OneUserMessage message={messageData}/> :
+                !isHideOneMessage&&messageData ? <OneUserMessage message={messageData}/> :
                     <Box sx={{
                         backgroundColor: "primary.light",
                         overflowY: 'scroll',
                         scrollBehavior: 'smooth',
-                        height: "300px"
+                        height: "94%"
                     }}>
                         {messages.map(message => {
-                                if (!messageData) {
+                                if (isHideOneMessage) {
 
                                     return <Grid container key={message.id} sx={{border: "10px solid #fff"}}
                                                  onClick={() => showMessagePageWithData(message)}>
-                                        <Grid item xs={1.2}><img src={message.img ? message.img : userPhoto}
+                                        <Grid item xs={1.8}><img src={message.img ? message.img : userPhoto}
                                                                  alt="user avatar"
                                                                  style={{
                                                                      width: "60px",
@@ -111,7 +133,7 @@ const UserMessageCard = React.memo(() => {
                                                                      border: "10px solid #E4FFF9"
                                                                  }}
                                         /></Grid>
-                                        <Grid item xs={9.8} sx={{padding: "10px 0px"}}>
+                                        <Grid item xs={9.2} sx={{padding: "10px 0px"}}>
                                             <Typography
                                                 sx={{
                                                     fontSize: "20px",

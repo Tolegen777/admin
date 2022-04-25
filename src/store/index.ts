@@ -1,10 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 // import authReducer from "../store/reducers/auth/auth.slice";
 import bannerApi from "./banner-rtk/bannerApi";
+import complaint from "./../store/reducers/complaint/complaint.slice"
+import {TypedUseSelectorHook, useSelector} from "react-redux";
 
 const rootReducer = combineReducers({
   // auth: authReducer,
   [bannerApi.reducerPath]: bannerApi.reducer,
+  complaint
+
 });
 
 export const store = configureStore({
@@ -16,3 +20,4 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector

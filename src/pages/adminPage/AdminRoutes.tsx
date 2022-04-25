@@ -5,9 +5,10 @@ import Error from "../Error";
 import Home from "./Home";
 import Profile from "./Profile";
 import Users from "./Users";
+import ComplaintsPage from "./ComplaintsPage";
+import ComplaintUserPage from "../../components/pages/complaint/ComplaintUserPage";
+import ComplaintsUser from "./ComplaintsUser";
 
-
-import ComplaintsPage from "./ComplaintsPage"; import ComplaintUserPage from "../../components/pages/complaint/ComplaintUserPage";
 const AdminRoutes = () => {
   return (
     <>
@@ -17,9 +18,8 @@ const AdminRoutes = () => {
           <Route path="home/*" element={<Home />} />
           <Route path="profile/*" element={<Profile />} />
           <Route path="users/*" element={<Users />} />
-
-
-          <Route path="complaints/*" element={<ComplaintsPage />} /> <Route path="complaints/user*" element={<ComplaintUserPage />} />
+          <Route path="complaints/*" element={<ComplaintsPage />} />
+          <Route path="complaints/user*" element={<ComplaintsUser />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

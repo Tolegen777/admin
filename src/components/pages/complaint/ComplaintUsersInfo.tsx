@@ -1,7 +1,9 @@
 import React from 'react';
 import {Box, Button, Grid, Stack, Typography} from "@mui/material";
 import styled from "@emotion/styled";
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+// @ts-ignore
+import { ReactComponent as UserPhoto } from "./../../../assets/svg/Vectorusercomplaintsava.svg";
+import ComplaintDialogWindow from "./ComplaintDialogWindow";
 
 const StyledBoldTypography = styled(Typography)({
     fontSize:'15px',
@@ -51,13 +53,15 @@ const ComplaintUsersInfo = () => {
             <Box sx = {{padding:"15px", backgroundColor:"#fff", margin:"20px auto"}}>
                 <Grid container>
                     <Grid container xs = {6}>
-                        <Grid sx={{backgroundColor:"#E2E2E2"}}><PersonOutlineIcon sx={{width:100,height:100, color:"#fff", border:"10px solid #E2E2E2"}}/></Grid>
+                        <Grid sx={{backgroundColor:"#E2E2E2"}}><UserPhoto style={{width:60,height:60, color:"#fff", border:"30px solid #E2E2E2"}}/></Grid>
                         <Grid sx = {{margin: '5px 20px'}} >
                             <StyledTypography>Информация на пользователя</StyledTypography>
                             <Typography sx={{margin:"10px auto", fontSize:'20px', color:"primary.main", fontWeight:'800'}}>A. Адильбекович</Typography>
                             <Stack direction={"row"} spacing={2} sx={{marginTop:"20px"}}>
                                 <MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF"}}>Заблокировать</MyStyledButton>
                                 <MyStyledButton sx={{color:"primary.main", backgroundColor:"primary.light"}}>Отклонить</MyStyledButton>
+
+                                {/*<ComplaintDialogWindow isWindowOpen={true} description={"sdc ddwdwd dwdwd dwdwdwd dwdwdwdw dwdwdw ncbjeb mwekldm nkewj"} title={"csdc"} />*/}
 
                             </Stack>
 

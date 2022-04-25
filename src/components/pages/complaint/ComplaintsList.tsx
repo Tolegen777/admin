@@ -34,8 +34,7 @@ const ComplaintsList = () => {
 
 
     return (
-        <Box sx={{padding: '20px 40px', backgroundColor: "primary.light"}}>
-            {/*<Typography sx={commonTextStyle}>Список жалоб</Typography>*/}
+        <Box sx={{ backgroundColor: "primary.light", marginTop:"20px"}}>
             <Grid container spacing={1}>
                 {movingButtons.map(btn => {
                     return <Grid key={btn.buttonName} sx={{marginLeft: '10px'}}>
@@ -66,7 +65,8 @@ const ComplaintsList = () => {
                         sx={{
                             backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {
                                 textOverflow: 'ellipsis !important',
-                                color: 'blue'
+                                color: 'blue',
+                                outline: 'none'
                             }
                         }}
                         fullWidth
@@ -89,8 +89,9 @@ const ComplaintsList = () => {
                               borderRadius: "5px",
                               paddingTop:"8%",
                               paddingLeft:"20%",
+                              border:"1px solid #e0e0e0",
                               '&:hover': {
-                                  border:"1px solid grey"
+                                  border:"1px solid black"
                               },
                               cursor:"pointer"
                           }}>

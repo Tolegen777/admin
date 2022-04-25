@@ -88,9 +88,9 @@ const ComplainedData = React.memo(() => {
                     sx={{borderBottom:"20px solid #E4FFF9" }}
                 >
                     <TableCell align="left">
-                        <Grid container>
+                        <Grid container alignItems="center">
                             <Grid><img src={userPhoto} alt="user" style = {{width:'50px', height:'50px'}}/></Grid>
-                            <Grid><Typography sx = {{marginTop:"5%"}}>{row.name}</Typography></Grid>
+                            <Grid><Typography sx = {{marginLeft:"5px", color:"primary.main", fontWeight:600}}>{row.name}</Typography></Grid>
                         </Grid>
                     </TableCell>
                     <TableCell align="left">
