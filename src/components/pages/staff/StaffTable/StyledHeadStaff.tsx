@@ -1,15 +1,14 @@
 import { Paper, TableCell, TableCellProps, TableRow } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import React from "react";
 
 interface Props {
   children: React.ReactNode;
 }
-export const StyledHeadRow: React.FC<Props> = ({ children }) => {
+export const StyledHeadRowStaff: React.FC<Props> = ({ children }) => {
   return (
     <TableRow
       sx={{
-        backgroundColor: "primary.light",
+        backgroundColor: "#fff",
         border: "none",
         outline: "none",
         boxShadow: "none",
@@ -20,7 +19,7 @@ export const StyledHeadRow: React.FC<Props> = ({ children }) => {
   );
 };
 
-export const StyledHeadCell: React.FC<Props> = ({ children }) => {
+export const StyledHeadCellStaff: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
       sx={{
@@ -37,14 +36,14 @@ export const StyledHeadCell: React.FC<Props> = ({ children }) => {
 };
 
 //Body
-export const StyledBodyRow: React.FC<Props> = ({ children }) => {
+export const StyledBodyRowStaff: React.FC<Props> = ({ children }) => {
   return (
     <TableRow
       sx={{
         backgroundColor: "primary.light",
         height: "90px",
         borderRadius: "10px",
-          //color:"red"
+          borderBottom:"10px solid #fff"
 
       }}
     >
@@ -53,14 +52,14 @@ export const StyledBodyRow: React.FC<Props> = ({ children }) => {
   );
 };
 
-export const StyledBodyCellFirst: React.FC<Props> = ({ children }) => {
+export const StyledBodyCellFirstStaff: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
       sx={{
         paddingRight: 0,
         paddingBottom: 0,
-        paddingTop: "20",
-        fontSize: "20px",
+        paddingTop: "5px",
+        fontSize: "18px",
         color: "primary.main",
         boxShadow: "none",
         borderBottom: 0,
@@ -72,15 +71,16 @@ export const StyledBodyCellFirst: React.FC<Props> = ({ children }) => {
         elevation={0}
         sx={{
           borderRadius: "0",
-          paddingLeft: "30px",
-          paddingRight: "16px",
-          height: "90px",
+          paddingLeft: "5px",
+          paddingRight: "10px",
+          height: "50px",
           borderTopLeftRadius: "10px",
           borderBottomLeftRadius: "10px",
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
-            color:"primary.main"
+            color:"primary.main",
+            backgroundColor:"primary.light"
         }}
       >
         {children}
@@ -88,31 +88,34 @@ export const StyledBodyCellFirst: React.FC<Props> = ({ children }) => {
     </TableCell>
   );
 };
-export const StyledBodyCell: React.FC<Props> = ({ children }) => {
+export const StyledBodyCellStaff: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
       sx={{
+          backgroundColor:"primary.light"  ,
         paddingRight: 0,
         paddingBottom: 0,
-        paddingTop: "20",
+        paddingTop: "5px",
         paddingLeft: 0,
-        fontSize: "20px",
-        color: "primary.main",
+        fontSize: "16px",
+        // color: "primary.main",
         boxShadow: "none",
         borderBottom: 0,
+
       }}
     >
       <Paper
         elevation={0}
         sx={{
+            backgroundColor:"primary.light"  ,
           borderRadius: "0",
-          paddingRight: "16px",
-          paddingLeft: "16px",
-          height: "90px",
+          paddingRight: "10px",
+          paddingLeft: "10px",
+          height: "50px",
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
-            color:"primary.main"
+            color:"red"
         }}
       >
         {children}
@@ -120,19 +123,20 @@ export const StyledBodyCell: React.FC<Props> = ({ children }) => {
     </TableCell>
   );
 };
-export const StyledBodyCellLast: React.FC<Props> = ({ children }) => {
+export const StyledBodyCellLastStaff: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
       sx={{
         paddingLeft: 0,
         paddingBottom: 0,
-        paddingTop: "20",
+        paddingTop: "5px",
         fontSize: "20px",
         color: "primary.main",
         boxShadow: "none",
         borderBottom: 0,
         borderTopRightRadius: "10px",
         borderBottomRightRadius: "10px",
+          backgroundColor:"primary.light"  ,
       }}
     >
       <Paper
@@ -140,12 +144,13 @@ export const StyledBodyCellLast: React.FC<Props> = ({ children }) => {
         sx={{
           borderRadius: "0",
           paddingLeft: "16px",
-          height: "90px",
+          height: "50px",
           borderTopRightRadius: "10px",
           borderBottomRightRadius: "10px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+            backgroundColor:"primary.light"  ,
         }}
       >
         {children}

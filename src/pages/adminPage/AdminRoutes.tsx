@@ -8,6 +8,8 @@ import Users from "./Users";
 import ComplaintsPage from "./ComplaintsPage";
 import ComplaintUserPage from "../../components/pages/complaint/ComplaintUserPage";
 import ComplaintsUser from "./ComplaintsUser";
+import StaffPage from "./StaffPage";
+import Worker from "../../components/pages/staff/Worker";
 
 const AdminRoutes = () => {
   return (
@@ -20,6 +22,8 @@ const AdminRoutes = () => {
           <Route path="users/*" element={<Users />} />
           <Route path="complaints/*" element={<ComplaintsPage />} />
           <Route path="complaints/user*" element={<ComplaintsUser />} />
+          <Route path="employees/*" element={<StaffPage/>} />
+          <Route path="employees/user" element={<Worker/>} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

@@ -123,7 +123,11 @@ const UserMessageCard = React.memo(() => {
                         {messages.map(message => {
                                 if (isHideOneMessage) {
 
-                                    return <Grid container key={message.id} sx={{border: "10px solid #fff"}}
+                                    return <Grid container key={message.id} sx={{border: "5px solid #fff", cursor:"pointer", '&:hover': {
+                                            // border: "1px solid black",
+
+
+                                        },}}
                                                  onClick={() => showMessagePageWithData(message)}>
                                         <Grid item xs={1.8}><img src={message.img ? message.img : userPhoto}
                                                                  alt="user avatar"

@@ -29,7 +29,7 @@ const ComplaintUserPage = () => {
     const navigate = useNavigate()
 
     return (
-        <Box sx={{padding: '20px 40px 0px 40px', backgroundColor: '#E4FFF9'}}>
+        <Box sx={{paddingTop: '20px', backgroundColor: '#E4FFF9'}}>
             {/*<Typography><Typography component={"span"} sx = {{*/}
             {/*    fontFamily: "roboto",*/}
             {/*    fontWeight: '400',*/}
