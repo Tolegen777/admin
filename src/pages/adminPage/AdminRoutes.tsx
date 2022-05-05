@@ -10,6 +10,7 @@ import ComplaintUserPage from "../../components/pages/complaint/ComplaintUserPag
 import ComplaintsUser from "./ComplaintsUser";
 import StaffPage from "./StaffPage";
 import Worker from "../../components/pages/staff/Worker";
+import Edit from "../../components/pages/staff/Edit";
 
 const AdminRoutes = () => {
   return (
@@ -23,7 +24,8 @@ const AdminRoutes = () => {
           <Route path="complaints/*" element={<ComplaintsPage />} />
           <Route path="complaints/user*" element={<ComplaintsUser />} />
           <Route path="employees/*" element={<StaffPage/>} />
-          <Route path="employees/user" element={<Worker/>} />
+          <Route path="employees/one-worker" element={<Worker/>} />
+          <Route path="employees/one-worker/edit" element={<Edit/>} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

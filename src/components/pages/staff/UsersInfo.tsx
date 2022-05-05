@@ -3,6 +3,7 @@ import {Box, Button, Grid, Stack, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 // @ts-ignore
 import { ReactComponent as UserPhoto } from "./../../../assets/svg/Vectorusercomplaintsava.svg";
+import {useNavigate} from "react-router-dom";
 
 
 const StyledBoldTypography = styled(Typography)({
@@ -51,6 +52,7 @@ const texts = [
     ]
 
 const UsersInfo = () => {
+    const navigate = useNavigate()
 
     return (
         <>
@@ -62,8 +64,8 @@ const UsersInfo = () => {
                             <StyledTypography>Информация о сотруднике</StyledTypography>
                             <Typography sx={{margin:"10px auto", fontSize:'20px', color:"primary.main", fontWeight:'800'}}>A. Адильбекович</Typography>
                             <Stack direction={"row"} spacing={2} sx={{marginTop:"20px"}}>
-                                <MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF"}}>Подтвердить</MyStyledButton>
-                                <MyStyledButton sx={{color:"primary.main", backgroundColor:"primary.light"}}>Удалить</MyStyledButton>
+                                <MyStyledButton sx={{color:"primary.main", backgroundColor:"primary.light"}} onClick={()=>navigate('edit')}>Редактировать</MyStyledButton>
+                                <MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF"}}>Удалить</MyStyledButton>
                             </Stack>
 
                         </Grid>
