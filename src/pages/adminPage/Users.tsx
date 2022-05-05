@@ -24,16 +24,7 @@ export default function Users() {
         sx={{ mb: "40px", display: "flex", justifyContent: "space-between" }}
       >
         <Stack>
-          <Typography
-            sx={{
-              fontSize: "42px",
-              fontWeight: 800,
-              color: "primary.main",
-              lineHeight: "40px",
-            }}
-          >
-            Пользователи
-          </Typography>
+          <Typography variant="h3">Пользователи</Typography>
         </Stack>
       </Box>
       <Suspense fallback={<div>Загрузка...</div>}>
