@@ -1,12 +1,6 @@
-import { Box, Button, Paper, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { Suspense } from "react";
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import HomePage from "../../components/pages/home/HomePage";
 
 export default function Home() {
@@ -18,20 +12,9 @@ export default function Home() {
 
   return (
     <Box>
-      <Box
-        sx={{ mb: "40px", display: "flex", justifyContent: "space-between" }}
-      >
+      <Box sx={{ mb: 1, display: "flex", justifyContent: "space-between" }}>
         <Stack>
-          <Typography
-            sx={{
-              fontSize: "42px",
-              fontWeight: 800,
-              color: "primary.main",
-              lineHeight: "40px",
-            }}
-          >
-            Главная
-          </Typography>
+          <Typography variant={"h3"}>Главная</Typography>
         </Stack>
       </Box>
       <Suspense fallback={<div>Загрузка...</div>}>

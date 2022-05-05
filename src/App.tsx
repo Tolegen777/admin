@@ -1,13 +1,13 @@
-import {Navigate, Route, Routes} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AdminRoutes from "./pages/adminPage/AdminRoutes";
 import Error from "./pages/Error";
 
 function App() {
-    // const { isAuth } = useTypedSelector((state) => state.auth);
+  // const { isAuth } = useTypedSelector((state) => state.auth);
 
-    return (
-        <>
-            {/* <Routes>
+  return (
+    <>
+      {/* <Routes>
         <Route path="/" element={<Navigate to={isAuth ? "/app" : "/auth"} />} />
 
         <Route
@@ -18,13 +18,13 @@ function App() {
 
         <Route path="*" element={<Error />} />
       </Routes> */}
-
-            <Routes>
-                <Route path="/*" element={<AdminRoutes/>}/>
-                <Route path="*" element={<Error/>}/>
-            </Routes>
-        </>
-    );
+      
+      <Routes>
+        <Route path="/*" element={<AdminRoutes />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
