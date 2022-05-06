@@ -34,7 +34,7 @@ const LoginForm: React.FC = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Typography variant="h4" color="primary" gutterBottom>
-        Добро пожаловать!
+        Hitba Admin
       </Typography>
       <Typography variant="h5" gutterBottom>
         Войдите чтобы продолжить!

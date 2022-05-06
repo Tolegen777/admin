@@ -10,12 +10,12 @@ function App() {
   return (
     <>
       <Routes>
-        <Route index element={<Navigate to={isAuth ? "/" : "/auth"} />} />
-
         <Route
           path="/*"
-          element={isAuth ? <AdminRoutes /> : <Navigate to="/" />}
+          element={<Navigate to={isAuth ? "/app" : "/auth"} />}
         />
+
+        <Route path="/app" element={<AdminRoutes />} />
         <Route path="/auth" element={<LoginPaper />} />
 
         <Route path="*" element={<Error />} />

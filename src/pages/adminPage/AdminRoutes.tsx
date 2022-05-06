@@ -23,9 +23,9 @@ const AdminRoutes = () => {
           <Route path="users/*" element={<Users />} />
           <Route path="complaints/*" element={<ComplaintsPage />} />
           <Route path="complaints/user*" element={<ComplaintsUser />} />
-          <Route path="employees/*" element={<StaffPage/>} />
-          <Route path="employees/one-worker" element={<Worker/>} />
-          <Route path="employees/one-worker/edit" element={<Edit/>} />
+          <Route path="employees/*" element={<StaffPage />} />
+          <Route path="employees/one-worker" element={<Worker />} />
+          <Route path="employees/one-worker/edit" element={<Edit />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
