@@ -19,9 +19,7 @@ export default function Profile() {
 
   return (
     <Box>
-      <Box
-        sx={{ mb: "40px", display: "flex", justifyContent: "space-between" }}
-      >
+      <Box sx={{ mb: 1, display: "flex", justifyContent: "space-between" }}>
         <Stack>
           <Typography variant="h3">Профиль</Typography>
         </Stack>

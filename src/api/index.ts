@@ -1,12 +1,12 @@
 import axios from "axios";
 import { mainModule } from "process";
 
-export const DEV_API = "https://dev.adu24.com/";
-export const PROD_API = "https://api.adu24.com/";
+export const DEV_API = "http://104.248.91.88/";
+// export const PROD_API = "https://";
 
 export const $api = axios.create({
-  baseURL: PROD_API,
-  withCredentials: true,
+  baseURL: DEV_API,
+  // withCredentials: true,
 });
 
 $api.interceptors.request.use((config) => {
@@ -16,4 +16,4 @@ $api.interceptors.request.use((config) => {
   }
 });
 
-export const $imageApi = "https://adu24file.ams3.digitaloceanspaces.com";
+// export const $imageApi = "https://adu24file.ams3.digitaloceanspaces.com";

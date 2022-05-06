@@ -1,26 +1,23 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import AdminRoutes from "./pages/adminPage/AdminRoutes";
+import LoginPaper from "./pages/authPage/LoginPaper";
 import Error from "./pages/Error";
+import { useTypedSelector } from "./store";
 
 function App() {
-  // const { isAuth } = useTypedSelector((state) => state.auth);
+  const { isAuth } = useTypedSelector((state) => state.auth);
 
   return (
     <>
-      {/* <Routes>
-        <Route path="/" element={<Navigate to={isAuth ? "/app" : "/auth"} />} />
+      <Routes>
+        <Route index element={<Navigate to={isAuth ? "/" : "/auth"} />} />
 
         <Route
-          path="/app/*"
-          element={isAuth ? <AdminPage /> : <Navigate to="/" />}
+          path="/*"
+          element={isAuth ? <AdminRoutes /> : <Navigate to="/" />}
         />
-        <Route path="/auth" element={<LoginPage />} />
+        <Route path="/auth" element={<LoginPaper />} />
 
-        <Route path="*" element={<Error />} />
-      </Routes> */}
-      
-      <Routes>
-        <Route path="/*" element={<AdminRoutes />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </>

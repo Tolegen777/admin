@@ -22,6 +22,7 @@ import {
   StyledListItemIcon,
   StyledNavLink,
 } from "./StyledDrawer";
+import { logout } from "../../store/reducers/auth/auth.action";
 
 const DrawerAdmin = () => {
   const dispatch = useDispatch();
@@ -111,8 +112,11 @@ const DrawerAdmin = () => {
       </Stack>
       <Stack>
         <List>
-          <StyledNavLink to="">
-            <StyledListItem sx={{ color: "#F18989", mb: "35px" }}>
+          <StyledNavLink>
+            <StyledListItem
+              onClick={() => dispatch(logout())}
+              sx={{ color: "#F18989", mb: "35px" }}
+            >
               <StyledListItemIcon>
                 <LogoutLogo />
               </StyledListItemIcon>

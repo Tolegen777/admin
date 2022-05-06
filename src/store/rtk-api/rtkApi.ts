@@ -1,9 +1,9 @@
-// import { DEV_API, PROD_API } from "./../../api/index";
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { DEV_API } from "../../api";
 // import { $api } from '../../api/index';
 
 export const baseQuery = fetchBaseQuery({
-  // baseUrl: DEV_API,
+  baseUrl: DEV_API,
   prepareHeaders: (headers) => {
     const token = localStorage.getItem("access_token");
     if (token) {

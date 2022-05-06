@@ -25,11 +25,9 @@ export const theme = createTheme({
   typography: {
     fontFamily: ["Proxima Nova", "sans-serif", "Gilroy"].join(","),
 
-    h3: {
-      fontSize: "clamp(30px, 45vw, 42px)",
+    poster: {
+      fontSize: "clamp(36px, 2.1875vw, 42px)",
       fontWeight: 800,
-      background: "red",
-      width: "clamp(200px, 30vw, 1000px)",
       color: "#2398AB",
       letterSpacing: "0em",
     },

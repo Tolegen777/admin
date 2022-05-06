@@ -21,10 +21,10 @@ export default function Users() {
   return (
     <Box>
       <Box
-        sx={{ mb: "40px", display: "flex", justifyContent: "space-between" }}
+        sx={{ mb: 1, display: "flex", justifyContent: "space-between" }}
       >
         <Stack>
-          <Typography variant="h3">Пользователи</Typography>
+          <Typography variant="poster">Пользователи</Typography>
         </Stack>
       </Box>
       <Suspense fallback={<div>Загрузка...</div>}>
