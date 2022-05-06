@@ -26,6 +26,7 @@ import {
     StyledHeadCellStaff,
     StyledHeadRowStaff
 } from "./StaffTable/StyledHeadStaff";
+import UserMessageCard from "../complaint/UserMessageCard";
 
 const message = {
     id: 1,
@@ -109,7 +110,7 @@ const BlockedUsersList = () => {
                      marginLeft:"10px", minHeight:"40px"}} endIcon={<NavigateNextIcon fontSize="small"/>}>новые-старые</Button></Grid>
             </Grid>
 
-            <TableContainer component={Box}>
+            <TableContainer component={Box} sx={{maxHeight:"350px"}}>
                 <Table
                     sx={{ minWidth: 450, boxShadow: "none", backgroundColor:"#fff" }}
                     aria-label="simple table"
@@ -155,14 +156,6 @@ const BlockedUsersList = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-
-
-            {/*<UserMessageCard/>*/}
-
-
-
-
-
 
         </Box>
     );

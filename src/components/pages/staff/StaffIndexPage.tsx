@@ -64,7 +64,7 @@ const StaffIndexPage = () => {
 
                     <StyledButton sx={{
                         color: "#fff",
-                        backgroundColor: "primary.main", marginLeft:"10px"}} onClick={()=>navigate('user')}>Добавить сотрудника</StyledButton>
+                        backgroundColor: "primary.main", marginLeft:"10px"}} onClick={()=>navigate('one-worker')}>Добавить сотрудника</StyledButton>
 
                 </Grid>
 
