@@ -1,11 +1,18 @@
+// library
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import "./index.scss";
-import App from "./App";
-import { store } from "./store";
 import { ThemeProvider } from "@mui/material/styles";
+
+// store
+import { store } from "./redux/store";
+
+// pages
+import App from "./App";
+
+// style
+import "./index.scss";
 import { theme } from "./theme/theme";
 
 const root = ReactDOM.createRoot(

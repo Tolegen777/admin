@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material";
 
+// Custom Modules
 declare module "@mui/material/styles" {
   interface TypographyVariants {
     poster: React.CSSProperties;
@@ -17,20 +18,29 @@ declare module "@mui/material/styles" {
 
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
-    poster: true;
+    poster: true; // can use new custom type of Typography
   }
+}
+
+// CustomTheme
+export interface CustomTheme {
+  bg: {
+    main: string;
+    light: string;
+  };
+  text: {
+    main: string;
+    light: string;
+  };
 }
 
 export const theme = createTheme({
   typography: {
     fontFamily: ["Proxima Nova", "sans-serif", "Gilroy"].join(","),
 
-    poster: {
-      fontSize: "clamp(36px, 2.1875vw, 42px)",
-      fontWeight: 800,
-      color: "#2398AB",
-      letterSpacing: "0em",
-    },
+    // poster: {
+    //   fontSize: "10px",
+    // },
   },
   palette: {
     primary: {
@@ -51,6 +61,16 @@ export const theme = createTheme({
       "2xl": 1536,
       "3xl": 1920,
     },
+  },
+
+  //custom theme variables
+  bg: {
+    main: "#fff",
+    light: "#F4F5F7",
+  },
+  text: {
+    main: "#172B4D",
+    light: "#262930",
   },
 });
 

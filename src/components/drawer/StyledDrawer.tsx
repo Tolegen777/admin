@@ -1,3 +1,4 @@
+// library
 import {
   Box,
   ListItem,
@@ -7,8 +8,6 @@ import {
 } from "@mui/material";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { styled } from "@mui/material/styles";
-
-import { theme } from "../../theme/theme";
 
 export const StyledBox = (props: any) => (
   <Box

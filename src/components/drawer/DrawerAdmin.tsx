@@ -1,4 +1,9 @@
+// library
 import { Box, Drawer, List, Stack, Toolbar, Typography } from "@mui/material";
+import { Link, NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+// icons
 // @ts-ignore: Ts че ты хочешь?
 import { ReactComponent as ProfileLogo } from "../../assets/svg/Vectorprofile.svg";
 // @ts-ignore: Ts че ты хочешь?
@@ -12,9 +17,7 @@ import { ReactComponent as EmployeesLogo } from "../../assets/svg/Vectoremployee
 // @ts-ignore: Ts че ты хочешь?
 import { ReactComponent as LogoutLogo } from "../../assets/svg/Vectorlogout.svg";
 
-import { Link, NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-// import { StyledNavLink } from "../../styled-components/StyledButton";
+//style
 import {
   StyledBox,
   StyledItemText,
@@ -22,7 +25,9 @@ import {
   StyledListItemIcon,
   StyledNavLink,
 } from "./StyledDrawer";
-import { logout } from "../../store/reducers/auth/auth.action";
+
+// store
+import { logout } from "../../redux/store/reducers/auth/auth.action";
 
 const DrawerAdmin = () => {
   const dispatch = useDispatch();
@@ -112,7 +117,7 @@ const DrawerAdmin = () => {
       </Stack>
       <Stack>
         <List>
-          <StyledNavLink>
+          <StyledNavLink to="">
             <StyledListItem
               onClick={() => dispatch(logout())}
               sx={{ color: "#F18989", mb: "35px" }}
