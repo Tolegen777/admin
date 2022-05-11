@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import { styled } from "@mui/system";
 
-export const MainContainer = styled.div`
+export const MainContainer = styled("div")`
   position: relative;
   height: 100%;
   display: flex;

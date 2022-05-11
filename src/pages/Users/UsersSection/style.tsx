@@ -3,6 +3,8 @@
 // //@ts-ignore
 // import { ReactComponent as GrowSvg } from "../../../assets/svg/Vectorgrow.svg";
 
+import { styled } from "@mui/system";
+
 // interface Props {
 //   text: string;
 //   price: string;
@@ -51,9 +53,7 @@
 //   />
 // );
 
-import styled from "styled-components";
-
-export const MainContainer = styled.div`
+export const MainContainer = styled("div")`
   position: relative;
   height: 100%;
   display: flex;
