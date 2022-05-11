@@ -10,10 +10,3 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   paddingTop: "25px",
   paddingLeft: "30px",
 }));
-
-// const MyThemeComponent = styled('div')(({ theme }) => ({
-//   color: theme.palette.primary.contrastText,
-//   backgroundColor: theme.palette.primary.main,
-//   padding: theme.spacing(1),
-//   borderRadius: theme.shape.borderRadius,
-// }));
