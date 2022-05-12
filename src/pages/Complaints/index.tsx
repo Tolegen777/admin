@@ -5,20 +5,25 @@ import { Route, Routes } from "react-router-dom";
 
 // main-Style
 import { HeaderBlock, Poster } from "../mainStyle";
+import ComplaintsList from "./ComplaintsSection/ComplaintsList";
+import ComplaintUserPage from "./ComplaintsSection/ComplaintUserPage";
 
-// import ComplaintsList from "../../components/pages/complaint/ComplaintsList";
 
 const ComplaintsPage = () => {
   return (
-    <HeaderBlock>
-      <Poster>Список жалоб</Poster>
-      <Suspense fallback={<div>Загрузка...</div>}>
-        <Routes>
-          {/* <Route index element={<ComplaintsList />} /> */}
-          {/* <Route path="/" element={<ComplaintUserPage />} /> */}
-        </Routes>
-      </Suspense>
-    </HeaderBlock>
+      <Box>
+          <HeaderBlock>
+              <Poster>Список жалоб</Poster>
+          </HeaderBlock>
+          <Suspense fallback={<div>Загрузка...</div>}>
+              <Routes>
+                  <Route index element={<ComplaintsList />} />
+                   <Route path="/" element={<ComplaintUserPage />} />
+              </Routes>
+          </Suspense>
+      </Box>
+
+
   );
 };
 

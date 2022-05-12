@@ -24,6 +24,7 @@ const LoginForm: React.FC = () => {
       password: "12345", // 12345
     },
     onSubmit: async (values) => {
+      // @ts-ignore
       dispatch(login(values));
     },
   });

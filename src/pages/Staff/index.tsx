@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 
 // main-style
 import { HeaderBlock, Poster } from "../mainStyle";
+import StaffIndexPage from "./StaffSection/StaffIndexPage";
 
 // style
 // import ComplaintsList from "../../components/pages/complaint/ComplaintsList";
@@ -12,13 +13,19 @@ import { HeaderBlock, Poster } from "../mainStyle";
 
 const StaffPage = () => {
   return (
-    <HeaderBlock>
-      <Poster>Персонал</Poster>
+      <Box>
+          <HeaderBlock>
+              <Poster>Персонал</Poster>
 
-      <Suspense fallback={<div>Загрузка...</div>}>
-        <Routes>{/* <Route index element={<StaffIndexPage />} /> */}</Routes>
-      </Suspense>
-    </HeaderBlock>
+
+          </HeaderBlock>
+          <Suspense fallback={<div>Загрузка...</div>}>
+              <Routes>
+                   <Route index element={<StaffIndexPage />} />
+              </Routes>
+          </Suspense>
+      </Box>
+
   );
 };
 

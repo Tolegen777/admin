@@ -12,6 +12,9 @@ import Profile from "../Profile";
 import Users from "../Users";
 import ComplaintsPage from "../Complaints";
 import StaffPage from "../Staff";
+import ComplaintsUser from "../Complaints/ComplaintsSection/ComplaintsUser";
+import Edit from "../Staff/StaffSection/Edit";
+import Worker from "../Staff/StaffSection/Worker";
 
 // import Profile from "./Profile";
 // import Users from "./Users";
@@ -31,8 +34,11 @@ const Main = () => {
           <Route path="home" element={<Home />} />
           <Route path="profile/*" element={<Profile />} />
           <Route path="users/*" element={<Users />} />
-          <Route path="complaints/*" element={<ComplaintsPage />} />
-          <Route path="employees/*" element={<StaffPage />} />
+          <Route path="complaints/" element={<ComplaintsPage />} />
+          <Route path="complaints/user" element={<ComplaintsUser />} />
+          <Route path="employees/" element={<StaffPage />} />
+          <Route path="employees/one-worker" element={<Worker/>} />
+          <Route path="employees/one-worker/edit" element={<Edit/>} />
         </Route>
       </Routes>
     </>
