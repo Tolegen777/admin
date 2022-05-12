@@ -23,7 +23,7 @@ export const StyledBox = (props: any) => (
 );
 
 // Components For List
-export const StyledNavLink = (props: any) => (
+export const StyledNavLink = (props: NavLinkProps) => (
   <NavLink
     style={({ isActive }) => {
       return {
