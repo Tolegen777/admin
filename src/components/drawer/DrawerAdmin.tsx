@@ -32,7 +32,6 @@ import { logout } from "../../redux/store/reducers/auth/auth.action";
 const DrawerAdmin = () => {
   const dispatch = useDispatch();
 
-
   return (
     <Drawer
       sx={{
@@ -120,11 +119,7 @@ const DrawerAdmin = () => {
         <List>
           <StyledNavLink to="">
             <StyledListItem
-<<<<<<< HEAD
-                // @ts-ignore
-=======
               // @ts-ignore
->>>>>>> 3b9a7686109ccf42e8cc7f856da22a0d42b8b2b7
               onClick={() => dispatch(logout())}
               sx={{ color: "#F18989", mb: "35px" }}
             >
