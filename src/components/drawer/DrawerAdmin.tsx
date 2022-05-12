@@ -119,6 +119,7 @@ const DrawerAdmin = () => {
         <List>
           <StyledNavLink to="">
             <StyledListItem
+              // @ts-ignore
               onClick={() => dispatch(logout())}
               sx={{ color: "#F18989", mb: "35px" }}
             >
