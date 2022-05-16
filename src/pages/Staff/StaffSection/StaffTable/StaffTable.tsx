@@ -11,25 +11,46 @@ import {
   StyledHeadRow,
 } from "./../../../Users/modules/UserTable/style";
 import { Box, Button, Divider, Typography } from "@mui/material";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setOneStaff} from "../../../../redux/store/reducers/staff/staff.slice";
+import React from "react";
 
 function createData(
-  user: string,
-  number: string,
+
+    name:string,
+    phone: string,
   bin: string,
-  role: string
+  position: string,
+    workerStatus:string,
+  email:string,
+  date:string,
 ) {
-  return { user, number, bin, role };
+  return { name, phone, bin, position, workerStatus, email,date};
 }
 
 const rows = [
-  createData("Нуров Даурен", "+7 707 777 77 77", "023546589564", "Админинистратор"),
-  createData("Нуров Даурен", "+7 707 777 77 77", "023546589564", "Админинистратор"),
-  createData("Нуров Даурен", "+7 707 777 77 77", "023546589564", "Админинистратор"),
-  createData("Нуров Даурен", "+7 707 777 77 77", "023546589564", "Админинистратор"),
+  createData("Досбол Акынов", "+7 707 432 21 12", "020306600213", "Админинистратор","Активный","dosbol@mail.ru","21.04.1998"),
+  createData("Даулет Жаксыбек", "+7 777 324 54 23", "120909500436", "Админинистратор", "Женат","daulet@mail.ru","12.12.1990"),
+  createData("Бакыт Кайратов", "+7 707 546 74 22", "010201502914", "Админинистратор","Женат","bakit@mail.ru","11.09.1979"),
+  createData("Улжан Амангелды", "+7 700 123 44 12", "110406320100", "Админинистратор","Активный","ulzhan@mail.ru","28.04.1987"),
 
 ];
 
-export default function StaffTable() {
+interface Props {
+    searchedName:string
+}
+
+const StaffTable:React.FC<Props> = ({ searchedName}) => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const handleSetWorker = (user:any) => {
+        dispatch(setOneStaff(user))
+        navigate('one-worker')
+    }
+
+
   return (
     <TableContainer component={Box}>
       <Table
@@ -54,40 +75,82 @@ export default function StaffTable() {
         </TableHead>
 
         <TableBody>
-          {rows.map((row) => (
-            <StyledBodyRow key={row.user}>
-              <StyledBodyCellFirst>{row.user}</StyledBodyCellFirst>
-              <StyledBodyCell>{row.number}</StyledBodyCell>
-              <StyledBodyCell>{row.bin}</StyledBodyCell>
-              <StyledBodyCell><b>{row.role}</b></StyledBodyCell>
-              <StyledBodyCellLast>
-                <Button
-                  sx={{
-                    width: "180px",
-                    height: "50px",
-                    background: "rgba(35, 152, 171, 0.3)",
-                    borderRadius: "10px",
-                    "&:hover": {
-                      background: "rgba(35, 152, 171, 1)",
-                    },
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      color: "#fff",
-                      fontSize: "18px",
-                      fontWeight: "700",
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    Подробнее
-                  </Typography>
-                </Button>
-              </StyledBodyCellLast>
-            </StyledBodyRow>
-          ))}
+
+
+
+          {rows.map((row,ind) => {
+              if (searchedName && row.name.toLowerCase().includes(searchedName.toLowerCase())
+                  ) {
+                  return <StyledBodyRow key={ind}>
+                      <StyledBodyCellFirst>{row.name}</StyledBodyCellFirst>
+                      <StyledBodyCell>{row.phone}</StyledBodyCell>
+                      <StyledBodyCell>{row.bin}</StyledBodyCell>
+                      <StyledBodyCell><b>{row.position}</b></StyledBodyCell>
+                      <StyledBodyCellLast>
+                          <Button
+                              sx={{
+                                  width: "180px",
+                                  height: "50px",
+                                  background: "rgba(35, 152, 171, 0.3)",
+                                  borderRadius: "10px",
+                                  "&:hover": {
+                                      background: "rgba(35, 152, 171, 1)",
+                                  },
+                              }}
+                              onClick={()=>handleSetWorker(row)}
+                          >
+                              <Typography
+                                  sx={{
+                                      color: "#fff",
+                                      fontSize: "18px",
+                                      fontWeight: "700",
+                                      textTransform: "capitalize",
+                                  }}
+                              >
+                                  Подробнее
+                              </Typography>
+                          </Button>
+                      </StyledBodyCellLast>
+                  </StyledBodyRow>
+              } else if(!searchedName) {
+                  return <StyledBodyRow key={ind}>
+                      <StyledBodyCellFirst>{row.name}</StyledBodyCellFirst>
+                      <StyledBodyCell>{row.phone}</StyledBodyCell>
+                      <StyledBodyCell>{row.bin}</StyledBodyCell>
+                      <StyledBodyCell><b>{row.position}</b></StyledBodyCell>
+                      <StyledBodyCellLast>
+                          <Button
+                              sx={{
+                                  width: "180px",
+                                  height: "50px",
+                                  background: "rgba(35, 152, 171, 0.3)",
+                                  borderRadius: "10px",
+                                  "&:hover": {
+                                      background: "rgba(35, 152, 171, 1)",
+                                  },
+                              }}
+                              onClick={()=>handleSetWorker(row)}
+                          >
+                              <Typography
+                                  sx={{
+                                      color: "#fff",
+                                      fontSize: "18px",
+                                      fontWeight: "700",
+                                      textTransform: "capitalize",
+                                  }}
+                              >
+                                  Подробнее
+                              </Typography>
+                          </Button>
+                      </StyledBodyCellLast>
+                  </StyledBodyRow>
+              } else return
+
+          })}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
+
+export default StaffTable
