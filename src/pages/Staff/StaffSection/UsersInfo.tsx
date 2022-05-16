@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 // @ts-ignore
 import { ReactComponent as UserPhoto } from "./../../../assets/svg/Vectorusercomplaintsava.svg";
 import {useNavigate} from "react-router-dom";
+import {useTypedSelector} from "../../../redux/store";
 
 
 const StyledBoldTypography = styled(Typography)({
@@ -25,35 +26,41 @@ export const MyStyledButton = styled(Button)({
     fontWeight:"600"
 });
 
-const texts = [
-    {
-        firstText:"Номер телефона",
-        description:"870748393423"
-    },
-    {
-        firstText:"Дата рожения",
-        description:"29.01.1999"
-    },
-    {
-        firstText:"Почта",
-        description:"test@mail.com"
-    },
-    {
-        firstText:"статус",
-        description:"Активный"
-    },
-    {
-        firstText:"должность",
-        description:"Администратор"
-    },
-    {
-        firstText:"ID",
-        description:"0983230923289"
-    },
-    ]
+
 
 const UsersInfo = () => {
     const navigate = useNavigate()
+
+    const userData = useTypedSelector(state=>state.staff)
+    console.log(userData)
+    console.log("userData")
+
+    const texts = [
+        {
+            firstText:"Номер телефона",
+            description:userData.phone
+        },
+        {
+            firstText:"Дата рожения",
+            description:userData.date
+        },
+        {
+            firstText:"Почта",
+            description:userData.email
+        },
+        {
+            firstText:"статус",
+            description:userData.workerStatus
+        },
+        {
+            firstText:"должность",
+            description:userData.position
+        },
+        {
+            firstText:"ID",
+            description:userData.bin
+        },
+    ]
 
     return (
         <>
@@ -63,17 +70,17 @@ const UsersInfo = () => {
                         <Grid sx={{backgroundColor:"#E2E2E2"}}><UserPhoto style={{width:60,height:60, color:"#fff", border:"30px solid #E2E2E2"}}/></Grid>
                         <Grid sx = {{margin: '5px 20px'}} >
                             <StyledTypography>Информация о сотруднике</StyledTypography>
-                            <Typography sx={{margin:"10px auto", fontSize:'20px', color:"primary.main", fontWeight:'800'}}>A. Адильбекович</Typography>
+                            <Typography sx={{margin:"10px auto", fontSize:'20px', color:"primary.main", fontWeight:'800'}}>{userData.name}</Typography>
                             <Stack direction={"row"} spacing={2} sx={{marginTop:"20px"}}>
                                 <MyStyledButton sx={{color:"primary.main", backgroundColor:"primary.light"}} onClick={()=>navigate('edit')}>Редактировать</MyStyledButton>
-                                <MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF"}}>Удалить</MyStyledButton>
+                                {/*<MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF"}}>Удалить</MyStyledButton>*/}
                             </Stack>
 
                         </Grid>
                     </Grid>
 
                     <Grid container xs = {6}>
-                        {texts.map(text=><InfoBlock description={text.description} textData={text.firstText}/>)}
+                        {texts.map((text,ind)=><InfoBlock description={text.description} textData={text.firstText}  />)}
                     </Grid>
 
                 </Grid>
@@ -87,7 +94,8 @@ const UsersInfo = () => {
 
 type PropsType2 = {
     textData:string,
-    description:string
+    description:string,
+
 }
 
 const InfoBlock:React.FC<PropsType2> = React.memo(({textData, description}) => {

@@ -59,7 +59,7 @@ const EditMainBlock = () => {
                 height: "80%"}}>
                 <Grid>
                     <MyStyledButton sx={{color:"primary.main", backgroundColor:"primary.light"}}>Заблокировать</MyStyledButton>
-                    <MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF", marginLeft:"20px"}}>Удалить</MyStyledButton>
+                    {/*<MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF", marginLeft:"20px"}}>Удалить</MyStyledButton>*/}
                 </Grid>
 
             </Stack>

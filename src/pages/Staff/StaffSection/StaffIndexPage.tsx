@@ -9,6 +9,7 @@ import StaffTable from "./StaffTable/StaffTable";
 // @ts-ignore
 import { ReactComponent as StaffAddIcon } from "./../../../assets/svg/StaffAddIcon.svg";
 import {useNavigate} from "react-router-dom";
+import {useFormik} from "formik";
 
 
 
@@ -38,6 +39,30 @@ const StaffIndexPage = () => {
     const navigate = useNavigate()
     const [isActiveValue, setActiveValue] = useState('Список')
 
+    const [searchedName,setSearchedName] = useState('')
+
+    const formik = useFormik({
+        initialValues: {
+            search:''
+        },
+
+        onSubmit: values => {
+            console.log("yes")
+        },
+    });
+
+    // const handleSearch = (e: KeyboardEvent<HTMLImageElement>) => {
+    //     if (e.key==="Enter"){
+    //         setSearchedName(formik.values.search)
+    //     }
+
+    // };
+
+    const handleSetSearchedName = () => {
+        setSearchedName(formik.values.search)
+        console.log(searchedName)
+    }
+
 
     return (
         <Box sx={{ backgroundColor: "primary.light", marginTop:"20px"}}>
@@ -60,11 +85,11 @@ const StaffIndexPage = () => {
 
 
                 <Grid container xs={7} justifyContent="flex-end" >
-                    <Button sx={{backgroundColor: "#fff", }}><StaffAddIcon/></Button>
+                    {/*<Button sx={{backgroundColor: "#fff", }}><StaffAddIcon/></Button>*/}
 
-                    <StyledButton sx={{
-                        color: "#fff",
-                        backgroundColor: "primary.main", marginLeft:"10px"}} onClick={()=>navigate('one-worker')}>Добавить сотрудника</StyledButton>
+                    {/*<StyledButton sx={{*/}
+                    {/*    color: "#fff",*/}
+                    {/*    backgroundColor: "primary.main", marginLeft:"10px"}}>Добавить сотрудника</StyledButton>*/}
 
                 </Grid>
 
@@ -81,31 +106,38 @@ const StaffIndexPage = () => {
                   sx={{border: '10px solid #fff', margin: '20px auto', backgroundColor: "#fff"}}
             >
                 <Grid item xs={12}>
-                    <TextField
-                        name="search"
-                        placeholder="Поиск по имени, фамилий, телефону"
-                        size="medium"
-                        sx={{
-                            backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {
-                                textOverflow: 'ellipsis !important',
-                                color: 'blue',
-                                outline: 'none'
-                            }
-                        }}
-                        fullWidth
-                        type={"search"}
 
-                        InputProps={{
-                            style: {color: "primary.main"},
-                            startAdornment: <InputAdornment position="start"><IconButton
-                                sx={{p: '10px', color: "primary.main"}}>
-                                <SearchIcon/>
-                            </IconButton></InputAdornment>
-                        }}
-                    />
+                    <form onSubmit={e => e.preventDefault()}>
+                        <TextField
+                            name="search"
+                            placeholder="Поиск по имени, фамилий, телефону"
+                            size="medium"
+                            sx={{
+                                backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {
+                                    textOverflow: 'ellipsis !important',
+                                    color: 'blue',
+                                    outline: 'none'
+                                }
+                            }}
+                            fullWidth
+                            type={"search"}
+                            onChange={formik.handleChange}
+                            // onKeyDown={handleSearch}
+
+                            InputProps={{
+                                style: {color: "primary.main"},
+                                startAdornment: <InputAdornment position="start"><IconButton
+                                    sx={{p: '10px', color: "primary.main"}}>
+                                    <SearchIcon onClick={handleSetSearchedName}/>
+                                </IconButton></InputAdornment>
+                            }}
+                        />
+                    </form>
+
+
                 </Grid>
             </Grid>
-            <StaffTable/>
+            <StaffTable searchedName = {searchedName}/>
 
 
         </Box>

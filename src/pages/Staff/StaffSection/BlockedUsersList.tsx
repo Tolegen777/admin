@@ -47,11 +47,11 @@ function createData(
 }
 
 const rows = [
-    createData("Нуров Даурен", "Оскорбление пользователя не цензцрной лексикой"),
-    createData("Нуров Даурен", "Оскорбление пользователя не цензцрной лексикой"),
-    createData("Нуров Даурен", "Оскорбление пользователя не цензцрной лексикой"),
-    createData("Нуров Даурен", "Оскорбление пользователя не цензцрной лексикой"),
-    createData("Нуров Даурен", "Оскорбление пользователя не цензцрной лексикой"),
+    createData("Арман Есжанов", "Оскорбление пользователя не цензцрной лексикой"),
+    createData("Еркын Алимов", "Оскорбление пользователя не цензцрной лексикой"),
+    createData("Айнур Канатова", "Оскорбление пользователя не цензцрной лексикой"),
+    createData("Алмас Арманов", "Оскорбление пользователя не цензцрной лексикой"),
+    createData("Айбек Омаров", "Оскорбление пользователя не цензцрной лексикой"),
 
 
 ];
@@ -77,31 +77,36 @@ const BlockedUsersList = () => {
                     color: "primary.main",
                     fontWeight: "800",
                 }}>Список заблокированных</Typography></Grid>
-                <Grid item xs={6}><TextField
-                    name="search"
-                    placeholder="Поиск"
-                    size="small"
-                    sx={{
-                        backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {
-                            textOverflow: 'ellipsis !important',
-                            color: 'blue',
-                            outline: 'none'
-                        }
-                    }}
-                    fullWidth
-                    type={"search"}
+                <Grid item xs={6}>
+                {/*    <TextField*/}
+                {/*    name="search"*/}
+                {/*    placeholder="Поиск"*/}
+                {/*    size="small"*/}
+                {/*    sx={{*/}
+                {/*        backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {*/}
+                {/*            textOverflow: 'ellipsis !important',*/}
+                {/*            color: 'blue',*/}
+                {/*            outline: 'none'*/}
+                {/*        }*/}
+                {/*    }}*/}
+                {/*    fullWidth*/}
+                {/*    type={"search"}*/}
 
-                    InputProps={{
-                        style: {color: "primary.main"},
-                        startAdornment: <InputAdornment position="start"><IconButton
-                            sx={{p: '10px', color: "primary.main"}}>
-                            <SearchIcon/>
-                        </IconButton></InputAdornment>
-                    }}
-                /></Grid>
-                <Grid item xs={2.5} ><Button sx={{color:"primary.main", fontWeight:"600", backgroundColor:"primary.light",
-                    textTransform:"capitalize",
-                     marginLeft:"10px", minHeight:"40px"}} endIcon={<NavigateNextIcon fontSize="small"/>}>новые-старые</Button></Grid>
+                {/*    InputProps={{*/}
+                {/*        style: {color: "primary.main"},*/}
+                {/*        startAdornment: <InputAdornment position="start"><IconButton*/}
+                {/*            sx={{p: '10px', color: "primary.main"}}>*/}
+                {/*            <SearchIcon/>*/}
+                {/*        </IconButton></InputAdornment>*/}
+                {/*    }}*/}
+                {/*/>*/}
+                </Grid>
+                <Grid item xs={2.5} >
+                    {/*<Button sx={{color:"primary.main", fontWeight:"600", backgroundColor:"primary.light",*/}
+                    {/*textTransform:"capitalize",*/}
+                    {/* marginLeft:"10px", minHeight:"40px"}} */}
+                    {/*                         endIcon={<NavigateNextIcon fontSize="small"/>}>новые-старые</Button>*/}
+                </Grid>
             </Grid>
 
             <TableContainer component={Box} sx={{maxHeight:"350px"}}>

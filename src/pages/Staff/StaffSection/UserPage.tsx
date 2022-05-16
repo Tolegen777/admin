@@ -26,8 +26,8 @@ const UserPage = () => {
             </StyledButton>
             <UsersInfo/>
             <Grid container>
-                <Grid item xs = {7}><BlockedUsersList/></Grid>
-                <Grid item xs = {5}><WorkerHistory/></Grid>
+                <Grid item xs = {12}><BlockedUsersList/></Grid>
+                {/*<Grid item xs = {5}><WorkerHistory/></Grid>*/}
             </Grid>
 
         </Box>
