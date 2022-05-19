@@ -29,6 +29,16 @@ export const theme = createTheme({
     // poster: {
     //   fontSize: "10px",
     // },
+    h4: {
+      fontSize: "20px",
+      fontWeight: 600,
+      color: "#2398AB",
+    },
+    h5: {
+      fontSize: "16px",
+      color: "#2398AB",
+      fontWeight: 400,
+    },
   },
   palette: {
     primary: {

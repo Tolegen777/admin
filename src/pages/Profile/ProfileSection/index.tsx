@@ -9,7 +9,11 @@ const ProfileSection = () => {
 
   return (
     <>
-      <Grid container spacing={2} columns={4} gridTemplateColumns="repeat(4, 1fr)">
+      <Grid
+        container
+        spacing={2}
+        columns={4}
+      >
         <LeftSideBlock />
         <RightSideBlock />
       </Grid>

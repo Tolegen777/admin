@@ -12,14 +12,14 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const LeftSideBlock = () => {
   return (
-    <Grid item xs={1}>
+    <Grid item xs={1} sx={{ height: "calc(100vh - 215px)" }}>
       <PaperContainer>
         <Stack>
           <ProfileImageBox />
           <Typography
             sx={{ fontSize: "28px", fontWeight: 600, color: "#2398AB" }}
           >
-            Инсар Еркинбаев
+            Инсар Еркинбаевs
           </Typography>
           <Box sx={{ width: "100%" }}>
             <MainButton
@@ -34,7 +34,7 @@ const LeftSideBlock = () => {
           </Box>
         </Stack>
         <Box>
-          <WarningButton>Выйти</WarningButton>
+          <WarningButton sx={{justifyContent: "center"}}>Выйти</WarningButton>
         </Box>
       </PaperContainer>
     </Grid>

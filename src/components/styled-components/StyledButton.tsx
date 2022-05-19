@@ -52,7 +52,6 @@ export const WarningButton = styled((props: ButtonProps) => (
   fontWeight: 400,
   color: "#FD4444",
   justifyContent: "flex-start",
-  paddingLeft: "25px",
   textTransform: "capitalize",
 
   "&:hover": {

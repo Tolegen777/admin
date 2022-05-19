@@ -12,14 +12,17 @@ import { TypographyProps } from "@mui/system";
 export const PaperContainer = styled((props: PaperProps) => (
   <Paper {...props} />
 ))(({ theme }) => ({
-  height: "calc(100vh - 220px)",
+  height: "100%",
   color: "primary.main",
-  borderRadius: "20px",
+  borderRadius: "10px",
   fontSize: "24px",
   padding: "30px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
+  position: "relative",
+  overflow: "hidden",
+  overflowY: "hidden",
 }));
 
 export const ProfileImageBox = styled((props: StackProps) => (
