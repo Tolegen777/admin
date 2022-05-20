@@ -1,13 +1,20 @@
-import { styled } from "@mui/system";
+import { Paper, PaperProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { TypographyProps } from "@mui/system";
 
-export const LoginBlock = styled('div')`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const LoginContainer = styled('div')`
+export const LoginBlock = styled("div")`
   background-color: #fff;
-  padding: 16px;
+  height: 100vh;
 `;
+
+export const PaperRightContainer = styled((props: PaperProps) => (
+  <Paper {...props} />
+))(({ theme }) => ({
+  paddingTop: "30px",
+  paddingLeft: "40px",
+  paddingRight: "30px",
+  paddingBottom: "30px",
+  borderRadius: "10px",
+  height: "calc(100vh - 230px)",
+  overflow: "hidden",
+}));

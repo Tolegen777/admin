@@ -1,6 +1,7 @@
 import { Button, ButtonProps, ListItem } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
+import { alpha } from "@mui/material";
 
 export const MainButton = styled((props: ButtonProps) => <Button {...props} />)(
   ({ theme }) => ({
@@ -12,11 +13,19 @@ export const MainButton = styled((props: ButtonProps) => <Button {...props} />)(
     fontWeight: 600,
     color: "#FFF",
     justifyContent: "flex-start",
-    paddingLeft: "25px",
     textTransform: "capitalize",
 
-    "&:hover": {
+    transition: theme.transitions.create([
+      "border-color",
+      "background-color",
+      "box-shadow",
+    ]),
+
+    "&:focus, &:hover": {
+      boxShadow: `${alpha(theme.palette.primary.main, 0.9)} 0 0 0 0.2rem`,
+      borderColor: theme.palette.primary.main,
       color: "#2398AB",
+      backgroundColor: theme.palette.primary.light,
     },
   })
 );
