@@ -19,7 +19,6 @@ export const StyledNewInput = styled(InputBase)(({ theme }) => ({
     paddingBottom: "20px",
     paddingLeft: "25px",
     color: theme.palette.primary.main,
-    minWidth: "300px",
 
     transition: theme.transitions.create([
       "border-color",

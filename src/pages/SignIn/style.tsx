@@ -5,6 +5,8 @@ import { TypographyProps } from "@mui/system";
 export const LoginBlock = styled("div")`
   background-color: #fff;
   height: 100vh;
+  display: flex;
+  align-items: "center";
 `;
 
 export const PaperRightContainer = styled((props: PaperProps) => (

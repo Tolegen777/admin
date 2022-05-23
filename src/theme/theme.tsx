@@ -30,7 +30,7 @@ export const theme = createTheme({
     //   fontSize: "10px",
     // },
     h3: {
-      fontSize: "24px",
+      fontSize: "clamp(15px, 1.25vw, 24px)",
       fontWeight: 600,
       color: "#2398AB",
     },

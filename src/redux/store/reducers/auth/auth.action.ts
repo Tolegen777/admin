@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AuthService } from "../../../service/auth/auth.service";
 import { ILogin, ILoginResponse } from "../../../../types/ILogin";
+import Main from "../../../../pages/Main";
 
 export const login = createAsyncThunk(
   "auth/login",
-  async function (creds:ILogin, { rejectWithValue }) {
+  async function (creds: ILogin, { rejectWithValue }) {
     try {
       const response = await AuthService.login(creds);
       localStorage.setItem("access_token", response.data.access_token);
