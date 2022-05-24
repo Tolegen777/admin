@@ -1,8 +1,10 @@
 // library
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
+  Button,
   Checkbox,
+  CircularProgress,
   FormControlLabel,
   FormGroup,
   Grid,
@@ -15,29 +17,28 @@ import { useNavigate } from "react-router-dom";
 
 // store
 import { useTypedSelector } from "../../../../redux/store";
-// import { useTypedSelector } from "../../../store";
 import { login } from "../../../../redux/store/reducers/auth/auth.action";
 
 // types
 import { ILogin } from "../../../../types/ILogin";
-
+// validation
+import { loginSchema } from "../../../../utils/schema/validation";
 // theme
 import { theme } from "../../../../theme/theme";
-
 // styledComponents
 import {
   StyledInput,
   StyledNewInput,
 } from "../../../../components/styled-components/StyledInput";
 import { MainButton } from "../../../../components/styled-components/StyledButton";
-
-// validation
-import { loginSchema } from "../../../../utils/schema/validation";
+import { ActionsEnum } from "../../../../redux/store/enum";
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuth, error } = useTypedSelector((state) => state.auth);
+  const { isAuth, error, status } = useTypedSelector((state) => state.auth);
+
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -47,6 +48,7 @@ const LoginForm: React.FC = () => {
     onSubmit: async (values) => {
       // @ts-ignore
       dispatch(login(values));
+      setLoading(true);
     },
     validationSchema: loginSchema,
   });
@@ -105,7 +107,6 @@ const LoginForm: React.FC = () => {
               />
               {errors.phone && <Typography>{errors.phone}</Typography>}
             </Box>
-
             <Box sx={{ mb: "clamp(10px, 1.04vw, 20px)" }}>
               <Typography variant="h3" sx={{ mb: "clamp(12px, 1.04vw, 20px)" }}>
                 Пароль
@@ -145,13 +146,22 @@ const LoginForm: React.FC = () => {
                 />
               </FormGroup>
             </Box>
-
             <MainButton
+              disabled={status === ActionsEnum.LOADING}
+              startIcon={
+                status === ActionsEnum.LOADING && (
+                  <CircularProgress sx={{ color: "#fff" }} />
+                )
+              }
               sx={{
                 fontSize: "18px, 1.25vw, 24px",
                 display: "flex",
                 justifyContent: "center",
                 height: "60px",
+                ".Mui-disabled": {
+                  color: "#fff",
+                  backgroundColor: "#fff",
+                },
               }}
               type="submit"
             >
