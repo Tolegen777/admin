@@ -21,6 +21,7 @@ const LoginPaper = () => {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          justifyContent: "space-between",
 
           [theme.breakpoints.down("lg")]: {
             flexDirection: "column",

@@ -9,14 +9,14 @@ export const LoginBlock = styled("div")`
   align-items: "center";
 `;
 
-export const PaperRightContainer = styled((props: PaperProps) => (
-  <Paper {...props} />
-))(({ theme }) => ({
-  paddingTop: "30px",
-  paddingLeft: "40px",
-  paddingRight: "30px",
-  paddingBottom: "30px",
-  borderRadius: "10px",
-  height: "calc(100vh - 230px)",
-  overflow: "hidden",
-}));
+// export const PaperRightContainer = styled((props: PaperProps) => (
+//   <Paper {...props} />
+// ))(({ theme }) => ({
+//   paddingTop: "30px",
+//   paddingLeft: "40px",
+//   paddingRight: "30px",
+//   paddingBottom: "30px",
+//   borderRadius: "10px",
+//   height: "calc(100vh - 230px)",
+//   overflow: "hidden",
+// }));

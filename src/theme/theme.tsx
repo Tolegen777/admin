@@ -25,10 +25,7 @@ declare module "@mui/material/Typography" {
 export const theme = createTheme({
   typography: {
     fontFamily: ["Proxima Nova", "sans-serif", "Gilroy"].join(","),
-
-    // poster: {
-    //   fontSize: "10px",
-    // },
+    
     h3: {
       fontSize: "clamp(15px, 1.25vw, 24px)",
       fontWeight: 600,
