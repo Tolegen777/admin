@@ -8,20 +8,20 @@ import staff from "./../store/reducers/staff/staff.slice";
 import authReducer from "./reducers/auth/auth.slice";
 
 //rtk
-import bannerApi from "./rtk-api/banner-rtk/bannerApi";
+import homeApi from "./rtk-api/home-rtk/homeApi";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  [bannerApi.reducerPath]: bannerApi.reducer,
+  [homeApi.reducerPath]: homeApi.reducer,
   complaint,
-  staff
+  staff,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(bannerApi.middleware),
+    getDefaultMiddleware().concat(homeApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
