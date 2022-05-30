@@ -7,8 +7,12 @@ import TableRow from '@mui/material/TableRow';
 import {TableBody} from "@mui/material";
 import ComplainedData from "./ComplainedData";
 
+type Props = {
+    searchedName:string
+}
 
-const ComplainedInfo = React.memo(() => {
+const ComplainedInfo:React.FC<Props> = React.memo(({searchedName}) => {
+
     return (
 
         <>
@@ -32,7 +36,7 @@ const ComplainedInfo = React.memo(() => {
                         </TableRow>
                     </TableHead>
                     <TableBody sx={{marginBottom:'20px'}}>
-                        <ComplainedData/>
+                        <ComplainedData searchedName={searchedName}/>
                     </TableBody>
                 </Table>
             </TableContainer>

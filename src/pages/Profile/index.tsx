@@ -21,7 +21,7 @@ export default function Profile() {
   };
 
   return (
-    <Box>
+    <Box sx={{ overflow: "hidden" }}>
       <HeaderBlock>
         <Poster>Профиль</Poster>
       </HeaderBlock>

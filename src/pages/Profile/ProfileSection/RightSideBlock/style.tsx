@@ -1,11 +1,13 @@
-import { Paper, PaperProps } from "@mui/material";
+import {
+  Box,
+  Paper,
+  PaperProps,
+  Typography,
+  Stack,
+  StackProps,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { TypographyProps } from "@mui/system";
-
-export const LoginBlock = styled("div")`
-  background-color: #fff;
-  height: 100vh;
-`;
 
 export const PaperRightContainer = styled((props: PaperProps) => (
   <Paper {...props} />

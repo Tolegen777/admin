@@ -14,25 +14,42 @@ import {
   StyledHeadCell,
   StyledHeadRow,
 } from "./style";
+import { Navigate, useNavigate } from "react-router-dom";
+import { FC } from "react";
 
 function createData(
+  id: number,
   user: string,
   number: string,
   status: string,
   complains: string
 ) {
-  return { user, number, status, complains };
+  return { id, user, number, status, complains };
 }
 
 const rows = [
-  createData("Досжан Даурен", "+7 707 777 77 77", "Активный", "Нет"),
-  createData("Нуров Даурен", "+7 707 777 77 77", "Активный", "Нет"),
-  createData("Нуров Даурен", "+7 707 777 77 77", "Активный", "Нет"),
-  createData("Нуров Даурен", "+7 707 777 77 77", "Активный", "Нет"),
-  createData("Нуров Даурен", "+7 707 777 77 77", "Активный", "Нет"),
+  createData(1, "Ахманов Нурбол", "+7 747 148 77 71", "Активный", "Нет"),
+  createData(2, "Андрей Романович", "+7 707 332 12 72", "Активный", "Нет"),
+  createData(3, "Дмитрий Медведев", "+7 701 010 11 22", "Активный", "Нет"),
+  createData(
+    4,
+    "Тринкер Борис",
+    "+7 707 452 73 12",
+    "Активный",
+    "На обработке"
+  ),
+  createData(
+    5,
+    "Михаил Васильев",
+    "+7 747 555 23 32",
+    "Пассивный",
+    "Заблокирован"
+  ),
 ];
 
-export default function UserTable() {
+const UserTable = () => {
+  const navigate = useNavigate();
+
   return (
     <TableContainer component={Box}>
       <Table
@@ -57,6 +74,13 @@ export default function UserTable() {
         </TableHead>
 
         <TableBody>
+          {/* .filter(name => name.includes(search)) */}
+          {/* .filter(name => name.match(new RegExp(search, "i"))) */}
+          {/* .filter((row) =>
+              Object.values(row).some(
+                (val) => typeof val === "string" && val.includes(`${search}`)
+              )
+            ) */}
           {rows.map((row) => (
             <StyledBodyRow key={row.user}>
               <StyledBodyCellFirst>{row.user}</StyledBodyCellFirst>
@@ -74,6 +98,7 @@ export default function UserTable() {
                       background: "rgba(35, 152, 171, 1)",
                     },
                   }}
+                  onClick={() => navigate(`/app/users/one/${row.id}`)}
                 >
                   <Typography
                     sx={{
@@ -93,4 +118,6 @@ export default function UserTable() {
       </Table>
     </TableContainer>
   );
-}
+};
+
+export default UserTable;

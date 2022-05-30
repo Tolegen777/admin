@@ -11,9 +11,10 @@ import {
 
 // main-style
 import { HeaderBlock, Poster } from "../mainStyle";
+import OneUser from "./OneUser";
 
 // pages
-import UsersPage from "./UsersSection";
+import UserSection from "./UsersSection";
 
 export default function Users() {
   const location = useLocation();
@@ -29,7 +30,8 @@ export default function Users() {
       </HeaderBlock>
       <Suspense fallback={<div>Загрузка...</div>}>
         <Routes>
-          <Route index element={<UsersPage />} />
+          <Route index element={<UserSection />} />
+          <Route path="one/:userId" element={<OneUser />} />
         </Routes>
       </Suspense>
     </Box>
