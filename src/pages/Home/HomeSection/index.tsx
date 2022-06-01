@@ -2,13 +2,16 @@
 import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
 
 // components
-import DrawerAdmin from "../../../components/drawer/DrawerAdmin";
+import { useGetHomeQuery } from "../../../redux/store/rtk-api/home-rtk/homeEndpoints";
 
 // style
 import { StyledPaper } from "./style";
 
 const HomeSection = () => {
   const Item = (props: any) => <Paper {...props} />;
+  const { data, isLoading } = useGetHomeQuery("");
+
+  console.log(data);
 
   return (
     <>
@@ -65,6 +68,7 @@ const HomeSection = () => {
         </Grid>
         <Grid item xs={5}>
           <StyledPaper>Статистика по возрасту</StyledPaper>
+
         </Grid>
       </Grid>
     </>

@@ -1,0 +1,8 @@
+server {
+   listen 80;
+   server_name 146.190.26.252;
+   location / {
+     proxy_pass http://front:3000/;
+}
+
+}

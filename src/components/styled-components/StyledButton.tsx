@@ -27,6 +27,11 @@ export const MainButton = styled((props: ButtonProps) => <Button {...props} />)(
       color: "#2398AB",
       backgroundColor: theme.palette.primary.light,
     },
+
+    ".Mui-disabled": {
+      color: "#fff",
+      backgroundColor: "#fff",
+    },
   })
 );
 

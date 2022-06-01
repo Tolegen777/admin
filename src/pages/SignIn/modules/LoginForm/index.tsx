@@ -1,155 +1,115 @@
 // library
-import React from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormHelperText,
-  InputLabel,
-  TextField,
-  Typography,
-} from "@mui/material";
+import React, { useEffect, useRef, useState } from "react";
+import { CircularProgress, FormGroup } from "@mui/material";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 // store
 import { useTypedSelector } from "../../../../redux/store";
-// import { useTypedSelector } from "../../../store";
 import { login } from "../../../../redux/store/reducers/auth/auth.action";
-
-// types
-import { ILogin } from "../../../../types/ILogin";
-
-// theme
-import { theme } from "../../../../theme/theme";
-
-// styledComponents
-import {
-  StyledInput,
-  StyledNewInput,
-} from "../../../../components/styled-components/StyledInput";
-import { MainButton } from "../../../../components/styled-components/StyledButton";
 
 // validation
 import { loginSchema } from "../../../../utils/schema/validation";
+// styledComponents
+import { StyledNewInput } from "../../../../components/styled-components/StyledInput";
+import { ActionsEnum } from "../../../../redux/store/enum";
+
+// style
+import {
+  FormCheckBox,
+  GridBlock,
+  Headline,
+  InputBox,
+  InputHelperText,
+  InputUpperLabel,
+  ReforgedMainButton,
+  StackBlock,
+  StyledCheckBox,
+} from "./style";
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { isAuth, error } = useTypedSelector((state) => state.auth);
+  const { isAuth, error, status } = useTypedSelector((state) => state.auth);
+
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      phone: "", // Dias@gmail.com
+      phone: "", // 8747 411 81 59
       password: "", // 12345
     },
     onSubmit: async (values) => {
       // @ts-ignore
       dispatch(login(values));
+      setLoading(true);
     },
     validationSchema: loginSchema,
   });
 
-  // React.useEffect(() => {
-  //   if (isAuth) {
-  //     navigate("/app", { replace: true });
-  //   }
-  // }, [isAuth]);
-
   const { values, errors, handleChange, handleSubmit } = formik;
   const { phone, password } = values;
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) inputRef.current.focus();
+  }, []);
+
   return (
-    <Box
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: "clamp(50px, 7.8125vw, 150px)",
-        width: "600px",
-      }}
-    >
-      <Typography
-        variant="h4"
-        color="primary"
-        gutterBottom
-        sx={{
-          fontSize: "64px",
-          fontWeight: 600,
-          mb: "clamp(70px, 10wv, 140px)",
-        }}
-      >
-        Вход
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <>
-          <Box sx={{ height: "150px", mb: "30px" }}>
-            <Typography variant="h3" sx={{ mb: "20px" }}>
-              Номер телефона
-            </Typography>
-            <StyledNewInput
-              name="phone"
-              value={phone}
-              onChange={handleChange}
-              placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"
-            />
-            {errors.phone && <Typography>{errors.phone}</Typography>}
-          </Box>
-
-          <Box sx={{ height: "150px", mb: "20px" }}>
-            <Typography variant="h3" sx={{ mb: "20px" }}>
-              Пароль
-            </Typography>
-            <StyledNewInput
-              id="my-input"
-              aria-describedby="my-helper-text"
-              name="password"
-              value={password}
-              onChange={handleChange}
-              placeholder="Введите пароль"
-            />
-            {errors.password && <Typography>{errors.password}</Typography>}
-          </Box>
-          <Box sx={{ width: "240px", mb: "30px" }}>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    sx={{
-                      borderRadius: "5px",
-                      color: theme.palette.primary.main,
-                      "& .MuiSvgIcon-root": { fontSize: "30px" },
-                    }}
-                  />
-                }
-                label="Запомнить меня"
-                sx={{
-                  "& .MuiFormControlLabel-label": {
-                    color: "#666666",
-                    fontSize: "24px",
-                  },
-                }}
+    <GridBlock>
+      <StackBlock>
+        <Headline>Вход</Headline>
+        <form onSubmit={handleSubmit}>
+          <>
+            <InputBox>
+              <InputUpperLabel>Номер телефона</InputUpperLabel>
+              <StyledNewInput
+                ref={inputRef}
+                name="phone"
+                value={phone}
+                required
+                onChange={handleChange}
+                placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"
               />
-            </FormGroup>
-          </Box>
-
-          <MainButton
-            sx={{
-              fontSize: "24px",
-              display: "flex",
-              justifyContent: "center",
-              height: "60px",
-            }}
-            type="submit"
-          >
-            Войти
-          </MainButton>
-        </>
-      </form>
-    </Box>
+              {errors.phone && (
+                <InputHelperText>{errors.phone}</InputHelperText>
+              )}
+            </InputBox>
+            <InputBox>
+              <InputUpperLabel>Пароль</InputUpperLabel>
+              <StyledNewInput
+                id="my-input"
+                aria-describedby="my-helper-text"
+                name="password"
+                type="password"
+                value={password}
+                onChange={handleChange}
+                placeholder="Введите пароль"
+              />
+              {errors.password && (
+                <InputHelperText>{errors.password}</InputHelperText>
+              )}
+            </InputBox>
+            <FormCheckBox>
+              <FormGroup>
+                <StyledCheckBox />
+              </FormGroup>
+            </FormCheckBox>
+            <ReforgedMainButton
+              disabled={status === ActionsEnum.LOADING}
+              startIcon={
+                status === ActionsEnum.LOADING && (
+                  <CircularProgress sx={{ color: "#fff" }} />
+                )
+              }
+              type="submit"
+            >
+              Войти
+            </ReforgedMainButton>
+          </>
+        </form>
+      </StackBlock>
+    </GridBlock>
   );
 };
 
