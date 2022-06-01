@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
 //components
-import DrawerAdmin from "../drawer/DrawerAdmin";
+import DrawerAdmin from "../Drawer/DrawerAdmin";
 import { LayoutContainer } from "./style";
 
 const Layout = () => {

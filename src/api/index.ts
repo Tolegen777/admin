@@ -6,7 +6,7 @@ export const DEV_API = "http://104.248.91.88/";
 
 export const $api = axios.create({
   baseURL: DEV_API,
-  withCredentials: true,
+  // withCredentials: true,
 });
 
 $api.interceptors.request.use((config) => {
