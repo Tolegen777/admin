@@ -2,13 +2,16 @@ import React from 'react';
 import {Box, Button, Grid, InputAdornment, Paper, TextField, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import IconButton from "@mui/material/IconButton";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import {TextFieldComponent, TextFieldComponent2, TextFieldComponent3} from "./TextFields/TextFieldComponent";
+
+
+import {TextFieldComponent, TextFieldComponent3} from "./TextFields/TextFieldComponent";
 import * as yup from 'yup';
 
 import {useTypedSelector} from "../../../redux/store";
 import {useFormik} from "formik";
+import DatePicker from "@mui/lab/DatePicker";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
 const StyledButton = styled(Button)({
     backgroundColor:"primary.light",
     color:"primary.main",
@@ -17,23 +20,46 @@ const StyledButton = styled(Button)({
 });
 
 
+const ENUM = {
+    Dec:"12",
+    Jan:"1",
+    Feb:"2",
+    Mar:"3",
+    Apr:"4",
+    May:"5",
+    Jun:"6",
+    Jul:"7",
+    Aug:"8",
+    Sep:"9",
+    Oct:"10",
+    Nov:"10",
+
+}
+
 
 const EditWorkerInfo = () => {
-
     const workerData = useTypedSelector(state=>state.staff)
 
-    console.log(workerData)
-    console.log("workerdata")
+    // console.log(workerData)
+    // console.log("workerdata")
+
+    const [date, setDate] = React.useState<Date | null>(null);
 
     const validationSchema = yup.object({
-        email: yup
+        firstName: yup
             .string()
-            .email('Enter a valid email')
-            .required('Email is required'),
-        password: yup
+            .required('Это обязательное поле!'),
+        secondName: yup
             .string()
-            .min(8, 'Password should be of minimum 8 characters length')
-            .required('Password is required'),
+            .required('Это обязательное поле!'),
+        iin: yup
+            .string()
+            .min(11, 'Данные написаны неправильно!')
+            .max(13, 'Данные написаны неправильно!')
+            .required('Это обязательное поле!'),
+        date: yup
+            .string()
+            .required('Это обязательное поле!'),
     });
 
     // id: null,
@@ -66,6 +92,23 @@ const EditWorkerInfo = () => {
             alert(JSON.stringify(values, null, 2));
         },
     });
+
+    console.log(formik.values.date)
+
+    console.log( typeof date)
+    console.log( JSON.stringify(date))
+    console.log("date")
+
+    const convertDate = (date:any) => {
+        let date2 = JSON.stringify(date)
+  const dateArr = []
+      dateArr[0] = date2.slice(8,10)
+        dateArr[1] = date2.slice(4,8)
+        dateArr[1] = date2.slice(11,15)
+        console.log(dateArr)
+    }
+
+     convertDate(date)
 
     // <TextField
     //     fullWidth
@@ -105,9 +148,16 @@ const EditWorkerInfo = () => {
                    <Typography sx={{color:"primary.main", fontWeight:"500", marginTop:"10px" }}>Дата рождения</Typography>
 
                    <Grid container columnSpacing={1}>
-                       <Grid item><StyledButton sx={{backgroundColor:"primary.light"}} endIcon={<ExpandMoreIcon/>}>01</StyledButton></Grid>
-                       <Grid item><StyledButton sx={{backgroundColor:"primary.light"}} endIcon={<ExpandMoreIcon/>}>Январь</StyledButton></Grid>
-                       <Grid item><StyledButton sx={{backgroundColor:"primary.light"}} endIcon={<ExpandMoreIcon/>}>2000</StyledButton></Grid>
+                       <LocalizationProvider dateAdapter={AdapterDateFns}>
+                           <DatePicker
+                               value={date}
+                               onChange={(newValue:any) => {
+                                   setDate(newValue);
+                               }}
+                               renderInput={(params:any) => <TextField {...params}
+                               sx = {{backgroundColor:"primary.light", color:"primary.main", input: { color: "primary.main", fontWeight:"600" } }}/>}
+                           />
+                       </LocalizationProvider>
 
 
 
@@ -123,8 +173,8 @@ const EditWorkerInfo = () => {
 
                <Grid item xs>
                    <Typography sx={{color:"primary.main", fontWeight:"800" }}>Место проживания</Typography>
-                   <TextFieldComponent2 label={"Страна"} text={"Казахстан"}/>
-                   <TextFieldComponent2 label={"Город"} text={"Алматы"}/>
+                   {/*<TextFieldComponent2 label={"Страна"} text={"Казахстан"}/>*/}
+                   {/*<TextFieldComponent2 label={"Город"} text={"Алматы"}/>*/}
                    <TextFieldComponent label={"Улица"} value={formik.values.street} id="street" name="street"
                                        formik={formik}
                                        error={formik.touched.street && Boolean(formik.errors.street)}
@@ -133,9 +183,18 @@ const EditWorkerInfo = () => {
 
 
                    <Grid container columnSpacing={3}>
-                       <Grid item><TextFieldComponent3 text={"Дом"} label={"129a"}/></Grid>
-                       <Grid item><TextFieldComponent3 text={"Дом"} label={"129a"}/></Grid>
-                       <Grid item><TextFieldComponent3 text={"Дом"} label={"129a"}/></Grid>
+                       <Grid item><TextFieldComponent3 label={"Дом"} value={formik.values.building} id="building" name="building"
+                                                       formik={formik}
+                                                       error={formik.touched.building && Boolean(formik.errors.building)}
+                                                       helperText={formik.touched.building && formik.errors.building}/></Grid>
+                       <Grid item><TextFieldComponent3 label={"Этаж"} value={formik.values.floor} id="floor" name="floor"
+                                                       formik={formik}
+                                                       error={formik.touched.floor && Boolean(formik.errors.floor)}
+                                                       helperText={formik.touched.floor && formik.errors.floor}/></Grid>
+                       <Grid item><TextFieldComponent3 label={"Квартира"} value={formik.values.apartment} id="apartment" name="apartment"
+                                                       formik={formik}
+                                                       error={formik.touched.apartment && Boolean(formik.errors.apartment)}
+                                                       helperText={formik.touched.apartment && formik.errors.apartment}/></Grid>
 
 
 

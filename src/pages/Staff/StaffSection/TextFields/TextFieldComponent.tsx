@@ -6,7 +6,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 interface PropsType {
     label:string,
     id?:string,
-    value?:string,
+    value?:string | number | null,
     name:string,
     formik:any,
     error:any,
@@ -44,40 +44,25 @@ export interface PropsType2 {
 
 }
 
-export const TextFieldComponent2:React.FC<PropsType2> = ({text,label}) => {
+
+export const TextFieldComponent3:React.FC<PropsType> = ({value,label,id,name,formik,error,helperText}) => {
     return (
         <Box sx={{marginTop:"10px"}}>
             <Typography sx={{color:"primary.main", fontWeight:"500" }}>{label}</Typography>
             <TextField
-                value={text}
-                size={"small"}
-                sx={{backgroundColor:"primary.light", color:"primary.main", input: { color: "primary.main", fontWeight:"600" } }}
-
-                InputProps={{
-                    style: {color: "primary.main"},
-                    endAdornment: <InputAdornment position="end"><IconButton
-                        sx={{color: "primary.main"}}>
-                        <ChevronRightIcon/>
-                    </IconButton></InputAdornment>
-                }}
-
-            />
-        </Box>
-
-    )
-}
-
-export const TextFieldComponent3:React.FC<PropsType2> = ({text,label}) => {
-    return (
-        <Box sx={{marginTop:"10px"}}>
-            <Typography sx={{color:"primary.main", fontWeight:"500" }}>{label}</Typography>
-            <TextField
-                value={text}
                 size={"medium"}
                 sx={{backgroundColor:"primary.light", color:"primary.main", input: { color: "primary.main", fontWeight:"600" }, maxWidth:"80px" }}
+                id={id}
+                name={name}
+                value={value}
+                onChange={formik.handleChange}
+                error={formik.touched.password && Boolean(formik.errors.password)}
+                helperText={formik.touched.password && formik.errors.password}
 
             />
         </Box>
 
     )
 }
+
+
