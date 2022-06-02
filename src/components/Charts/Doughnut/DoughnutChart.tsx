@@ -7,21 +7,21 @@ import { IHomePart } from "./DoughnutChart.types";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface Props {
-  religionData: IHomePart[];
+  barData: IHomePart[];
 }
 
-const DoughnutChart: FC<Props> = ({ religionData }) => {
+const DoughnutChart: FC<Props> = ({ barData }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
 
   const [chartOptions, setChartOptions] = useState({});
 
-  religionData = religionData.filter((e) => e.value != null);
+  barData = barData.filter((e) => e.value != null);
 
   useEffect(() => {
     setChartData({
-      labels: religionData.map((e) => {
+      labels: barData.map((e) => {
         return e.value;
       }),
       datasets: [
@@ -29,7 +29,7 @@ const DoughnutChart: FC<Props> = ({ religionData }) => {
           //@ts-ignore
           label: "Doughnut",
           //@ts-ignore
-          data: religionData.map((row) => {
+          data: barData.map((row) => {
             return row.count;
           }),
           backgroundColor: [

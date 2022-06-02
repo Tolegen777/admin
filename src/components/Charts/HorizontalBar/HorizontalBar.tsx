@@ -91,11 +91,7 @@ const HorizontalBar: FC<Props> = ({ barData }) => {
     });
   }, []);
 
-  return (
-    <div>
-      <Bar options={chartOptions} data={chartData} />
-    </div>
-  );
+  return <Bar options={chartOptions} data={chartData} />;
 };
 
 export default HorizontalBar;
