@@ -7,3 +7,8 @@ export interface IHomeAges {
   range5065: number | null;
   range65: number | null;
 }
+
+export interface IHomePart {
+  value: string | null;
+  count: string;
+}

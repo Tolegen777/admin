@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { FC, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { IHomeAges } from "./HorizontalColorBar.types";
+import { IHomePart } from "./HorizontalColorBar.types";
 
 ChartJS.register(
   CategoryScale,
@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 interface Props {
-  barData: IHomeAges;
+  barData: IHomePart[];
 }
 
 const HorizontalColorBar: FC<Props> = ({ barData }) => {
@@ -31,39 +31,22 @@ const HorizontalColorBar: FC<Props> = ({ barData }) => {
 
   const [chartOptions, setChartOptions] = useState({});
 
+  barData = barData.filter((e) => e.value != null);
+
   useEffect(() => {
     setChartData({
-      labels: [
-        "— 18-22",
-        "— 22-25",
-        "— 25-30",
-        "— 30-40",
-        "— 40-50",
-        "— 50-65",
-        "— 65+",
-      ],
+      labels: barData.map((e) => {
+        return e.value;
+      }),
 
       datasets: [
         {
           //@ts-ignore
           label: "Статистика по возрасту",
           //@ts-ignore
-          data: [
-            //@ts-ignore
-            { y: "— 18-22", x: barData.range1822 * 100 },
-            //@ts-ignore
-            { y: "— 22-25", x: barData.range2225 * 100 },
-            //@ts-ignore
-            { y: "— 25-30", x: barData.range2530 * 100 },
-            //@ts-ignore
-            { y: "— 30-40", x: barData.range3040 * 100 },
-            //@ts-ignore
-            { y: "— 40-50", x: barData.range4050 * 100 },
-            //@ts-ignore
-            { y: "— 50-65", x: barData.range5065 * 100 },
-            //@ts-ignore
-            { y: "— 65+", x: barData.range65 * 100 },
-          ],
+          data: barData.map((row) => {
+            return row.count;
+          }),
 
           //@ts-ignore
           backgroundColor: "#2398AB",
@@ -91,11 +74,7 @@ const HorizontalColorBar: FC<Props> = ({ barData }) => {
     });
   }, []);
 
-  return (
-    <div>
-      <Bar options={chartOptions} data={chartData} />
-    </div>
-  );
+  return <Bar options={chartOptions} data={chartData} />;
 };
 
 export default HorizontalColorBar;

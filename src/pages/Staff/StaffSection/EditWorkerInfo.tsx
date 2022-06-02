@@ -99,16 +99,18 @@ const EditWorkerInfo = () => {
     console.log( JSON.stringify(date))
     console.log("date")
 
-    const convertDate = (date:any) => {
-        let date2 = JSON.stringify(date)
-  const dateArr = []
-      dateArr[0] = date2.slice(8,10)
-        dateArr[1] = date2.slice(4,8)
-        dateArr[1] = date2.slice(11,15)
-        console.log(dateArr)
+    const convertDate = (date:string) => {
+        return date.slice(0,10).split("").reverse().join("");
+  //       let date2 = JSON.stringify(date)
+  // const dateArr = []
+  //     dateArr[0] = date2.slice(8,10)
+  //       dateArr[1] = date2.slice(4,8)
+  //       dateArr[1] = date2.slice(11,15)
+  //       console.log(dateArr)
     }
 
-     convertDate(date)
+    console.log(convertDate(JSON.stringify(date)))
+    console.log("cdcd")
 
     // <TextField
     //     fullWidth

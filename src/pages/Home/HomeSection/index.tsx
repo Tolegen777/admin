@@ -4,6 +4,7 @@ import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
 
 import { HorizontalBar } from "../../../components/Charts";
 import { DoughnutChart } from "../../../components/Charts/Doughnut";
+import { HorizontalColorBar } from "../../../components/Charts/HorizontalColorBar";
 
 // components
 import { useGetHomeQuery } from "../../../redux/store/rtk-api/home-rtk/homeEndpoints";
@@ -18,24 +19,24 @@ const HomeSection = () => {
   console.log(data);
 
   return (
-      <>
+    <>
       <Grid container spacing={2} columns={12}>
         <Grid item xs={8}>
           <StyledPaper>
             <Typography variant="h3">Интересы</Typography>
-            {/* {data && <HorizontalBar data={data.ages} />} */}
+            {data && <HorizontalColorBar barData={data.status} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={4}>
           <StyledPaper>
             <Typography variant="h3">Посещение</Typography>
-            {/* {data && <HorizontalBar data={data.ages} />} */}
+            {data && <HorizontalColorBar barData={data.status} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={6}>
           <StyledPaper>
             <Typography variant="h3">Статистика по религии</Typography>
-            {data && <DoughnutChart religionData={data.religions} />}
+            {data && <DoughnutChart barData={data.religions} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={2} container direction={"column"} spacing={2}>
@@ -52,7 +53,7 @@ const HomeSection = () => {
               }}
             >
               <Typography variant="h3">Статистика по полу</Typography>
-              {/* {data && <HorizontalBar data={data.ages} />} */}
+              {data && <HorizontalColorBar barData={data.genders} />}
             </StyledPaper>
           </Grid>
           <Grid item xs>
@@ -68,26 +69,26 @@ const HomeSection = () => {
               }}
             >
               <Typography variant="h3">Статистика по статусу</Typography>
-              {/* {data && <HorizontalBar data={data.ages} />} */}
+              {data && <HorizontalColorBar barData={data.status} />}
             </StyledPaper>
           </Grid>
         </Grid>
         <Grid item xs={4}>
           <StyledPaper>
             <Typography variant="h3">Статистика по городам</Typography>
-            {/* {data && <HorizontalBar data={data.ages} />} */}
+            {data && <HorizontalColorBar barData={data.cities} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={4}>
           <StyledPaper>
             <Typography variant="h3">Недавние жалобы</Typography>
-            {/* {data && <HorizontalBar data={data.ages} />} */}
+            {data && <HorizontalColorBar barData={data.status} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={3}>
           <StyledPaper>
             <Typography variant="h3">Статистика прибыли</Typography>
-            {/* {data && <HorizontalBar data={data.ages} />} */}
+            {data && <DoughnutChart barData={data.religions} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={5} sx={{ height: "480px" }}>
