@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { FC, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { IHomeAges } from "./HorizontalBar.types";
+import { IHomeAges } from "../HorizontalBar/HorizontalBar.types";
 
 ChartJS.register(
   CategoryScale,
@@ -21,10 +21,10 @@ ChartJS.register(
 );
 
 interface Props {
-  barData: IHomeAges;
+  data: IHomeAges;
 }
 
-const HorizontalBar: FC<Props> = ({ barData }) => {
+const HorizontalBar: FC<Props> = ({ data }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -50,19 +50,19 @@ const HorizontalBar: FC<Props> = ({ barData }) => {
           //@ts-ignore
           data: [
             //@ts-ignore
-            { y: "— 18-22", x: barData.range1822 * 100 },
+            { y: "— 18-22", x: ageData.range1822 * 100 },
             //@ts-ignore
-            { y: "— 22-25", x: barData.range2225 * 100 },
+            { y: "— 22-25", x: ageData.range2225 * 100 },
             //@ts-ignore
-            { y: "— 25-30", x: barData.range2530 * 100 },
+            { y: "— 25-30", x: ageData.range2530 * 100 },
             //@ts-ignore
-            { y: "— 30-40", x: barData.range3040 * 100 },
+            { y: "— 30-40", x: ageData.range3040 * 100 },
             //@ts-ignore
-            { y: "— 40-50", x: barData.range4050 * 100 },
+            { y: "— 40-50", x: ageData.range4050 * 100 },
             //@ts-ignore
-            { y: "— 50-65", x: barData.range5065 * 100 },
+            { y: "— 50-65", x: ageData.range5065 * 100 },
             //@ts-ignore
-            { y: "— 65+", x: barData.range65 * 100 },
+            { y: "— 65+", x: ageData.range65 * 100 },
           ],
 
           //@ts-ignore
