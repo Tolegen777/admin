@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { FC, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { IHomeAges } from "./HorizontalBar.types";
+import { IHomeAges } from "./HorizontalColorBar.types";
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +24,7 @@ interface Props {
   barData: IHomeAges;
 }
 
-const HorizontalBar: FC<Props> = ({ barData }) => {
+const HorizontalColorBar: FC<Props> = ({ barData }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -98,4 +98,4 @@ const HorizontalBar: FC<Props> = ({ barData }) => {
   );
 };
 
-export default HorizontalBar;
+export default HorizontalColorBar;

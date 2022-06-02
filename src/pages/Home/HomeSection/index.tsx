@@ -1,6 +1,7 @@
 // LibraryAdd
 import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
 import { HorizontalBar } from "../../../components/Charts";
+import { DoughnutChart } from "../../../components/Charts/Doughnut";
 
 // components
 import DrawerAdmin from "../../../components/Drawer/DrawerAdmin";
@@ -14,19 +15,27 @@ const HomeSection = () => {
   const { data, isLoading } = useGetHomeQuery("");
 
   console.log(data);
-  console.log(data);
 
   return (
     <>
       <Grid container spacing={2} columns={12}>
         <Grid item xs={8}>
-          <StyledPaper>Интересы</StyledPaper>
+          <StyledPaper>
+            <Typography variant="h3">Интересы</Typography>
+            {/* {data && <HorizontalBar data={data.ages} />} */}
+          </StyledPaper>
         </Grid>
         <Grid item xs={4}>
-          <StyledPaper>Посещение</StyledPaper>
+          <StyledPaper>
+            <Typography variant="h3">Посещение</Typography>
+            {/* {data && <HorizontalBar data={data.ages} />} */}
+          </StyledPaper>
         </Grid>
         <Grid item xs={6}>
-          <StyledPaper>Статистика по религии</StyledPaper>
+          <StyledPaper>
+            <Typography variant="h3">Статистика по религии</Typography>
+            {data && <DoughnutChart religionData={data.religions} />}
+          </StyledPaper>
         </Grid>
         <Grid item xs={2} container direction={"column"} spacing={2}>
           <Grid item xs>
@@ -41,7 +50,8 @@ const HomeSection = () => {
                 paddingLeft: "30px",
               }}
             >
-              Статистика по полу
+              <Typography variant="h3">Статистика по полу</Typography>
+              {/* {data && <HorizontalBar data={data.ages} />} */}
             </StyledPaper>
           </Grid>
           <Grid item xs>
@@ -57,29 +67,33 @@ const HomeSection = () => {
               }}
             >
               <Typography variant="h3">Статистика по статусу</Typography>
+              {/* {data && <HorizontalBar data={data.ages} />} */}
             </StyledPaper>
           </Grid>
         </Grid>
         <Grid item xs={4}>
           <StyledPaper>
             <Typography variant="h3">Статистика по городам</Typography>
+            {/* {data && <HorizontalBar data={data.ages} />} */}
           </StyledPaper>
         </Grid>
         <Grid item xs={4}>
           <StyledPaper>
             <Typography variant="h3">Недавние жалобы</Typography>
+            {/* {data && <HorizontalBar data={data.ages} />} */}
           </StyledPaper>
         </Grid>
         <Grid item xs={3}>
           <StyledPaper>
             <Typography variant="h3">Статистика прибыли</Typography>
+            {/* {data && <HorizontalBar data={data.ages} />} */}
           </StyledPaper>
         </Grid>
         <Grid item xs={5} sx={{ height: "480px" }}>
           <Box sx={{ height: "100%" }}>
             <StyledPaper>
               <Typography variant="h3">Статистика по возрасту</Typography>
-              {data && <HorizontalBar ageData={data.ages} />}
+              {data && <HorizontalBar barData={data.ages} />}
             </StyledPaper>
           </Box>
         </Grid>
