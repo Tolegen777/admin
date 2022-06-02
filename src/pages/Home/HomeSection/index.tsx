@@ -1,10 +1,11 @@
 // LibraryAdd
 import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
+// components
+
 import { HorizontalBar } from "../../../components/Charts";
 import { DoughnutChart } from "../../../components/Charts/Doughnut";
 
 // components
-import DrawerAdmin from "../../../components/Drawer/DrawerAdmin";
 import { useGetHomeQuery } from "../../../redux/store/rtk-api/home-rtk/homeEndpoints";
 
 // style
@@ -17,7 +18,7 @@ const HomeSection = () => {
   console.log(data);
 
   return (
-    <>
+      <>
       <Grid container spacing={2} columns={12}>
         <Grid item xs={8}>
           <StyledPaper>
@@ -101,4 +102,5 @@ const HomeSection = () => {
     </>
   );
 };
+
 export default HomeSection;

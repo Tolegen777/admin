@@ -5,6 +5,8 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ComplainedInfo from './ComplainedInfo';
+import SearchComponent from "../../../components/reusedComponents/SearchComponent";
+import {useFormik} from "formik";
 
 
 
@@ -32,6 +34,18 @@ const ComplaintsList = () => {
 
     const [isActiveValue, setActiveValue] = useState('Весь список')
 
+    const formik = useFormik({
+        initialValues: {
+            search:''
+        },
+
+        onSubmit: values => {
+            console.log("yes")
+        },
+    });
+
+    const [searchedName,setSearchedName] = useState("")
+
 
     return (
         <Box sx={{ backgroundColor: "primary.light", marginTop:"20px"}}>
@@ -58,29 +72,30 @@ const ComplaintsList = () => {
                   sx={{border: '10px solid #fff', margin: '20px auto', backgroundColor: "#fff"}}
             >
                 <Grid item xs={10}>
-                    <TextField
-                        name="search"
-                        placeholder="Поиск по имени, фамилий, телефону"
-                        size="medium"
-                        sx={{
-                            backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {
-                                textOverflow: 'ellipsis !important',
-                                color: 'blue',
-                                outline: 'none'
-                            }
-                        }}
-                        fullWidth
-                        type={"search"}
+                    {/*<TextField*/}
+                    {/*    name="search"*/}
+                    {/*    placeholder="Поиск по имени, фамилий, телефону"*/}
+                    {/*    size="medium"*/}
+                    {/*    sx={{*/}
+                    {/*        backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {*/}
+                    {/*            textOverflow: 'ellipsis !important',*/}
+                    {/*            color: 'blue',*/}
+                    {/*            outline: 'none'*/}
+                    {/*        }*/}
+                    {/*    }}*/}
+                    {/*    fullWidth*/}
+                    {/*    type={"search"}*/}
 
 
-                        InputProps={{
-                            style: {color: "primary.main"},
-                            startAdornment: <InputAdornment position="start"><IconButton
-                                sx={{p: '10px', color: "primary.main"}}>
-                                <SearchIcon/>
-                            </IconButton></InputAdornment>
-                        }}
-                    />
+                    {/*    InputProps={{*/}
+                    {/*        style: {color: "primary.main"},*/}
+                    {/*        startAdornment: <InputAdornment position="start"><IconButton*/}
+                    {/*            sx={{p: '10px', color: "primary.main"}}>*/}
+                    {/*            <SearchIcon/>*/}
+                    {/*        </IconButton></InputAdornment>*/}
+                    {/*    }}*/}
+                    {/*/>*/}
+                    <SearchComponent formik={formik} searchedName={searchedName} setSearchedName={setSearchedName} placeholder={"Поиск по имени, фамилий, телефону"}/>
                 </Grid>
                 <Grid item xs={1.5} sx={{marginLeft: "20px"}}>
                     <Grid container
@@ -103,7 +118,7 @@ const ComplaintsList = () => {
 
             </Grid>
 
-            <ComplainedInfo/>
+            <ComplainedInfo searchedName={searchedName}/>
 
 
         </Box>

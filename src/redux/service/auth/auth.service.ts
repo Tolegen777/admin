@@ -11,7 +11,7 @@ export class AuthService {
 
   static async refresh(): Promise<AxiosResponse<ILoginResponse>> {
     return axios.get<ILoginResponse>(`${DEV_API}auth/refresh`, {
-      withCredentials: true,
+      //withCredentials: true,
     });
   }
 

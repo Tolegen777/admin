@@ -5,6 +5,9 @@ import styled from "@emotion/styled";
 import { ReactComponent as UserPhoto } from "./../../../assets/svg/Vectorusercomplaintsava.svg";
 import {useNavigate} from "react-router-dom";
 import {useTypedSelector} from "../../../redux/store";
+import {useGetOneStaffQuery} from "../../../redux/store/rtk-api/staff-rtk/staffEndpoints";
+import {useDispatch} from "react-redux";
+import {setMoreInfoForOneStaff} from "../../../redux/store/reducers/staff/staff.slice";
 
 
 const StyledBoldTypography = styled(Typography)({
@@ -31,34 +34,42 @@ export const MyStyledButton = styled(Button)({
 const UsersInfo = () => {
     const navigate = useNavigate()
 
-    const userData = useTypedSelector(state=>state.staff)
-    console.log(userData)
-    console.log("userData")
+    const {id:workerId,position,iin} = useTypedSelector(state=>state.staff)
+    const {data:oneWorkerData,isLoading,isError,isSuccess} = useGetOneStaffQuery(workerId as number)
+
+    const dispatch = useDispatch()
+
+    if (oneWorkerData){
+        dispatch(setMoreInfoForOneStaff(oneWorkerData))
+    }
+
+
+
 
     const texts = [
         {
             firstText:"Номер телефона",
-            description:userData.phone
+            description:oneWorkerData?oneWorkerData?.user?.phone:""
         },
         {
             firstText:"Дата рожения",
-            description:userData.date
+            description:oneWorkerData?oneWorkerData.date:""
         },
-        {
-            firstText:"Почта",
-            description:userData.email
-        },
-        {
-            firstText:"статус",
-            description:userData.workerStatus
-        },
+        // {
+        //     firstText:"Почта",
+        //     description:userData.email
+        // },
+        // {
+        //     firstText:"статус",
+        //     description:position==="WORKER"?"Администратор":""
+        // },
         {
             firstText:"должность",
-            description:userData.position
+            description:position==="WORKER"?"Администратор":""
         },
         {
             firstText:"ID",
-            description:userData.bin
+            description:iin?iin:""
         },
     ]
 
@@ -70,7 +81,7 @@ const UsersInfo = () => {
                         <Grid sx={{backgroundColor:"#E2E2E2"}}><UserPhoto style={{width:60,height:60, color:"#fff", border:"30px solid #E2E2E2"}}/></Grid>
                         <Grid sx = {{margin: '5px 20px'}} >
                             <StyledTypography>Информация о сотруднике</StyledTypography>
-                            <Typography sx={{margin:"10px auto", fontSize:'20px', color:"primary.main", fontWeight:'800'}}>{userData.name}</Typography>
+                            <Typography sx={{margin:"10px auto", fontSize:'20px', color:"primary.main", fontWeight:'800'}}>{oneWorkerData&&oneWorkerData.firstName} {oneWorkerData&&oneWorkerData.secondName}</Typography>
                             <Stack direction={"row"} spacing={2} sx={{marginTop:"20px"}}>
                                 <MyStyledButton sx={{color:"primary.main", backgroundColor:"primary.light"}} onClick={()=>navigate('edit')}>Редактировать</MyStyledButton>
                                 {/*<MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF"}}>Удалить</MyStyledButton>*/}

@@ -4,6 +4,11 @@ import styled from "@emotion/styled";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import IconButton from "@mui/material/IconButton";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import {TextFieldComponent, TextFieldComponent2, TextFieldComponent3} from "./TextFields/TextFieldComponent";
+import * as yup from 'yup';
+
+import {useTypedSelector} from "../../../redux/store";
+import {useFormik} from "formik";
 const StyledButton = styled(Button)({
     backgroundColor:"primary.light",
     color:"primary.main",
@@ -14,6 +19,65 @@ const StyledButton = styled(Button)({
 
 
 const EditWorkerInfo = () => {
+
+    const workerData = useTypedSelector(state=>state.staff)
+
+    console.log(workerData)
+    console.log("workerdata")
+
+    const validationSchema = yup.object({
+        email: yup
+            .string()
+            .email('Enter a valid email')
+            .required('Email is required'),
+        password: yup
+            .string()
+            .min(8, 'Password should be of minimum 8 characters length')
+            .required('Password is required'),
+    });
+
+    // id: null,
+    //     firstName: '',
+    //     secondName: '',
+    //     iin: '',
+    //     position: '',
+    //     date: '',
+    //     phone: '',
+    //     street: '',
+    //     floor: null,
+    //     building: '',
+    //     apartment: '',
+    //     index: ''
+
+    const formik = useFormik({
+        initialValues: {
+            firstName: workerData.firstName,
+            secondName: workerData.secondName,
+            iin: workerData.iin,
+            date: workerData.date,
+            phone: workerData.phone,
+            street: workerData.street,
+            building: workerData.building,
+            floor: workerData.floor,
+            apartment: workerData.apartment,
+        },
+        validationSchema: validationSchema,
+        onSubmit: (values) => {
+            alert(JSON.stringify(values, null, 2));
+        },
+    });
+
+    // <TextField
+    //     fullWidth
+    //     id="email"
+    //     name="email"
+    //     label="Email"
+    //     value={formik.values.email}
+    //     onChange={formik.handleChange}
+    //     error={formik.touched.email && Boolean(formik.errors.email)}
+    //     helperText={formik.touched.email && formik.errors.email}
+    // />
+
     return (
        <Box component={Paper} sx={{padding:"20px"}}>
            <Typography sx={{color:"primary.main", fontWeight:"500" }}>Информация о сотуднике</Typography>
@@ -21,10 +85,23 @@ const EditWorkerInfo = () => {
            <Grid container>
                <Grid item xs>
                    <Typography sx={{color:"primary.main", fontWeight:"800" }}>Личная информация</Typography>
-                   <TextFieldComponent label={"имя"} text={"Инсар"}/>
-                   <TextFieldComponent label={"фамилия"} text={"Еркимбеков"}/>
-                   <TextFieldComponent label={"Отчество"} text={"Даулетович"}/>
-                   <TextFieldComponent label={"Иин"} text={"23490824092"}/>
+                   <TextFieldComponent label={"Имя"} value={formik.values.firstName} id="firstName" name="firstName"
+                                       formik={formik}
+                                       error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                                       helperText={formik.touched.firstName && formik.errors.firstName}
+                   />
+                   <TextFieldComponent label={"Фамилия"} value={formik.values.secondName} id="secondName" name="secondName"
+                                       formik={formik}
+                                       error={formik.touched.secondName && Boolean(formik.errors.secondName)}
+                                       helperText={formik.touched.secondName && formik.errors.secondName}
+                   />
+                   <TextFieldComponent label={"ИИН"} value={formik.values.iin} id="iin" name="iin"
+                                       formik={formik}
+                                       error={formik.touched.iin && Boolean(formik.errors.iin)}
+                                       helperText={formik.touched.iin && formik.errors.iin}
+                   />
+
+
                    <Typography sx={{color:"primary.main", fontWeight:"500", marginTop:"10px" }}>Дата рождения</Typography>
 
                    <Grid container columnSpacing={1}>
@@ -35,8 +112,12 @@ const EditWorkerInfo = () => {
 
 
                    </Grid>
-                   <TextFieldComponent label={"номер"} text={"87074744473"}/>
-                   <TextFieldComponent label={"email"} text={"email@mail.ru"}/>
+                   <TextFieldComponent label={"Номер телефона"} value={formik.values.phone} id="phone" name="phone"
+                                       formik={formik}
+                                       error={formik.touched.phone && Boolean(formik.errors.phone)}
+                                       helperText={formik.touched.phone && formik.errors.phone}
+                   />
+
                </Grid>
 
 
@@ -44,7 +125,11 @@ const EditWorkerInfo = () => {
                    <Typography sx={{color:"primary.main", fontWeight:"800" }}>Место проживания</Typography>
                    <TextFieldComponent2 label={"Страна"} text={"Казахстан"}/>
                    <TextFieldComponent2 label={"Город"} text={"Алматы"}/>
-                   <TextFieldComponent label={"Улица"} text={"Тургут озал"}/>
+                   <TextFieldComponent label={"Улица"} value={formik.values.street} id="street" name="street"
+                                       formik={formik}
+                                       error={formik.touched.street && Boolean(formik.errors.street)}
+                                       helperText={formik.touched.street && formik.errors.street}
+                   />
 
 
                    <Grid container columnSpacing={3}>
@@ -55,7 +140,7 @@ const EditWorkerInfo = () => {
 
 
                    </Grid>
-                   <TextFieldComponent label={"email"} text={"email@mail.ru"}/>
+                   {/*<TextFieldComponent label={"email"} text={"email@mail.ru"}/>*/}
                </Grid>
            </Grid>
        </Box>
@@ -64,70 +149,5 @@ const EditWorkerInfo = () => {
 
 export default EditWorkerInfo;
 
-interface PropsType {
-    label:string,
-    text:string,
-
-}
-
-const TextFieldComponent:React.FC<PropsType> = ({text,label}) => {
-    return (
-        <Box sx={{marginTop:"10px"}}>
-            <Typography sx={{color:"primary.main", fontWeight:"500" }}>{label}</Typography>
-            <TextField
-                value={text}
-   size={"small"}
-                sx={{backgroundColor:"primary.light", color:"primary.main", input: { color: "primary.main", fontWeight:"600" },
-                width:"250px"
-                }}
 
 
-            />
-        </Box>
-
-    )
-}
-
-interface PropsType2 {
-    label:string,
-    text:string,
-
-}
-
-const TextFieldComponent2:React.FC<PropsType2> = ({text,label}) => {
-    return (
-        <Box sx={{marginTop:"10px"}}>
-            <Typography sx={{color:"primary.main", fontWeight:"500" }}>{label}</Typography>
-            <TextField
-                value={text}
-                size={"small"}
-                sx={{backgroundColor:"primary.light", color:"primary.main", input: { color: "primary.main", fontWeight:"600" } }}
-
-                InputProps={{
-                    style: {color: "primary.main"},
-                    endAdornment: <InputAdornment position="end"><IconButton
-                        sx={{color: "primary.main"}}>
-                        <ChevronRightIcon/>
-                    </IconButton></InputAdornment>
-                }}
-
-            />
-        </Box>
-
-    )
-}
-
-const TextFieldComponent3:React.FC<PropsType2> = ({text,label}) => {
-    return (
-        <Box sx={{marginTop:"10px"}}>
-            <Typography sx={{color:"primary.main", fontWeight:"500" }}>{label}</Typography>
-            <TextField
-                value={text}
-                size={"medium"}
-                sx={{backgroundColor:"primary.light", color:"primary.main", input: { color: "primary.main", fontWeight:"600" }, maxWidth:"80px" }}
-
-            />
-        </Box>
-
-    )
-}
