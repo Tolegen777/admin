@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 // asds
 
 import { LayoutContainer } from "./style";
-import DrawerAdmin from "../Drawer/DrawerAdmin";
+import DrawerAdmin from "../drawer/DrawerAdmin";
 
 const Layout = () => {
   return (
