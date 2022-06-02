@@ -48,6 +48,7 @@ const DoughnutChart: FC<Props> = ({ barData }) => {
             //@ts-ignore
             "rgba(255, 206, 86, 1)",
           ],
+          borderWidth: "290px",
           //@ts-ignore
 
           borderWidth: 1,
