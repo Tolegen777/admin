@@ -9,7 +9,6 @@ import { HorizontalColorBar } from "../../../components/Charts/HorizontalColorBa
 
 import { useGetHomeQuery } from "../../../redux/store/rtk-api/home-rtk/homeEndpoints";
 import HobbyBlock from "./HobbyBlock";
-
 import ReligionBlock from "./ReligionBlock";
 
 // style
