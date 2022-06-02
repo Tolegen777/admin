@@ -1,5 +1,5 @@
 // library
-import {Suspense, useEffect, useState} from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import {
   Navigate,
@@ -15,12 +15,12 @@ import HomeSection from "./HomeSection";
 // main-Style
 import { HeaderBlock, Poster } from "../mainStyle";
 
-import {useGetHomeQuery} from "../../redux/store/rtk-api/home-rtk/homeEndpoints";
+import { useGetHomeQuery } from "../../redux/store/rtk-api/home-rtk/homeEndpoints";
 
 export default function Home() {
-    const data = useGetHomeQuery("")
+  const data = useGetHomeQuery("");
 
-    const location = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -33,12 +33,6 @@ export default function Home() {
       </HeaderBlock>
       <Suspense fallback={<div>Загрузка...</div>}>
         <HomeSection />
-          <div className="App">
-              {/*{data&&data.data&&<Chart chartData={obj} />}*/}
-
-          </div>
-
-
       </Suspense>
     </Box>
   );

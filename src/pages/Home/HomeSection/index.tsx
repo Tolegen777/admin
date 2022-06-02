@@ -1,50 +1,56 @@
 // LibraryAdd
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
-// components
+import { Box, Divider, Grid, Paper, Stack, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
+// components
 import { HorizontalBar } from "../../../components/Charts";
 import { DoughnutChart } from "../../../components/Charts/Doughnut";
 import { HorizontalColorBar } from "../../../components/Charts/HorizontalColorBar";
 
-// components
 import { useGetHomeQuery } from "../../../redux/store/rtk-api/home-rtk/homeEndpoints";
+import HobbyBlock from "./HobbyBlock";
+
+import ReligionBlock from "./ReligionBlock";
 
 // style
 import { StyledPaper } from "./style";
 
 const HomeSection = () => {
-  const Item = (props: any) => <Paper {...props} />;
   const { data, isLoading } = useGetHomeQuery("");
 
-  console.log(data);
+  const religionData = data?.religions.filter((e) => e.value != null);
+  const genderData = data?.genders.filter((e) => e.value != null);
+  const hobbyData = data?.hobbies.filter((e) => e.value != null);
+  const statusData = data?.status.filter((e) => e.value != null);
+  const cityData = data?.cities.filter((e) => e.value != null);
 
   return (
     <>
       <Grid container spacing={2} columns={12}>
         <Grid item xs={8}>
-          <StyledPaper>
-            <Typography variant="h3">Интересы</Typography>
-            {data && <HorizontalColorBar barData={data.status} />}
+          <StyledPaper sx={{ height: "clamp(275px, 19.53vw, 375px)" }}>
+            {hobbyData && <HobbyBlock hobbyData={hobbyData} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={4}>
-          <StyledPaper>
+          <StyledPaper sx={{ height: "clamp(275px, 19.53vw, 375px)" }}>
             <Typography variant="h3">Посещение</Typography>
-            {data && <HorizontalColorBar barData={data.status} />}
+            {statusData && <HorizontalColorBar barData={statusData} />}
           </StyledPaper>
         </Grid>
+
         <Grid item xs={6}>
           <StyledPaper>
-            <Typography variant="h3">Статистика по религии</Typography>
-            {data && <DoughnutChart barData={data.religions} />}
+            {religionData && <ReligionBlock religionData={religionData} />}
           </StyledPaper>
         </Grid>
-        <Grid item xs={2} container direction={"column"} spacing={2}>
+
+        <Grid item xs={2} container direction={"row"} spacing={2}>
           <Grid item xs>
             <StyledPaper
               sx={{
                 height: "calc(100% - 25px)",
-                width: "calc(100% - 30px)",
+                width: "calc(100% - 25px)",
                 color: "primary.main",
                 borderRadius: "20px",
                 fontSize: "24px",
@@ -53,7 +59,7 @@ const HomeSection = () => {
               }}
             >
               <Typography variant="h3">Статистика по полу</Typography>
-              {data && <HorizontalColorBar barData={data.genders} />}
+              {genderData && <HorizontalColorBar barData={genderData} />}
             </StyledPaper>
           </Grid>
           <Grid item xs>
@@ -69,26 +75,26 @@ const HomeSection = () => {
               }}
             >
               <Typography variant="h3">Статистика по статусу</Typography>
-              {data && <HorizontalColorBar barData={data.status} />}
+              {statusData && <HorizontalColorBar barData={statusData} />}
             </StyledPaper>
           </Grid>
         </Grid>
         <Grid item xs={4}>
           <StyledPaper>
             <Typography variant="h3">Статистика по городам</Typography>
-            {data && <HorizontalColorBar barData={data.cities} />}
+            {cityData && <HorizontalColorBar barData={cityData} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={4}>
           <StyledPaper>
             <Typography variant="h3">Недавние жалобы</Typography>
-            {data && <HorizontalColorBar barData={data.status} />}
+            {statusData && <HorizontalColorBar barData={statusData} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={3}>
           <StyledPaper>
             <Typography variant="h3">Статистика прибыли</Typography>
-            {data && <DoughnutChart barData={data.religions} />}
+            {religionData && <DoughnutChart barData={religionData} />}
           </StyledPaper>
         </Grid>
         <Grid item xs={5} sx={{ height: "480px" }}>

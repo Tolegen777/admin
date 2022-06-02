@@ -9,7 +9,10 @@ import {
 } from "chart.js";
 import { FC, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { IHomeAges } from "../HorizontalBar/HorizontalBar.types";
+import {
+  IHomeAges,
+  IHomePart,
+} from "../../../pages/Home/HomeSection/HomeSection.types";
 
 ChartJS.register(
   CategoryScale,
@@ -21,10 +24,10 @@ ChartJS.register(
 );
 
 interface Props {
-  data: IHomeAges;
+  barData: IHomePart[];
 }
 
-const HorizontalBar: FC<Props> = ({ data }) => {
+const HorizontalBar: FC<Props> = ({ barData }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -33,37 +36,18 @@ const HorizontalBar: FC<Props> = ({ data }) => {
 
   useEffect(() => {
     setChartData({
-      labels: [
-        "— 18-22",
-        "— 22-25",
-        "— 25-30",
-        "— 30-40",
-        "— 40-50",
-        "— 50-65",
-        "— 65+",
-      ],
+      labels: barData.map((e) => {
+        return ` ${e.value} ${((e.count * 100) / 30).toFixed(1)}%`;
+      }),
 
       datasets: [
         {
           //@ts-ignore
-          label: "Статистика по возрасту",
+          label: "Статистика по Интересам",
           //@ts-ignore
-          data: [
-            //@ts-ignore
-            { y: "— 18-22", x: ageData.range1822 * 100 },
-            //@ts-ignore
-            { y: "— 22-25", x: ageData.range2225 * 100 },
-            //@ts-ignore
-            { y: "— 25-30", x: ageData.range2530 * 100 },
-            //@ts-ignore
-            { y: "— 30-40", x: ageData.range3040 * 100 },
-            //@ts-ignore
-            { y: "— 40-50", x: ageData.range4050 * 100 },
-            //@ts-ignore
-            { y: "— 50-65", x: ageData.range5065 * 100 },
-            //@ts-ignore
-            { y: "— 65+", x: ageData.range65 * 100 },
-          ],
+          data: barData.map((row) => {
+            return row.count;
+          }),
 
           //@ts-ignore
           backgroundColor: "#2398AB",
@@ -73,16 +57,12 @@ const HorizontalBar: FC<Props> = ({ data }) => {
       ],
     });
     setChartOptions({
-      indexAxis: "y" as const,
+      indexAxis: "x" as const,
       responsive: true,
       plugins: {
         legend: {
           display: true,
           position: "top",
-        },
-        title: {
-          display: true,
-          text: "Custom Chart Subtitle",
         },
         tooltip: {
           enabled: true,
@@ -91,11 +71,7 @@ const HorizontalBar: FC<Props> = ({ data }) => {
     });
   }, []);
 
-  return (
-    <div>
-      <Bar options={chartOptions} data={chartData} />
-    </div>
-  );
+  return <Bar options={chartOptions} data={chartData} />;
 };
 
 export default HorizontalBar;

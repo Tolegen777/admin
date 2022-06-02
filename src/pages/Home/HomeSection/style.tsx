@@ -5,10 +5,10 @@ import { palette, styled } from "@mui/system";
 export const StyledPaper = styled((props: any) => (
   <Paper {...props}>{props.children}</Paper>
 ))(({ theme }) => ({
-  height: "480px",
+  height: "clamp(320px, 26.04vw, 500px)",
   color: theme.palette.primary.main,
   borderRadius: "20px",
   fontSize: "24px",
-  paddingTop: "25px",
   paddingLeft: "30px",
+  overflow: "hidden",
 }));

@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { FC, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { IHomeAges } from "./HorizontalBar.types";
+import { IHomeAges } from "../../../pages/Home/HomeSection/HomeSection.types";
 
 ChartJS.register(
   CategoryScale,
