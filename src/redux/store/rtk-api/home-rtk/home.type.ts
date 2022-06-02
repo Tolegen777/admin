@@ -4,13 +4,13 @@ interface IHomePart {
 }
 
 interface IHomeAges {
-  range1822: number;
-  range2225: number;
-  range2530: number;
-  range3040: number;
-  range4050: number;
-  range5065: number;
-  range65: number;
+  range1822: number | null;
+  range2225: number | null;
+  range2530: number | null;
+  range3040: number | null;
+  range4050: number | null;
+  range5065: number | null;
+  range65: number | null;
 }
 
 export interface IHome {

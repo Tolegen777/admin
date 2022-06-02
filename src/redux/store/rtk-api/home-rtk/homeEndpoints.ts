@@ -1,11 +1,9 @@
-import axios from "axios";
-import { IHome } from "../../../../types/IHome";
-// import { IBanner, ICreateNewBanner } from "../../types/IBanner";
+import { IHome } from "./home.type";
 import homeApi from "./homeApi";
 
 export const homeEndpoints = homeApi.injectEndpoints({
   endpoints: (builder) => ({
-    getHome: builder.query<IHome[], string>({
+    getHome: builder.query<IHome, string>({
       query: () => ({
         url: `/profile/statistic`,
       }),

@@ -58,3 +58,6 @@ const HorizontalBar = () => {
 };
 
 export default HorizontalBar;
+
+export { default as HorizontalBar } from "./HorizontalBar";
+

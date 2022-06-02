@@ -9,10 +9,12 @@ import authReducer from "./reducers/auth/auth.slice";
 
 //rtk
 import homeApi from "./rtk-api/home-rtk/homeApi";
+import staffApi from "./rtk-api/staff-rtk/staffApi";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   [homeApi.reducerPath]: homeApi.reducer,
+  [staffApi.reducerPath]: staffApi.reducer,
   complaint,
   staff,
 });

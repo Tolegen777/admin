@@ -15,6 +15,9 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setOneStaff} from "../../../../redux/store/reducers/staff/staff.slice";
 import React from "react";
+import {useGetStaffQuery} from "../../../../redux/store/rtk-api/staff-rtk/staffEndpoints";
+import {IStaffResponse} from "../../../../redux/store/rtk-api/staff-rtk/staff.type";
+import StaffTableInfo from "../StaffTableInfo";
 
 function createData(
 
@@ -42,13 +45,14 @@ interface Props {
 }
 
 const StaffTable:React.FC<Props> = ({ searchedName}) => {
+
+    const {data:workers,isLoading,isError,isSuccess} = useGetStaffQuery("staff")
+    console.log(workers)
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const handleSetWorker = (user:any) => {
-        dispatch(setOneStaff(user))
-        navigate('one-worker')
-    }
+
 
 
   return (
@@ -75,75 +79,12 @@ const StaffTable:React.FC<Props> = ({ searchedName}) => {
         </TableHead>
 
         <TableBody>
-
-
-
-          {rows.map((row,ind) => {
-              if (searchedName && row.name.toLowerCase().includes(searchedName.toLowerCase())
+            {workers&&workers.map((worker:IStaffResponse,ind) => {
+              if (searchedName && worker.firstName.toLowerCase().includes(searchedName.toLowerCase())
                   ) {
-                  return <StyledBodyRow key={ind}>
-                      <StyledBodyCellFirst>{row.name}</StyledBodyCellFirst>
-                      <StyledBodyCell>{row.phone}</StyledBodyCell>
-                      <StyledBodyCell>{row.bin}</StyledBodyCell>
-                      <StyledBodyCell><b>{row.position}</b></StyledBodyCell>
-                      <StyledBodyCellLast>
-                          <Button
-                              sx={{
-                                  width: "180px",
-                                  height: "50px",
-                                  background: "rgba(35, 152, 171, 0.3)",
-                                  borderRadius: "10px",
-                                  "&:hover": {
-                                      background: "rgba(35, 152, 171, 1)",
-                                  },
-                              }}
-                              onClick={()=>handleSetWorker(row)}
-                          >
-                              <Typography
-                                  sx={{
-                                      color: "#fff",
-                                      fontSize: "18px",
-                                      fontWeight: "700",
-                                      textTransform: "capitalize",
-                                  }}
-                              >
-                                  Подробнее
-                              </Typography>
-                          </Button>
-                      </StyledBodyCellLast>
-                  </StyledBodyRow>
+                  return <StaffTableInfo ind={ind} worker={worker}/>
               } else if(!searchedName) {
-                  return <StyledBodyRow key={ind}>
-                      <StyledBodyCellFirst>{row.name}</StyledBodyCellFirst>
-                      <StyledBodyCell>{row.phone}</StyledBodyCell>
-                      <StyledBodyCell>{row.bin}</StyledBodyCell>
-                      <StyledBodyCell><b>{row.position}</b></StyledBodyCell>
-                      <StyledBodyCellLast>
-                          <Button
-                              sx={{
-                                  width: "180px",
-                                  height: "50px",
-                                  background: "rgba(35, 152, 171, 0.3)",
-                                  borderRadius: "10px",
-                                  "&:hover": {
-                                      background: "rgba(35, 152, 171, 1)",
-                                  },
-                              }}
-                              onClick={()=>handleSetWorker(row)}
-                          >
-                              <Typography
-                                  sx={{
-                                      color: "#fff",
-                                      fontSize: "18px",
-                                      fontWeight: "700",
-                                      textTransform: "capitalize",
-                                  }}
-                              >
-                                  Подробнее
-                              </Typography>
-                          </Button>
-                      </StyledBodyCellLast>
-                  </StyledBodyRow>
+                  return <StaffTableInfo ind={ind} worker={worker}/>
               } else return
 
           })}
@@ -152,5 +93,7 @@ const StaffTable:React.FC<Props> = ({ searchedName}) => {
     </TableContainer>
   );
 }
+
+
 
 export default StaffTable

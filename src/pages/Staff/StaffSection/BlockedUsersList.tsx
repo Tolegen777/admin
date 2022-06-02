@@ -76,85 +76,66 @@ const BlockedUsersList = () => {
                 <Grid item xs={3.5}><Typography sx={{
                     color: "primary.main",
                     fontWeight: "800",
-                }}>Список заблокированных</Typography></Grid>
-                <Grid item xs={6}>
-                {/*    <TextField*/}
-                {/*    name="search"*/}
-                {/*    placeholder="Поиск"*/}
-                {/*    size="small"*/}
-                {/*    sx={{*/}
-                {/*        backgroundColor: "primary.light", color: "primary.main", '&::placeholder': {*/}
-                {/*            textOverflow: 'ellipsis !important',*/}
-                {/*            color: 'blue',*/}
-                {/*            outline: 'none'*/}
-                {/*        }*/}
-                {/*    }}*/}
-                {/*    fullWidth*/}
-                {/*    type={"search"}*/}
-
-                {/*    InputProps={{*/}
-                {/*        style: {color: "primary.main"},*/}
-                {/*        startAdornment: <InputAdornment position="start"><IconButton*/}
-                {/*            sx={{p: '10px', color: "primary.main"}}>*/}
-                {/*            <SearchIcon/>*/}
-                {/*        </IconButton></InputAdornment>*/}
-                {/*    }}*/}
-                {/*/>*/}
+                }}>Список заблокированных</Typography>
                 </Grid>
-                <Grid item xs={2.5} >
-                    {/*<Button sx={{color:"primary.main", fontWeight:"600", backgroundColor:"primary.light",*/}
-                    {/*textTransform:"capitalize",*/}
-                    {/* marginLeft:"10px", minHeight:"40px"}} */}
-                    {/*                         endIcon={<NavigateNextIcon fontSize="small"/>}>новые-старые</Button>*/}
-                </Grid>
+                {/*Эти строки кода нужны, я пока что убрал потому что нет апишки*/}
+                {/*<Grid item xs={6}>*/}
+                {/*</Grid>*/}
+                {/*<Grid item xs={2.5} >*/}
+                {/*    */}
+                {/*</Grid>*/}
             </Grid>
+            <Box sx ={{display:"flex", justifyContent:"center"}}>
+                <Typography sx={{alignItems:"center"}}>Пока что нет заблокированных пользователей</Typography>
+            </Box>
 
-            <TableContainer component={Box} sx={{maxHeight:"350px"}}>
-                <Table
-                    sx={{ minWidth: 450, boxShadow: "none", backgroundColor:"#fff" }}
-                    aria-label="simple table"
-                >
-                    <TableHead sx={{ position: "relative" }}>
-                        <StyledHeadRowStaff>
-                            <StyledHeadCellStaff>Пользователи</StyledHeadCellStaff>
-                            <StyledHeadCellStaff>Причина блокирования</StyledHeadCellStaff>
-                        </StyledHeadRowStaff>
-                    </TableHead>
+   {/*Эти строки кода нужны, я пока что убрал потому что нет апишки*/}
+            {/*<TableContainer component={Box} sx={{maxHeight:"350px"}}>*/}
+            {/*    <Table*/}
+            {/*        sx={{ minWidth: 450, boxShadow: "none", backgroundColor:"#fff" }}*/}
+            {/*        aria-label="simple table"*/}
+            {/*    >*/}
+            {/*        <TableHead sx={{ position: "relative" }}>*/}
+            {/*            <StyledHeadRowStaff>*/}
+            {/*                <StyledHeadCellStaff>Пользователи</StyledHeadCellStaff>*/}
+            {/*                <StyledHeadCellStaff>Причина блокирования</StyledHeadCellStaff>*/}
+            {/*            </StyledHeadRowStaff>*/}
+            {/*        </TableHead>*/}
 
-                    <TableBody>
-                        {rows.map((row) => (
-                            <StyledBodyRowStaff key={row.user}>
-                                <StyledBodyCellFirstStaff>{row.user}</StyledBodyCellFirstStaff>
-                                <StyledBodyCellStaff>{row.reason}</StyledBodyCellStaff>
-                                <StyledBodyCellLastStaff>
-                                    <Button
-                                        sx={{
-                                            width: "140px",
-                                            height: "40px",
-                                            background: "#fff",
-                                            borderRadius: "10px",
-                                            "&:hover": {
-                                                background: "rgba(35, 152, 171, 1)",
-                                            },
-                                        }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                color: "primary.main",
-                                                fontSize: "18px",
-                                                fontWeight: "700",
-                                                textTransform: "capitalize",
-                                            }}
-                                        >
-                                            Подробнее
-                                        </Typography>
-                                    </Button>
-                                </StyledBodyCellLastStaff>
-                            </StyledBodyRowStaff>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            {/*        <TableBody>*/}
+            {/*            {rows.map((row) => (*/}
+            {/*                <StyledBodyRowStaff key={row.user}>*/}
+            {/*                    <StyledBodyCellFirstStaff>{row.user}</StyledBodyCellFirstStaff>*/}
+            {/*                    <StyledBodyCellStaff>{row.reason}</StyledBodyCellStaff>*/}
+            {/*                    <StyledBodyCellLastStaff>*/}
+            {/*                        <Button*/}
+            {/*                            sx={{*/}
+            {/*                                width: "140px",*/}
+            {/*                                height: "40px",*/}
+            {/*                                background: "#fff",*/}
+            {/*                                borderRadius: "10px",*/}
+            {/*                                "&:hover": {*/}
+            {/*                                    background: "rgba(35, 152, 171, 1)",*/}
+            {/*                                },*/}
+            {/*                            }}*/}
+            {/*                        >*/}
+            {/*                            <Typography*/}
+            {/*                                sx={{*/}
+            {/*                                    color: "primary.main",*/}
+            {/*                                    fontSize: "18px",*/}
+            {/*                                    fontWeight: "700",*/}
+            {/*                                    textTransform: "capitalize",*/}
+            {/*                                }}*/}
+            {/*                            >*/}
+            {/*                                Подробнее*/}
+            {/*                            </Typography>*/}
+            {/*                        </Button>*/}
+            {/*                    </StyledBodyCellLastStaff>*/}
+            {/*                </StyledBodyRowStaff>*/}
+            {/*            ))}*/}
+            {/*        </TableBody>*/}
+            {/*    </Table>*/}
+            {/*</TableContainer>*/}
 
         </Box>
     );
