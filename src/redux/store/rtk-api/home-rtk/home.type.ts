@@ -11,6 +11,7 @@ interface IHomeAges {
   range4050: number | null;
   range5065: number | null;
   range65: number | null;
+  // range65: number | null;
 }
 
 export interface IHome {
