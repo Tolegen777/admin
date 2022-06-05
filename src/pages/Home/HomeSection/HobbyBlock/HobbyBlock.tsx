@@ -1,6 +1,7 @@
-import { Box, Divider, Stack, Typography } from "@mui/material";
-import { FC } from "react";
+import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
+import { FC, useState } from "react";
 import { VerticalBar } from "../../../../components/Charts";
+import { COLORS_ORDER } from "../../../../constants";
 
 import { IHomePart } from "../HomeSection.types";
 
@@ -8,26 +9,35 @@ import { Styled } from "./HobbyBlock.styled";
 
 interface Props {
   hobbyData: IHomePart[];
+  count: number;
 }
 
-const HobbyBlock: FC<Props> = ({ hobbyData }) => {
+const HobbyBlock: FC<Props> = ({ hobbyData, count }) => {
+  let color: number = 0;
+
+  const handleColor = () => {
+    color++;
+  };
+
   return (
     <Styled.Wrapper>
-      <Styled.Block>
+      <Grid item xs={3} sm={2.5} sx={{ marginTop: "20px" }}>
         <Typography variant="h3">Интересы - {hobbyData.length}</Typography>
-        <Styled.ChartContainer>
-          {hobbyData && <VerticalBar barData={hobbyData} />}
-        </Styled.ChartContainer>
-      </Styled.Block>
-      <Box
+        <Styled.Block>
+          <Styled.ChartContainer>
+            {hobbyData && <VerticalBar count={count} barData={hobbyData} />}
+          </Styled.ChartContainer>
+        </Styled.Block>
+      </Grid>
+      <Grid
+        item
+        xs={1}
+        sm={1.5}
         sx={{
           display: "flex",
-          position: "absolute",
-          top: "50%",
-          right: "0",
-          transform: "translate(0, -50%)",
+          justifyContent: "space-evenly",
+          alignItems: "flex-start",
           overflow: "hidden",
-          zIndex: "1000",
           backgroundColor: "#fff",
         }}
       >
@@ -36,23 +46,26 @@ const HobbyBlock: FC<Props> = ({ hobbyData }) => {
           sx={{ height: "550px", color: "#E3E3E3" }}
         />
         <Styled.InfoBlock>
-          <Stack spacing={2}>
+          <Stack spacing={2} sx={{ pt: "20px" }}>
             {hobbyData.map((e) => (
-              <Styled.TextWrapper key={e.count}>
-                <Box sx={{ width: "25px" }}>
-                  <Styled.ColorBox />
-                </Box>
-                <Typography variant="h18b" sx={{ width: "122px" }}>
-                  {e.value}
-                </Typography>
-                <Typography variant="h16eb">
-                  - {((e.count * 100) / 30).toFixed(1)}%
-                </Typography>
-              </Styled.TextWrapper>
+              <>
+                <Styled.TextWrapper key={e.count}>
+                  <Box sx={{ width: "25px" }}>
+                    <Styled.ColorBox bgColor={COLORS_ORDER[color]} />
+                  </Box>
+                  <Typography variant="h18b" sx={{ width: "122px" }}>
+                    {e.value}
+                  </Typography>
+                  <Typography variant="h16eb" sx={{ width: "42px" }}>
+                    - {((e.count * 100) / count).toFixed(1)}%
+                  </Typography>
+                </Styled.TextWrapper>
+                {handleColor()}
+              </>
             ))}
           </Stack>
         </Styled.InfoBlock>
-      </Box>
+      </Grid>
     </Styled.Wrapper>
   );
 };

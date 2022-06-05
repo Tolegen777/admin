@@ -27,8 +27,10 @@ const HomeSection = () => {
     <>
       <Grid container spacing={2} columns={12}>
         <Grid item xs={8}>
-          <StyledPaper sx={{ height: "clamp(275px, 19.53vw, 375px)" }}>
-            {hobbyData && <HobbyBlock hobbyData={hobbyData} />}
+          <StyledPaper sx={{ height: "375px" }}>
+            {data && hobbyData && (
+              <HobbyBlock count={data.count} hobbyData={hobbyData} />
+            )}
           </StyledPaper>
         </Grid>
         <Grid item xs={4}>
