@@ -10,12 +10,12 @@ import {
 } from "react-router-dom";
 
 // pages
-import HomeSection from "./HomeSection";
 
 // main-Style
 import { HeaderBlock, Poster } from "../mainStyle";
 
 import { useGetHomeQuery } from "../../redux/store/rtk-api/home-rtk/homeEndpoints";
+import { HomeSection } from "./HomeSection";
 
 export default function Home() {
   const data = useGetHomeQuery("");

@@ -66,11 +66,6 @@ const HorizontalBar: FC<Props> = ({ barData, count }) => {
             return COLORS_ORDER[color];
           }),
 
-          // barData.length((row) => {
-          //   return COLORS_ORDER[color];
-          //   handleColor();
-          // }),
-
           //@ts-ignore
           borderRadius: 5,
         },

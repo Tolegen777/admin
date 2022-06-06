@@ -7,7 +7,6 @@ export const Wrapper = styled((props: GridProps) => (
   display: "flex",
   height: "100%",
   width: "100%",
-  justifyContent: "space-between",
 }));
 
 export const Block = styled((props: BoxProps) => <Box {...props} />)(
@@ -50,40 +49,8 @@ export const ChartContainer = styled((props: BoxProps) => <Box {...props} />)(
   })
 );
 
-export const InfoBlock = styled((props: BoxProps) => <Box {...props} />)(
-  ({ theme }) => ({
-    display: "flex",
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  })
-);
-
-export const TextWrapper = styled((props: BoxProps) => <Box {...props} />)(
-  ({ theme }) => ({
-    width: "100%",
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "center",
-  })
-);
-
-export const ColorBox = (props: any) => (
-  <Box
-    sx={{
-      width: "10px",
-      height: "10px",
-      backgroundColor: props.bgColor,
-      borderRadius: "50px",
-    }}
-  />
-);
-
 export const Styled = {
   Wrapper,
   Block,
   ChartContainer,
-  InfoBlock,
-  TextWrapper,
-  ColorBox,
 };

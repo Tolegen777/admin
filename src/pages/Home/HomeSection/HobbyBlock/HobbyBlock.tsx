@@ -21,7 +21,7 @@ const HobbyBlock: FC<Props> = ({ hobbyData, count }) => {
 
   return (
     <Styled.Wrapper>
-      <Grid item xs={3} sm={2.5} sx={{ marginTop: "20px" }}>
+      <Grid item xs={2.5} sx={{ marginTop: "20px" }}>
         <Typography variant="h3">Интересы - {hobbyData.length}</Typography>
         <Styled.Block>
           <Styled.ChartContainer>
@@ -31,11 +31,10 @@ const HobbyBlock: FC<Props> = ({ hobbyData, count }) => {
       </Grid>
       <Grid
         item
-        xs={1}
-        sm={1.5}
+        xs={1.5}
         sx={{
           display: "flex",
-          justifyContent: "space-evenly",
+          justifyContent: "flex-start",
           alignItems: "flex-start",
           overflow: "hidden",
           backgroundColor: "#fff",
@@ -56,7 +55,7 @@ const HobbyBlock: FC<Props> = ({ hobbyData, count }) => {
                   <Typography variant="h18b" sx={{ width: "122px" }}>
                     {e.value}
                   </Typography>
-                  <Typography variant="h16eb" sx={{ width: "42px" }}>
+                  <Typography variant="h16eb" sx={{ width: "53px" }}>
                     - {((e.count * 100) / count).toFixed(1)}%
                   </Typography>
                 </Styled.TextWrapper>

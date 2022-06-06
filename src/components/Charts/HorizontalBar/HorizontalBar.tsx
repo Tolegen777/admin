@@ -80,10 +80,6 @@ const HorizontalBar: FC<Props> = ({ barData }) => {
           display: true,
           position: "top",
         },
-        title: {
-          display: true,
-          text: "Custom Chart Subtitle",
-        },
         tooltip: {
           enabled: true,
         },
