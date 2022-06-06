@@ -50,8 +50,6 @@ const HorizontalColorBar: FC<Props> = ({ count, barData }) => {
       datasets: [
         {
           //@ts-ignore
-          label: "Статистика по возрасту",
-          //@ts-ignore
           data: barData.map((row) => {
             return row.count;
           }),
@@ -64,6 +62,10 @@ const HorizontalColorBar: FC<Props> = ({ count, barData }) => {
           //@ts-ignore
           borderRadius: 10,
           //@ts-ignore
+          borderSkipped: "start",
+          //@ts-ignore
+          categoryPercentage: 0.1,
+          //@ts-ignore
           barThickness: 15,
         },
       ],
@@ -71,11 +73,31 @@ const HorizontalColorBar: FC<Props> = ({ count, barData }) => {
     setChartOptions({
       indexAxis: "y" as const,
       responsive: true,
+      maintainAspectRatio: false,
+      barPercentage: 0.9,
+      categoryPercentage: 0.1,
       scales: {
         display: false,
+        // r: {
+        //   ticks: {
+        //     backdropPadding: {
+        //       x: 10,
+        //       y: 4,
+        //     },
+        //   },
+        // },
+        y: {
+          grid: {
+            display: false,
+          },
+        },
         x: {
           display: false,
           ticks: {
+            backdropPadding: {
+              x: 10,
+              y: 100,
+            },
             callback: function (value: any, index: any, ticks: any) {
               return "- " + value + "%";
             },

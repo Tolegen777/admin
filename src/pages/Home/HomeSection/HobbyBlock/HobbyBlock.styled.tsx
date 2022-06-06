@@ -14,7 +14,7 @@ export const Block = styled((props: BoxProps) => <Box {...props} />)(
   ({ theme }) => ({
     width: "100%",
     overflow: "hidden",
-    overflowX: "scroll",
+    overflowX: "auto",
     marginTop: "20px",
 
     // Scroll

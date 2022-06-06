@@ -29,7 +29,7 @@ interface Props {
   barData: IHomePart[];
 }
 
-const HorizontalBar: FC<Props> = ({ barData, count }) => {
+const VerticalBar: FC<Props> = ({ barData, count }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -81,8 +81,16 @@ const HorizontalBar: FC<Props> = ({ barData, count }) => {
               return "- " + value + "%";
             },
           },
+          grid: {
+            display: false,
+          },
           title: {
             color: "#2398AB", // not working color
+          },
+        },
+        x: {
+          grid: {
+            display: false,
           },
         },
       },
@@ -115,4 +123,4 @@ const HorizontalBar: FC<Props> = ({ barData, count }) => {
   return <Bar options={chartOptions} data={chartData} />;
 };
 
-export default HorizontalBar;
+export default VerticalBar;

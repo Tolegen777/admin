@@ -13,25 +13,21 @@ interface Props {
 }
 
 const CityBlock: FC<Props> = ({ cityData, count }) => {
-  let color: number = 0;
-
-  const handleColor = () => {
-    color++;
-  };
-
   return (
     <Styled.Wrapper>
       <Grid item sx={{ marginTop: "20px", width: "100%" }}>
-        <Typography variant="h3">
-          Статистика по городам - {cityData.length}
-        </Typography>
-        <Styled.Block>
-          <Styled.ChartContainer>
-            {cityData && (
-              <HorizontalColorBar count={count} barData={cityData} />
-            )}
-          </Styled.ChartContainer>
-        </Styled.Block>
+        <Box sx={{ height: "100%" }}>
+          <Typography variant="h3" sx={{ ml: "25px" }}>
+            Статистика по городам - {cityData.length}
+          </Typography>
+          <Styled.Block>
+            <Styled.ChartContainer>
+              {cityData && (
+                <HorizontalColorBar count={count} barData={cityData} />
+              )}
+            </Styled.ChartContainer>
+          </Styled.Block>
+        </Box>
       </Grid>
     </Styled.Wrapper>
   );

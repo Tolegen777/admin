@@ -7,16 +7,19 @@ import { IHomePart } from "../HomeSection.types";
 import { Styled } from "./ReligionBlock.styled";
 
 interface Props {
+  count: number;
   religionData: IHomePart[];
 }
 
-const ReligionBlock: FC<Props> = ({ religionData }) => {
+const ReligionBlock: FC<Props> = ({ count, religionData }) => {
   return (
     <Styled.RWrapper>
       <Styled.RBlock>
         <Typography variant="h3">Статистика по религии</Typography>
         <Styled.RChartContainer>
-          {religionData && <DoughnutChart barData={religionData} />}
+          {religionData && (
+            <DoughnutChart count={count} barData={religionData} />
+          )}
         </Styled.RChartContainer>
       </Styled.RBlock>
       {/* <Divider orientation="vertical" sx={{ width: "2px", color: "#E3E3E3" }} />

@@ -1,25 +1,33 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { FC, useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
+import { COLORS_ORDER } from "../../../constants";
 import { IHomePart } from "../../../pages/Home/HomeSection/HomeSection.types";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface Props {
+  count: number;
   barData: IHomePart[];
 }
 
-const DoughnutChart: FC<Props> = ({ barData }) => {
+const DoughnutChart: FC<Props> = ({ count, barData }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
 
   const [chartOptions, setChartOptions] = useState({});
 
+  let color: number = -1;
+
+  const handleColor = () => {
+    color++;
+  };
+
   useEffect(() => {
     setChartData({
       labels: barData.map((e) => {
-        return ` ${e.value} ${((e.count * 100) / 30).toFixed(1)}%`;
+        return ` ${e.value} ${((e.count * 100) / count).toFixed(1)}%`;
       }),
       datasets: [
         {
@@ -29,18 +37,18 @@ const DoughnutChart: FC<Props> = ({ barData }) => {
           data: barData.map((row) => {
             return row.count;
           }),
-          backgroundColor: [
-            //@ts-ignore
-            "#B5B8FF",
-            //@ts-ignore
-            "rgba(54, 162, 235, 0.2)",
-            //@ts-ignore
-            "rgba(255, 206, 86, 0.2)",
-          ],
           //@ts-ignore
-          borderWidth: 1,
+          backgroundColor: barData.map((row) => {
+            handleColor();
+            return COLORS_ORDER[color];
+          }),
+          //@ts-ignore
+          borderWidth: 1.5,
           //@ts-ignore
           borderRadius: 8.3,
+          //@ts-ignore
+          cutout: "80%",
+          //@ts-ignore
         },
       ],
     });

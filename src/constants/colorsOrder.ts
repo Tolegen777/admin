@@ -1,12 +1,5 @@
 export const COLORS_ORDER = [
-  "#F2994A",
-  "#F2C94C",
-  "#EECBCB",
-  "#6FDC8C",
-  "#2F80ED",
-  "#9B51E0",
   "#B5B8FF",
-  "#C9C5FC",
   "#F3F3F3",
   "#1e81b0",
   "#eeeee4",
@@ -18,4 +11,10 @@ export const COLORS_ORDER = [
   "#abdbe3",
   "#063970",
   "#154c79",
+  "#F2994A",
+  "#F2C94C",
+  "#EECBCB",
+  "#6FDC8C",
+  "#2F80ED",
+  "#9B51E0",
 ];

@@ -21,10 +21,11 @@ ChartJS.register(
 );
 
 interface Props {
+  count: number;
   barData: IHomeAges;
 }
 
-const HorizontalBar: FC<Props> = ({ barData }) => {
+const HorizontalBar: FC<Props> = ({ count, barData }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });

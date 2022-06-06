@@ -14,16 +14,40 @@ export const Block = styled((props: BoxProps) => <Box {...props} />)(
     width: "100%",
     height: "calc(100% - 65px)",
     overflow: "hidden",
-    overflowX: "auto",
     overflowY: "auto",
-    marginTop: "20px",
+
+    // Scroll
+    /* width */
+    "&::-webkit-scrollbar": {
+      height: "8px",
+      backgroundColor: "#E4FFF9",
+      borderRadius: "10px",
+    },
+
+    /* Track */
+    "&::-webkit-scrollbar-track": {
+      borderRadius: "10px",
+    },
+
+    /* Handle */
+    "&::-webkit-scrollbar-thumb": {
+      background: "#2398AB",
+      borderRadius: "10px",
+    },
+
+    /* Handle on hover */
+    "&::-webkit-scrollbar-thumb:hover": {
+      background: "#c5f1e8",
+    },
   })
 );
 
 export const ChartContainer = styled((props: BoxProps) => <Box {...props} />)(
   ({ theme }) => ({
-    width: "100%",
-    height: "99%",
+    width: "99%",
+    height: "85%",
+    overflow: "hidden",
+    overflowY: "auto",
   })
 );
 

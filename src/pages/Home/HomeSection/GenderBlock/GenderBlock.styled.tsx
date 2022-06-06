@@ -16,14 +16,15 @@ export const Block = styled((props: BoxProps) => <Box {...props} />)(
     overflow: "hidden",
     overflowX: "auto",
     overflowY: "auto",
-    marginTop: "20px",
   })
 );
 
 export const ChartContainer = styled((props: BoxProps) => <Box {...props} />)(
   ({ theme }) => ({
-    width: "100%",
-    height: "99%",
+    width: "99%",
+    height: "85%",
+    overflow: "hidden",
+    overflowY: "auto",
   })
 );
 
