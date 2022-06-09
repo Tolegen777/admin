@@ -35,9 +35,10 @@ const HobbyBlock: FC<Props> = ({ hobbyData, count }) => {
         sx={{
           display: "flex",
           justifyContent: "flex-start",
-          alignItems: "flex-start",
+          alignItems: "center",
           overflow: "hidden",
           backgroundColor: "#fff",
+          height: "100%",
         }}
       >
         <Divider
@@ -45,7 +46,7 @@ const HobbyBlock: FC<Props> = ({ hobbyData, count }) => {
           sx={{ height: "550px", color: "#E3E3E3" }}
         />
         <Styled.InfoBlock>
-          <Stack spacing={2} sx={{ pt: "20px" }}>
+          <Stack spacing={2} sx={{ py: "25px", overflowY: "auto" }}>
             {hobbyData.map((e) => (
               <>
                 <Styled.TextWrapper key={e.count}>

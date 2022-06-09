@@ -1,10 +1,19 @@
-import { Paper, TableCell, TableCellProps, TableRow } from "@mui/material";
+import {
+  Divider,
+  DividerProps,
+  Paper,
+  TableCell,
+  TableCellProps,
+  TableRow,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 
 interface Props {
   children: React.ReactNode;
 }
+
+//TABLE
 export const StyledHeadRow: React.FC<Props> = ({ children }) => {
   return (
     <TableRow
@@ -19,7 +28,6 @@ export const StyledHeadRow: React.FC<Props> = ({ children }) => {
     </TableRow>
   );
 };
-
 export const StyledHeadCell: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
@@ -44,15 +52,13 @@ export const StyledBodyRow: React.FC<Props> = ({ children }) => {
         backgroundColor: "primary.light",
         height: "90px",
         borderRadius: "10px",
-          //color:"red"
-
+        //color:"red"
       }}
     >
       {children}
     </TableRow>
   );
 };
-
 export const StyledBodyCellFirst: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
@@ -80,7 +86,7 @@ export const StyledBodyCellFirst: React.FC<Props> = ({ children }) => {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
-            color:"primary.main"
+          color: "primary.main",
         }}
       >
         {children}
@@ -112,7 +118,7 @@ export const StyledBodyCell: React.FC<Props> = ({ children }) => {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
-            color:"primary.main"
+          color: "primary.main",
         }}
       >
         {children}
@@ -152,4 +158,17 @@ export const StyledBodyCellLast: React.FC<Props> = ({ children }) => {
       </Paper>
     </TableCell>
   );
+};
+
+export const TableDivider = styled((props: DividerProps) => (
+  <Divider {...props} />
+))(({ theme }) => ({
+  ml: "17px",
+  position: "absolute",
+  width: "calc(100% - 32px)",
+  backgroundColor: "primary.main",
+}));
+
+export const Styled = {
+  TableDivider,
 };

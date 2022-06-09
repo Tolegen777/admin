@@ -1,7 +1,8 @@
 // library
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Button, Grid, InputAdornment, Paper } from "@mui/material";
 import { Box } from "@mui/system";
+import { useFormik } from "formik";
 
 // components
 import { StyledInput } from "../../../../components/styled-components/StyledInput";
@@ -10,10 +11,23 @@ import { StyledInput } from "../../../../components/styled-components/StyledInpu
 import SearchIcon from "@mui/icons-material/Search";
 //@ts-ignore
 import { ReactComponent as ArrowSvg } from "../../../../assets/svg/Vectorarrowright.svg";
-import UserTable from "../UserTable";
 
-export const UserFilter = () => {
+interface Props {
+  setQuery: (values: any) => void;
+}
+
+const Filter: FC<Props> = ({ setQuery }) => {
   const [search, setSearch] = useState("");
+
+  const formik = useFormik({
+    initialValues: {
+      search: "",
+    },
+    onSubmit: (values) => {
+      setQuery(values);
+    },
+  });
+  const { values, handleChange, handleSubmit } = formik;
 
   return (
     <>
@@ -54,15 +68,13 @@ export const UserFilter = () => {
             }}
           >
             <Button
+              variant="contained"
+              color="secondary"
               sx={{
-                height: "50px",
-                width: "100%",
-                backgroundColor: "primary.light",
-                color: "primary.main",
-                "&:hover": {
-                  backgroundColor: "primary.main",
-                  color: "primary.light",
-                },
+                fontSize: "18px",
+                justifyContent: "space-evenly",
+                paddingLeft: 0,
+                paddingRight: 0,
               }}
             >
               Фильтры
@@ -72,7 +84,6 @@ export const UserFilter = () => {
                   width: "30px",
                   height: "30px",
                   borderRadius: "5px",
-                  ml: "40px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -87,3 +98,5 @@ export const UserFilter = () => {
     </>
   );
 };
+
+export default Filter;

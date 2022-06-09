@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { alpha, createTheme } from "@mui/material";
 
 // Custom Modules
 declare module "@mui/material/styles" {
@@ -8,16 +8,19 @@ declare module "@mui/material/styles" {
     h18r: React.CSSProperties;
     h20r: React.CSSProperties;
     h24r: React.CSSProperties;
+    h48r: React.CSSProperties;
 
     h16b: React.CSSProperties;
     h18b: React.CSSProperties;
     h20b: React.CSSProperties;
     h24b: React.CSSProperties;
+    h48b: React.CSSProperties;
 
     h16eb: React.CSSProperties;
     h18eb: React.CSSProperties;
     h20eb: React.CSSProperties;
     h24eb: React.CSSProperties;
+    h48eb: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
@@ -26,16 +29,19 @@ declare module "@mui/material/styles" {
     h18r?: React.CSSProperties;
     h20r?: React.CSSProperties;
     h24r?: React.CSSProperties;
+    h48r?: React.CSSProperties;
 
     h16b?: React.CSSProperties;
     h18b?: React.CSSProperties;
     h20b?: React.CSSProperties;
     h24b?: React.CSSProperties;
+    h48b?: React.CSSProperties;
 
     h16eb?: React.CSSProperties;
     h18eb?: React.CSSProperties;
     h20eb?: React.CSSProperties;
     h24eb?: React.CSSProperties;
+    h48eb?: React.CSSProperties;
   }
 
   interface BreakpointOverrides {
@@ -51,20 +57,169 @@ declare module "@mui/material/Typography" {
     h18r: true;
     h20r: true;
     h24r: true;
+    h48r: true;
 
     h16b: true;
     h18b: true;
     h20b: true;
     h24b: true;
+    h48b: true;
 
     h16eb: true;
     h18eb: true;
     h20eb: true;
     h24eb: true;
+    h48eb: true;
   }
 }
 
 export const theme = createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.variant === "contained" &&
+          ownerState.color === "primary"
+            ? {
+                width: "100%",
+                height: "50px",
+                backgroundColor: theme.palette.primary,
+                borderRadius: "5px",
+                fontSize: "20px",
+                fontWeight: 600,
+                color: "#FFF",
+                textTransform: "capitalize",
+                justifyContent: "center",
+                alignItems: "center",
+
+                transition: theme.transitions.create([
+                  "border-color",
+                  "background-color",
+                  "box-shadow",
+                ]),
+
+                "&:focus, &:hover": {
+                  boxShadow: `${alpha(
+                    theme.palette.primary.main,
+                    0.9
+                  )} 0 0 0 0.2rem`,
+                  borderColor: theme.palette.primary.main,
+                  color: "#2398AB",
+                  backgroundColor: theme.palette.primary.light,
+                },
+
+                ".Mui-disabled": {
+                  color: "#fff",
+                  backgroundColor: "#fff",
+                },
+              }
+            : ownerState.color === "secondary"
+            ? {
+                width: "100%",
+                height: "50px",
+                backgroundColor: theme.palette.primary.light,
+                borderRadius: "5px",
+                fontSize: "20px",
+                fontWeight: 400,
+                color: theme.palette.primary.main,
+                textTransform: "capitalize",
+                justifyContent: "center",
+                alignItems: "center",
+
+                transition: theme.transitions.create([
+                  "border-color",
+                  "background-color",
+                  "box-shadow",
+                ]),
+
+                "&:focus, &:hover": {
+                  boxShadow: `${alpha(
+                    theme.palette.primary.light,
+                    1
+                  )} 0 0 0 0.2rem`,
+                  borderColor: theme.palette.primary.light,
+                  color: "#FFF",
+                  backgroundColor: theme.palette.primary.main,
+                },
+
+                ".Mui-disabled": {
+                  color: "#fff",
+                  backgroundColor: "#fff",
+                },
+              }
+            : ownerState.color === "error"
+            ? {
+                width: "100%",
+                height: "50px",
+                backgroundColor: theme.palette.error.light,
+                borderRadius: "5px",
+                fontSize: "20px",
+                fontWeight: 400,
+                color: theme.palette.error.main,
+                textTransform: "capitalize",
+                justifyContent: "center",
+                alignItems: "center",
+
+                transition: theme.transitions.create([
+                  "border-color",
+                  "background-color",
+                  "box-shadow",
+                ]),
+
+                "&:focus, &:hover": {
+                  boxShadow: `${alpha(
+                    theme.palette.error.light,
+                    0.9
+                  )} 0 0 0 0.2rem`,
+                  borderColor: theme.palette.error.main,
+                  color: "#FFF",
+                  backgroundColor: theme.palette.error.main,
+                },
+
+                ".Mui-disabled": {
+                  color: "#fff",
+                  backgroundColor: "#fff",
+                },
+              }
+            : ownerState.color === "inherit"
+            ? {
+                width: "100%",
+                height: "50px",
+                backgroundColor: "#FFF",
+                borderRadius: "5px",
+                fontSize: "20px",
+                fontWeight: 400,
+                color: theme.palette.primary.main,
+                textTransform: "capitalize",
+                justifyContent: "center",
+                alignItems: "center",
+
+                transition: theme.transitions.create([
+                  "border-color",
+                  "background-color",
+                  "box-shadow",
+                ]),
+
+                "&:focus, &:hover": {
+                  boxShadow: `${alpha(
+                    theme.palette.primary.main,
+                    0.9
+                  )} 0 0 0 0.2rem`,
+                  borderColor: theme.palette.error.main,
+                  color: theme.palette.primary.main,
+                  backgroundColor: theme.palette.primary.light,
+                },
+
+                ".Mui-disabled": {
+                  color: "#fff",
+                  backgroundColor: "#fff",
+                },
+              }
+            : {}),
+        }),
+      },
+    },
+  },
   typography: {
     fontFamily: ["Proxima Nova", "sans-serif", "Gilroy"].join(","),
 
@@ -86,6 +241,11 @@ export const theme = createTheme({
     },
     h24r: {
       fontSize: "clamp(15px, 1.25vw, 24px)",
+      fontWeight: 400,
+      color: "#2398AB",
+    },
+    h48r: {
+      fontSize: "clamp(36px, 2.5vw, 48px)",
       fontWeight: 400,
       color: "#2398AB",
     },
@@ -111,6 +271,11 @@ export const theme = createTheme({
       fontWeight: 600,
       color: "#2398AB",
     },
+    h48b: {
+      fontSize: "clamp(36px, 2.5vw, 48px)",
+      fontWeight: 600,
+      color: "#2398AB",
+    },
 
     // extraBold - 800
     h16eb: {
@@ -130,6 +295,11 @@ export const theme = createTheme({
     },
     h24eb: {
       fontSize: "clamp(15px, 1.25vw, 24px)",
+      fontWeight: 800,
+      color: "#2398AB",
+    },
+    h48eb: {
+      fontSize: "clamp(36px, 2.5vw, 48px)",
       fontWeight: 800,
       color: "#2398AB",
     },
@@ -156,8 +326,12 @@ export const theme = createTheme({
       main: "#2398AB",
       light: "#E4FFF9",
     },
+    secondary: {
+      main: "#E4FFF9",
+    },
     error: {
-      main: "#000",
+      main: "#FD4444",
+      light: "#FFEFEF",
     },
   },
   breakpoints: {

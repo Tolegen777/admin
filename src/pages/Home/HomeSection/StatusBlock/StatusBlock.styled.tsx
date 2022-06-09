@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, BoxProps, Grid, GridProps } from "@mui/material";
 
-export const Wrapper = styled((props: GridProps) => (
+const Wrapper = styled((props: GridProps) => (
   <Grid container columns={4} {...props} />
 ))(({ theme }) => ({
   display: "flex",
@@ -9,40 +9,38 @@ export const Wrapper = styled((props: GridProps) => (
   width: "100%",
 }));
 
-export const Block = styled((props: BoxProps) => <Box {...props} />)(
-  ({ theme }) => ({
-    width: "100%",
-    height: "calc(100% - 65px)",
-    overflow: "hidden",
-    overflowY: "auto",
+const Block = styled((props: BoxProps) => <Box {...props} />)(({ theme }) => ({
+  width: "100%",
+  height: "calc(100% - 65px)",
+  overflow: "hidden",
+  overflowY: "auto",
 
-    // Scroll
-    /* width */
-    "&::-webkit-scrollbar": {
-      height: "8px",
-      backgroundColor: "#E4FFF9",
-      borderRadius: "10px",
-    },
+  // Scroll
+  /* width */
+  "&::-webkit-scrollbar": {
+    height: "8px",
+    backgroundColor: "#E4FFF9",
+    borderRadius: "10px",
+  },
 
-    /* Track */
-    "&::-webkit-scrollbar-track": {
-      borderRadius: "10px",
-    },
+  /* Track */
+  "&::-webkit-scrollbar-track": {
+    borderRadius: "10px",
+  },
 
-    /* Handle */
-    "&::-webkit-scrollbar-thumb": {
-      background: "#2398AB",
-      borderRadius: "10px",
-    },
+  /* Handle */
+  "&::-webkit-scrollbar-thumb": {
+    background: "#2398AB",
+    borderRadius: "10px",
+  },
 
-    /* Handle on hover */
-    "&::-webkit-scrollbar-thumb:hover": {
-      background: "#c5f1e8",
-    },
-  })
-);
+  /* Handle on hover */
+  "&::-webkit-scrollbar-thumb:hover": {
+    background: "#c5f1e8",
+  },
+}));
 
-export const ChartContainer = styled((props: BoxProps) => <Box {...props} />)(
+const ChartContainer = styled((props: BoxProps) => <Box {...props} />)(
   ({ theme }) => ({
     width: "99%",
     height: "85%",

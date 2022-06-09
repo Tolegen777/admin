@@ -9,12 +9,6 @@ import Paper from "@mui/material/Paper";
 // @ts-ignore
 import userPhoto from "./../../../assets/images/peoplePhoto.jpeg"
 import {useNavigate} from "react-router-dom";
-import {
-    StyledBodyCell,
-    StyledBodyCellFirst,
-    StyledBodyCellLast,
-    StyledBodyRow
-} from "../../Users/modules/UserTable/style";
 
 const StyledButton1 = styled(Button)({
 
