@@ -11,7 +11,7 @@ const OneUser = () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ paddingTop: "20px", backgroundColor: "#E4FFF9" }}>
+    <Box sx={{ backgroundColor: "#E4FFF9" }}>
       <Button
         variant="contained"
         color="inherit"
