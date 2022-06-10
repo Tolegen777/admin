@@ -17,16 +17,16 @@ interface Props {
 }
 
 const Filter: FC<Props> = ({ setQuery }) => {
-  const [search, setSearch] = useState("");
 
   const formik = useFormik({
     initialValues: {
-      search: "",
+      firstName: "",
     },
     onSubmit: (values) => {
       setQuery(values);
     },
   });
+
   const { values, handleChange, handleSubmit } = formik;
 
   return (
@@ -44,9 +44,9 @@ const Filter: FC<Props> = ({ setQuery }) => {
                 backgroundColor: "primary.light",
               }}
               placeholder={"Поиск по имени, фамилии, телефону"}
-              name="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              name="firstName"
+              value={values.firstName}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -70,6 +70,8 @@ const Filter: FC<Props> = ({ setQuery }) => {
             <Button
               variant="contained"
               color="secondary"
+              type="submit"
+              onClick={() => handleSubmit()}
               sx={{
                 fontSize: "18px",
                 justifyContent: "space-evenly",

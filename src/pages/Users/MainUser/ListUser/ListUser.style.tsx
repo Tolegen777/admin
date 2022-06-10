@@ -146,6 +146,7 @@ export const StyledBodyCellLast: React.FC<Props> = ({ children }) => {
         sx={{
           borderRadius: "0",
           paddingLeft: "16px",
+          paddingRight: "16px",
           height: "90px",
           borderTopRightRadius: "10px",
           borderBottomRightRadius: "10px",

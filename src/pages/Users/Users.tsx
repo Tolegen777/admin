@@ -25,6 +25,7 @@ export default function Users() {
     <Box>
       <HeaderBlock>
         <Poster>Пользователи</Poster>
+
       </HeaderBlock>
       <Suspense fallback={<div>Загрузка...</div>}>
         <Routes>

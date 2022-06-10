@@ -34,7 +34,7 @@ const LeftSideBlock = () => {
           </Box>
         </Stack>
         <Box>
-          <WarningButton sx={{justifyContent: "center"}}>Выйти</WarningButton>
+          <WarningButton sx={{ justifyContent: "center" }}>Выйти</WarningButton>
         </Box>
       </PaperContainer>
     </Grid>

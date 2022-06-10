@@ -1,4 +1,4 @@
-import { IGetProfiles } from "./user.type";
+import { IGetOneProfile, IGetProfiles } from "./user.type";
 import userApi from "./userApi";
 
 export const userEndpoints = userApi.injectEndpoints({
@@ -8,6 +8,15 @@ export const userEndpoints = userApi.injectEndpoints({
         url: `/profile/list`,
         params: {
           ...filters,
+        },
+      }),
+      providesTags: ["user"],
+    }),
+    getOneProfile: builder.query<IGetOneProfile, object>({
+      query: (id) => ({
+        url: `/profile/user/${id}`,
+        params: {
+          // id,
         },
       }),
       providesTags: ["user"],

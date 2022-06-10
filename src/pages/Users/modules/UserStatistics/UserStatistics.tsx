@@ -3,7 +3,7 @@ import OneStatistic from "./OneStatistic";
 
 const UserStatistics = () => {
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} sx={{ mb: "30px" }}>
       <Grid item xs>
         <OneStatistic text={"Всего пользователей"} price={"5"} />
       </Grid>

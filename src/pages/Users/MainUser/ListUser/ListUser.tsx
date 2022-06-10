@@ -6,12 +6,11 @@ import TableHead from "@mui/material/TableHead";
 import {
   Box,
   Button,
-  Divider,
+  Skeleton,
   Stack,
   TablePagination,
-  Typography,
 } from "@mui/material";
-import React, { FC } from "react";
+import React from "react";
 
 // style
 import {
@@ -25,11 +24,6 @@ import {
 } from "./ListUser.style";
 
 import { useNavigate } from "react-router-dom";
-import {
-  MainButton,
-  SecondaryButton,
-  WarningButton,
-} from "../../../../components/styled-components/StyledButton";
 import { useGetProfilesQuery } from "../../../../redux/store/rtk-api/user-rtk/userEndpoints";
 import Filter from "../../modules/Filter";
 
@@ -50,7 +44,7 @@ const UserTable = () => {
   };
 
   const [query, setQuery] = React.useState({
-    search: "",
+    firstName: "",
   });
 
   const handleChangeQuery = (values: object) => {
@@ -67,6 +61,27 @@ const UserTable = () => {
     { ...query, page: page + 1, limit: rowsPerPage },
     { refetchOnMountOrArgChange: true }
   );
+
+  const items = [];
+
+  for (let i = 0; i < 4; i++) {
+    items.push(
+      <StyledBodyRow>
+        <StyledBodyCellFirst><Skeleton variant="text" animation="wave" width={"100%"} height={50} /></StyledBodyCellFirst>
+        <StyledBodyCell>
+          <Skeleton variant="rectangular" animation="wave" width={"100%"} height={50} />
+        </StyledBodyCell>
+        <StyledBodyCell>
+          <Skeleton variant="rectangular" animation="wave" width={"100%"} height={50} />
+        </StyledBodyCell>
+        <StyledBodyCell>
+          <Skeleton variant="rectangular" animation="wave" width={"100%"} height={50} />
+        </StyledBodyCell>
+        <StyledBodyCellLast>
+          <Skeleton variant="rectangular" animation="wave" width={"100%"} height={50} />
+        </StyledBodyCellLast>
+      </StyledBodyRow>)
+  }
 
   return (
     <>
@@ -87,7 +102,11 @@ const UserTable = () => {
           </TableHead>
 
           <TableBody>
-            {data?.profiles.map((profile) => (
+            {isLoading ? (
+              <>
+                {items}
+              </>
+            ) : (data?.profiles.map((profile) => (
               <StyledBodyRow key={profile.id}>
                 <StyledBodyCellFirst>{profile.firstName}</StyledBodyCellFirst>
                 <StyledBodyCell>{profile.user.phone}</StyledBodyCell>
@@ -95,9 +114,11 @@ const UserTable = () => {
                   {profile.block === null ? "Джонибек" : "Maksat"}
                 </StyledBodyCell>
                 <StyledBodyCell>
-                  {profile.block
-                    ? "Jonibek"
-                    : "Максат прислал мне фотку Джонибека"}
+                  {
+                    profile.block
+                      ? "Jonibek"
+                      : "Максат прислал мне фотку Джонибека"
+                  }
                 </StyledBodyCell>
                 <StyledBodyCellLast>
                   <Button
@@ -114,7 +135,9 @@ const UserTable = () => {
                   </Button>
                 </StyledBodyCellLast>
               </StyledBodyRow>
-            ))}
+            ))
+            )
+            }
           </TableBody>
         </Table>
         <TablePagination

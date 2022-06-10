@@ -5,6 +5,7 @@ import ComplaintUsersInfo from "../../Complaints/ComplaintsSection/ComplaintUser
 import VisitDiagram from "../../Complaints/ComplaintsSection/VisitDiagram";
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import UserInfo from "./UserInfo";
 
 const OneUser = () => {
   const navigate = useNavigate();
@@ -20,7 +21,8 @@ const OneUser = () => {
       >
         Назад
       </Button>
-      <ComplaintUsersInfo />
+      <UserInfo />
+      {/* <ComplaintUsersInfo /> */}
       <Grid container>
         <Grid item xs={7}>
           <ComplaintUserMessages />

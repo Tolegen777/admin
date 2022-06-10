@@ -14,9 +14,11 @@ const OneStatistic: FC<Props> = ({ text, price }) => {
       sx={{
         height: "100px",
         borderRadius: "10px",
-        paddingTop: "20px",
-        paddingLeft: "25px",
-        paddingRight: "25px",
+        paddingY: "20px",
+        paddingX: "25px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between"
       }}
     >
       <Typography sx={{ mb: "15px" }}>{text}</Typography>

@@ -79,42 +79,42 @@ export const theme = createTheme({
       styleOverrides: {
         root: ({ ownerState }) => ({
           ...(ownerState.variant === "contained" &&
-          ownerState.color === "primary"
+            ownerState.color === "primary"
             ? {
-                width: "100%",
-                height: "50px",
-                backgroundColor: theme.palette.primary,
-                borderRadius: "5px",
-                fontSize: "20px",
-                fontWeight: 600,
-                color: "#FFF",
-                textTransform: "capitalize",
-                justifyContent: "center",
-                alignItems: "center",
+              width: "100%",
+              height: "50px",
+              backgroundColor: theme.palette.primary,
+              borderRadius: "5px",
+              fontSize: "20px",
+              fontWeight: 600,
+              color: "#FFF",
+              textTransform: "capitalize",
+              justifyContent: "center",
+              alignItems: "center",
 
-                transition: theme.transitions.create([
-                  "border-color",
-                  "background-color",
-                  "box-shadow",
-                ]),
+              transition: theme.transitions.create([
+                "border-color",
+                "background-color",
+                "box-shadow",
+              ]),
 
-                "&:focus, &:hover": {
-                  boxShadow: `${alpha(
-                    theme.palette.primary.main,
-                    0.9
-                  )} 0 0 0 0.2rem`,
-                  borderColor: theme.palette.primary.main,
-                  color: "#2398AB",
-                  backgroundColor: theme.palette.primary.light,
-                },
+              "&:focus, &:hover": {
+                boxShadow: `${alpha(
+                  theme.palette.primary.main,
+                  0.9
+                )} 0 0 0 0.2rem`,
+                borderColor: theme.palette.primary.main,
+                color: "#2398AB",
+                backgroundColor: theme.palette.primary.light,
+              },
 
-                ".Mui-disabled": {
-                  color: "#fff",
-                  backgroundColor: "#fff",
-                },
-              }
+              ".Mui-disabled": {
+                color: "#fff",
+                backgroundColor: "#fff",
+              },
+            }
             : ownerState.color === "secondary"
-            ? {
+              ? {
                 width: "100%",
                 height: "50px",
                 backgroundColor: theme.palette.primary.light,
@@ -147,75 +147,75 @@ export const theme = createTheme({
                   backgroundColor: "#fff",
                 },
               }
-            : ownerState.color === "error"
-            ? {
-                width: "100%",
-                height: "50px",
-                backgroundColor: theme.palette.error.light,
-                borderRadius: "5px",
-                fontSize: "20px",
-                fontWeight: 400,
-                color: theme.palette.error.main,
-                textTransform: "capitalize",
-                justifyContent: "center",
-                alignItems: "center",
+              : ownerState.color === "error"
+                ? {
+                  width: "100%",
+                  height: "50px",
+                  backgroundColor: theme.palette.error.light,
+                  borderRadius: "5px",
+                  fontSize: "20px",
+                  fontWeight: 400,
+                  color: theme.palette.error.main,
+                  textTransform: "capitalize",
+                  justifyContent: "center",
+                  alignItems: "center",
 
-                transition: theme.transitions.create([
-                  "border-color",
-                  "background-color",
-                  "box-shadow",
-                ]),
+                  transition: theme.transitions.create([
+                    "border-color",
+                    "background-color",
+                    "box-shadow",
+                  ]),
 
-                "&:focus, &:hover": {
-                  boxShadow: `${alpha(
-                    theme.palette.error.light,
-                    0.9
-                  )} 0 0 0 0.2rem`,
-                  borderColor: theme.palette.error.main,
-                  color: "#FFF",
-                  backgroundColor: theme.palette.error.main,
-                },
+                  "&:focus, &:hover": {
+                    boxShadow: `${alpha(
+                      theme.palette.error.light,
+                      0.9
+                    )} 0 0 0 0.2rem`,
+                    borderColor: theme.palette.error.light,
+                    color: "#FFF",
+                    backgroundColor: theme.palette.error.main,
+                  },
 
-                ".Mui-disabled": {
-                  color: "#fff",
-                  backgroundColor: "#fff",
-                },
-              }
-            : ownerState.color === "inherit"
-            ? {
-                width: "100%",
-                height: "50px",
-                backgroundColor: "#FFF",
-                borderRadius: "5px",
-                fontSize: "20px",
-                fontWeight: 400,
-                color: theme.palette.primary.main,
-                textTransform: "capitalize",
-                justifyContent: "center",
-                alignItems: "center",
+                  ".Mui-disabled": {
+                    color: "#fff",
+                    backgroundColor: "#fff",
+                  },
+                }
+                : ownerState.color === "inherit"
+                  ? {
+                    width: "100%",
+                    height: "50px",
+                    backgroundColor: "#FFF",
+                    borderRadius: "5px",
+                    fontSize: "20px",
+                    fontWeight: 400,
+                    color: theme.palette.primary.main,
+                    textTransform: "capitalize",
+                    justifyContent: "center",
+                    alignItems: "center",
 
-                transition: theme.transitions.create([
-                  "border-color",
-                  "background-color",
-                  "box-shadow",
-                ]),
+                    transition: theme.transitions.create([
+                      "border-color",
+                      "background-color",
+                      "box-shadow",
+                    ]),
 
-                "&:focus, &:hover": {
-                  boxShadow: `${alpha(
-                    theme.palette.primary.main,
-                    0.9
-                  )} 0 0 0 0.2rem`,
-                  borderColor: theme.palette.error.main,
-                  color: theme.palette.primary.main,
-                  backgroundColor: theme.palette.primary.light,
-                },
+                    "&:focus, &:hover": {
+                      boxShadow: `${alpha(
+                        theme.palette.primary.main,
+                        0.9
+                      )} 0 0 0 0.2rem`,
+                      borderColor: theme.palette.error.main,
+                      color: theme.palette.primary.main,
+                      backgroundColor: theme.palette.primary.light,
+                    },
 
-                ".Mui-disabled": {
-                  color: "#fff",
-                  backgroundColor: "#fff",
-                },
-              }
-            : {}),
+                    ".Mui-disabled": {
+                      color: "#fff",
+                      backgroundColor: "#fff",
+                    },
+                  }
+                  : {}),
         }),
       },
     },
