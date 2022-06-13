@@ -12,16 +12,13 @@ export const userEndpoints = userApi.injectEndpoints({
       }),
       providesTags: ["user"],
     }),
-    getOneProfile: builder.query<IGetOneProfile, object>({
-      query: (id) => ({
-        url: `/profile/user/${id}`,
-        params: {
-          // id,
-        },
+    getOneProfile: builder.query<IGetOneProfile, string>({
+      query: (userId) => ({
+        url: `/profile/user/${userId}`,
       }),
       providesTags: ["user"],
     }),
   }),
 });
 
-export const { useGetProfilesQuery } = userEndpoints;
+export const { useGetProfilesQuery, useGetOneProfileQuery } = userEndpoints;

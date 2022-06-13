@@ -17,7 +17,7 @@ const OneUser = () => {
         color="inherit"
         onClick={() => navigate(-1)}
         startIcon={<ChevronLeftIcon />}
-        sx={{ width: "130px" }}
+        sx={{ width: "130px", mb: "25px" }}
       >
         Назад
       </Button>
