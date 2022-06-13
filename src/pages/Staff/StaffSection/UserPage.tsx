@@ -9,29 +9,30 @@ import WorkerHistory from "./WorkerHistory";
 
 
 const StyledButton = styled(Button)({
-    backgroundColor:"#fff",
-    color:"primary.main",
+  backgroundColor: "#fff",
+  color: "primary.main",
 
 });
 
 const UserPage = () => {
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    return (
-        <Box sx={{paddingTop: '20px', backgroundColor: '#E4FFF9'}}>
-            <StyledButton onClick={()=>navigate('/app/employees')} startIcon={<ChevronLeftIcon sx={{color:"primary.main"
-                }}/>}>
-                <Typography sx = {{fontWeight:"800", textTransform:'capitalize'}}>Назад</Typography>
-            </StyledButton>
-            <UsersInfo/>
-            <Grid container>
-                <Grid item xs = {12}><BlockedUsersList/></Grid>
-                {/*<Grid item xs = {5}><WorkerHistory/></Grid>*/}
-            </Grid>
+  return (
+    <Box sx={{paddingTop: '20px', backgroundColor: '#E4FFF9'}}>
+      <StyledButton onClick={() => navigate('/app/employees')} startIcon={<ChevronLeftIcon sx={{
+        color: "primary.main"
+      }}/>}>
+        <Typography sx={{fontWeight: "800", textTransform: 'capitalize'}}>Назад</Typography>
+      </StyledButton>
+      <UsersInfo/>
+      <Grid container>
+        <Grid item xs={12}><BlockedUsersList/></Grid>
+        {/*<Grid item xs = {5}><WorkerHistory/></Grid>*/}
+      </Grid>
 
-        </Box>
-    );
+    </Box>
+  );
 };
 
 export default UserPage;

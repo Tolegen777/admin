@@ -22,3 +22,5 @@ export const userEndpoints = userApi.injectEndpoints({
 });
 
 export const { useGetProfilesQuery, useGetOneProfileQuery } = userEndpoints;
+
+//useGetUserProfileQuery

@@ -27,9 +27,10 @@ const authReducer = createSlice({
         state.status = ActionsEnum.SUCCESS;
         state.isAuth = true;
       })
-      .addCase(login.rejected, (state, { error }) => {
+      .addCase(login.rejected, (state,  response:any ) => {
         state.status = ActionsEnum.ERROR;
-        state.error = error;
+        state.error = response?.payload?.response?.data?.errors.password[0];
+       // debugger
       })
       // .addCase(checkAuth.fulfilled, (state, { payload }) => {
       //   state.

@@ -32,7 +32,7 @@ const movingButtons = [
 
 const ComplaintsList = () => {
 
-    const [isActiveValue, setActiveValue] = useState('Весь список')
+    const [activeValue, setActiveValue] = useState('Весь список')
 
     const formik = useFormik({
         initialValues: {
@@ -54,11 +54,11 @@ const ComplaintsList = () => {
                     return <Grid key={btn.buttonName} sx={{marginLeft: '10px'}}>
                         <StyledButton sx={{
                             color:
-                                isActiveValue === btn.buttonName
+                                activeValue === btn.buttonName
                                     ? "#fff"
                                     : "primary.main",
                             backgroundColor:
-                                isActiveValue === btn.buttonName
+                                activeValue === btn.buttonName
                                     ? "primary.main"
                                     : "#fff",
                         }} onClick={() => setActiveValue(btn.buttonName)}>{btn.buttonName}</StyledButton>
@@ -71,7 +71,7 @@ const ComplaintsList = () => {
                   component="form"
                   sx={{border: '10px solid #fff', margin: '20px auto', backgroundColor: "#fff"}}
             >
-                <Grid item xs={10}>
+                <Grid item xs={12}>
                     {/*<TextField*/}
                     {/*    name="search"*/}
                     {/*    placeholder="Поиск по имени, фамилий, телефону"*/}
@@ -95,30 +95,31 @@ const ComplaintsList = () => {
                     {/*        </IconButton></InputAdornment>*/}
                     {/*    }}*/}
                     {/*/>*/}
-                    <SearchComponent formik={formik} searchedName={searchedName} setSearchedName={setSearchedName} placeholder={"Поиск по имени, фамилий, телефону"}/>
+                    <SearchComponent formik={formik} searchedName={searchedName} setSearchedName={setSearchedName} placeholder={"Поиск по имени, фамилий, телефону"}
+                    />
                 </Grid>
-                <Grid item xs={1.5} sx={{marginLeft: "20px"}}>
-                    <Grid container
-                          sx={{backgroundColor: "primary.light",
-                              height: "55px",
-                              borderRadius: "5px",
-                              paddingTop:"8%",
-                              paddingLeft:"20%",
-                              border:"1px solid #e0e0e0",
-                              '&:hover': {
-                                  border:"1px solid black"
-                              },
-                              cursor:"pointer"
-                          }}>
-                        <Grid item xs={9}><Typography sx={{color:"primary.main"}}>Фильтры</Typography></Grid>
-                        <Grid item xs={1}><ChevronRightIcon sx={{backgroundColor: "#fff"}}/></Grid>
-                    </Grid>
-                </Grid>
+                {/*<Grid item xs={1.5} sx={{marginLeft: "20px"}}>*/}
+                {/*    <Grid container*/}
+                {/*          sx={{backgroundColor: "primary.light",*/}
+                {/*              height: "55px",*/}
+                {/*              borderRadius: "5px",*/}
+                {/*              paddingTop:"8%",*/}
+                {/*              paddingLeft:"20%",*/}
+                {/*              border:"1px solid #e0e0e0",*/}
+                {/*              '&:hover': {*/}
+                {/*                  border:"1px solid black"*/}
+                {/*              },*/}
+                {/*              cursor:"pointer"*/}
+                {/*          }}>*/}
+                {/*        <Grid item xs={9}><Typography sx={{color:"primary.main"}}>Фильтры</Typography></Grid>*/}
+                {/*        <Grid item xs={1}><ChevronRightIcon sx={{backgroundColor: "#fff"}}/></Grid>*/}
+                {/*    </Grid>*/}
+                {/*</Grid>*/}
 
 
             </Grid>
 
-            <ComplainedInfo searchedName={searchedName}/>
+            <ComplainedInfo searchedName={searchedName} activeValue={activeValue}/>
 
 
         </Box>

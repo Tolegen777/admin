@@ -21,7 +21,7 @@ const SearchComponent:React.FC<Props> = ({formik,placeholder,searchedName,setSea
     };
     const handleSetSearchedName = () => {
         setSearchedName(formik.values.search)
-        console.log(searchedName)
+
     }
 
     return (

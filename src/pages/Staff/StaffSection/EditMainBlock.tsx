@@ -11,7 +11,7 @@ const StyledButton = styled(Button)({});
 
 const EditMainBlock = () => {
     return (
-        <Box component={Paper} sx={{height:"100%"}}>
+        <Box component={Paper} sx={{height: "100%"}}>
             <Stack sx={{padding: "20px"}} spacing={2} alignItems={"center"}>
                 <Grid container sx={{backgroundColor: "#E2E2E2", width: "100%", height: "150px"}}
                       justifyContent={"center"} alignItems="center">
@@ -52,13 +52,13 @@ const EditMainBlock = () => {
                 </Grid>
 
 
-
-
             </Stack>
             <Stack justifyContent={"center"} alignItems={"center"} sx={{
-                height: "80%"}}>
+                height: "80%"
+            }}>
                 <Grid>
-                    <MyStyledButton sx={{color:"primary.main", backgroundColor:"primary.light"}}>Заблокировать</MyStyledButton>
+                    <MyStyledButton
+                        sx={{color: "primary.main", backgroundColor: "primary.light"}}>Заблокировать</MyStyledButton>
                     {/*<MyStyledButton sx={{color:"#FD4444", backgroundColor:"#FFEFEF", marginLeft:"20px"}}>Удалить</MyStyledButton>*/}
                 </Grid>
 

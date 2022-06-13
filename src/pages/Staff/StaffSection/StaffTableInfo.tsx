@@ -12,9 +12,9 @@ import {
 } from "../../Users/MainUser/ListUser/ListUser.style";
 
 type PropsType = {
-  worker: IStaffResponse;
-  ind: number;
-};
+    worker: IStaffResponse,
+    ind: number
+}
 
 const StaffTableInfo: React.FC<PropsType> = ({ worker, ind }) => {
   const dispatch = useDispatch();

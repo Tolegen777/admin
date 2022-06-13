@@ -16,56 +16,6 @@ import {
   StyledHeadRow,
 } from "../../../Users/MainUser/ListUser/ListUser.style";
 
-function createData(
-  name: string,
-  phone: string,
-  bin: string,
-  position: string,
-  workerStatus: string,
-  email: string,
-  date: string
-) {
-  return { name, phone, bin, position, workerStatus, email, date };
-}
-
-const rows = [
-  createData(
-    "Досбол Акынов",
-    "+7 707 432 21 12",
-    "020306600213",
-    "Админинистратор",
-    "Активный",
-    "dosbol@mail.ru",
-    "21.04.1998"
-  ),
-  createData(
-    "Даулет Жаксыбек",
-    "+7 777 324 54 23",
-    "120909500436",
-    "Админинистратор",
-    "Женат",
-    "daulet@mail.ru",
-    "12.12.1990"
-  ),
-  createData(
-    "Бакыт Кайратов",
-    "+7 707 546 74 22",
-    "010201502914",
-    "Админинистратор",
-    "Женат",
-    "bakit@mail.ru",
-    "11.09.1979"
-  ),
-  createData(
-    "Улжан Амангелды",
-    "+7 700 123 44 12",
-    "110406320100",
-    "Админинистратор",
-    "Активный",
-    "ulzhan@mail.ru",
-    "28.04.1987"
-  ),
-];
 
 interface Props {
   searchedName: string;
@@ -79,6 +29,7 @@ const StaffTable: React.FC<Props> = ({ searchedName }) => {
     isSuccess,
   } = useGetStaffQuery("staff");
   console.log(workers);
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

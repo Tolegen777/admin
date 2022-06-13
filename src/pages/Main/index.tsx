@@ -15,6 +15,8 @@ import StaffPage from "../Staff";
 import ComplaintsUser from "../Complaints/ComplaintsSection/ComplaintsUser";
 import Edit from "../Staff/StaffSection/Edit";
 import Worker from "../Staff/StaffSection/Worker";
+import CreateWorker from "../Staff/StaffSection/CreateWorker";
+import Create from "../Staff/StaffSection/Create";
 
 // import Profile from "./Profile";
 // import Users from "./Users";
@@ -39,6 +41,7 @@ const Main = () => {
           <Route path="employees/" element={<StaffPage />} />
           <Route path="employees/one-worker" element={<Worker/>} />
           <Route path="employees/one-worker/edit" element={<Edit/>} />
+          <Route path="employees/one-worker/create" element={<Create/>} />
         </Route>
       </Routes>
     </>

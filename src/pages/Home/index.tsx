@@ -2,11 +2,11 @@
 import { Suspense, useEffect, useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
+    Navigate,
+    Route,
+    Routes,
+    useLocation,
+    useNavigate,
 } from "react-router-dom";
 
 // pages
@@ -18,22 +18,22 @@ import { useGetHomeQuery } from "../../redux/store/rtk-api/home-rtk/homeEndpoint
 import { HomeSection } from "./HomeSection";
 
 export default function Home() {
-  const data = useGetHomeQuery("");
+    const data = useGetHomeQuery("");
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  const goBack = () => {
-    navigate(-1);
-  };
+    const location = useLocation();
+    const navigate = useNavigate();
+    const goBack = () => {
+        navigate(-1);
+    };
 
-  return (
-    <Box>
-      <HeaderBlock>
-        <Poster>Главная</Poster>
-      </HeaderBlock>
-      <Suspense fallback={<div>Загрузка...</div>}>
-        <HomeSection />
-      </Suspense>
-    </Box>
-  );
+    return (
+        <Box>
+            <HeaderBlock>
+                <Poster>Главная</Poster>
+            </HeaderBlock>
+            <Suspense fallback={<div>Загрузка...</div>}>
+                <HomeSection />
+            </Suspense>
+        </Box>
+    );
 }

@@ -42,6 +42,7 @@ export interface IStaffResponse {
 
 
 export interface IOneStaffResponse {
+
   createdAt: string,
   updateAt: string,
   id: number,
@@ -49,7 +50,8 @@ export interface IOneStaffResponse {
   age: number,
   firstName: string,
   secondName: string,
-  block: boolean,
+  middleName?:string
+  block: {id: number, text: string, block: boolean, workerProfile: any},
   kids: number,
   date: string,
   iin: string,
@@ -63,8 +65,30 @@ export interface IOneStaffResponse {
     floor: number,
     building: string,
     apartment: string,
-    index: string
+    index: string,
+    city?:{
+      id:number,
+      value:string
+    }
   }
+}
+
+
+export interface ICreateWorker {
+  phone: string,
+  password: string,
+  firstName: string,
+  secondName: string,
+  middleName: string,
+  iin: string,
+  date: string,
+  cityId: number,
+  street: string,
+  floor: number,
+  building: string,
+  apartment: string,
+  index: string
+
 }
 
 
