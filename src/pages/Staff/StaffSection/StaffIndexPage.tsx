@@ -23,7 +23,7 @@ const StyledButton = styled(Button)({
 
 
 const movingButtons = [
-    {buttonName: 'Аналитика',},
+    // {buttonName: 'Аналитика',},
     {buttonName: 'Список',},
 
 ]
@@ -34,11 +34,11 @@ const StaffIndexPage = () => {
     const navigate = useNavigate()
     const [isActiveValue, setActiveValue] = useState('Список')
 
-    const [searchedName,setSearchedName] = useState('')
+    const [searchedName, setSearchedName] = useState('')
 
     const formik = useFormik({
         initialValues: {
-            search:''
+            search: ''
         },
 
         onSubmit: values => {
@@ -48,34 +48,42 @@ const StaffIndexPage = () => {
 
 
     return (
-        <Box sx={{ backgroundColor: "primary.light", marginTop:"20px"}}>
-            <Grid container spacing={1}>
+        <Box sx={{backgroundColor: "primary.light", marginTop: "20px"}}>
+            <Box sx={{display: "flex", justifyContent: "space-between"}}>
 
-                    {movingButtons.map(btn => {
-                        return <Grid key={btn.buttonName} sx={{marginLeft: '10px'}}>
-                            <StyledButton sx={{
-                                color:
-                                    isActiveValue === btn.buttonName
-                                        ? "#fff"
-                                        : "primary.main",
-                                backgroundColor:
-                                    isActiveValue === btn.buttonName
-                                        ? "primary.main"
-                                        : "#fff",
-                            }} onClick={() => setActiveValue(btn.buttonName)}>{btn.buttonName}</StyledButton>
-                        </Grid>
-                    })}
+                {movingButtons.map(btn => {
+                    return <div key={btn.buttonName}>
+                        <Box sx={{
+                            color:
+                                isActiveValue === btn.buttonName
+                                    ? "#fff"
+                                    : "primary.main",
+                            backgroundColor:
+                                isActiveValue === btn.buttonName
+                                    ? "primary.main"
+                                    : "#fff",
+                            width: "200px",
+                            borderRadius: '5px',
+                            height: "35px",
+                            alignItems: "center",
+                            display: "flex",
+                            justifyContent: "center",
+                            fontSize: "17px"
+
+                        }} onClick={() => setActiveValue(btn.buttonName)}>{btn.buttonName}</Box>
+                    </div>
+                })}
 
 
-                <Grid container xs={7} justifyContent="flex-end" >
-                    {/*<Button sx={{backgroundColor: "#fff", }}><StaffAddIcon/></Button>*/}
+                <div>
 
-                    {/*<StyledButton sx={{*/}
-                    {/*    color: "#fff",*/}
-                    {/*    backgroundColor: "primary.main", marginLeft:"10px"}}>Добавить сотрудника</StyledButton>*/}
+                    <StyledButton sx={{
+                        color: "#fff",
+                        backgroundColor: "primary.main", marginLeft: "10px"
+                    }} onClick={() => navigate("one-worker/create")}>Создать сотрудника</StyledButton>
 
-                </Grid>
-            </Grid>
+                </div>
+            </Box>
 
             <Grid container
                   component="form"
@@ -84,7 +92,8 @@ const StaffIndexPage = () => {
                 <Grid item xs={12}>
 
                     <form>
-                        <SearchComponent formik={formik} placeholder={"Поиск по имени, фамилий, телефону"} searchedName = {searchedName}
+                        <SearchComponent formik={formik} placeholder={"Поиск по имени, фамилий, телефону"}
+                                         searchedName={searchedName}
                                          setSearchedName={setSearchedName}
                         />
                     </form>
@@ -92,7 +101,7 @@ const StaffIndexPage = () => {
 
                 </Grid>
             </Grid>
-            <StaffTable searchedName = {searchedName}/>
+            <StaffTable searchedName={searchedName}/>
 
 
         </Box>

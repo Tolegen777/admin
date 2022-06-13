@@ -16,7 +16,7 @@ const HomeSection = () => {
   const Item = (props: any) => <Paper {...props} />;
   const { data, isLoading } = useGetHomeQuery("");
 
-  console.log(data);
+
 
   return (
     <>

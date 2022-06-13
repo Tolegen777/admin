@@ -12,16 +12,16 @@ import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
 type PropsType = {
-    worker:IStaffResponse,
-    ind:number
+    worker: IStaffResponse,
+    ind: number
 }
 
-const StaffTableInfo:React.FC<PropsType> = ({worker, ind}) => {
+const StaffTableInfo: React.FC<PropsType> = ({worker, ind}) => {
 
 
-    const dispatch  =useDispatch()
+    const dispatch = useDispatch()
     const navigate = useNavigate()
-    const handleSetWorker = (user:IStaffResponse) => {
+    const handleSetWorker = (user: IStaffResponse) => {
         dispatch(setOneStaff(user))
         navigate('one-worker')
     }
@@ -30,7 +30,7 @@ const StaffTableInfo:React.FC<PropsType> = ({worker, ind}) => {
         <StyledBodyCellFirst>{worker.firstName} {worker.secondName}</StyledBodyCellFirst>
         <StyledBodyCell>{worker.user.phone}</StyledBodyCell>
         <StyledBodyCell>{worker.iin}</StyledBodyCell>
-        <StyledBodyCell><b>{worker.user.roles[0].value==="WORKER"&&"Администратор"}</b></StyledBodyCell>
+        <StyledBodyCell><b>{worker.user.roles[0].value === "WORKER" && "Администратор"}</b></StyledBodyCell>
         <StyledBodyCellLast>
             <Button
                 sx={{
@@ -42,7 +42,7 @@ const StaffTableInfo:React.FC<PropsType> = ({worker, ind}) => {
                         background: "rgba(35, 152, 171, 1)",
                     },
                 }}
-                 onClick={()=>handleSetWorker(worker)}
+                onClick={() => handleSetWorker(worker)}
             >
                 <Typography
                     sx={{

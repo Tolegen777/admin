@@ -4,7 +4,10 @@ import {Box, Button, Typography} from "@mui/material";
 import UserMessageCard from "./UserMessageCard";
 import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../../redux/store";
-import {setButtonVisibility, setOneUserMessageVisibility} from "../../../redux/store/reducers/complaint/complaint.slice";
+import {
+    setButtonVisibility,
+    setOneUserMessageVisibility
+} from "../../../redux/store/reducers/complaint/complaint.slice";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import styled from "@emotion/styled";
 import {useNavigate} from "react-router-dom";
@@ -18,16 +21,16 @@ const message = {
 }
 
 const StyledButton = styled(Button)({
-    background:"#E4FFF9",
-    color:"primary.main",
-    height:"30px",
-    margin:"10px auto"
+    background: "#E4FFF9",
+    color: "primary.main",
+    height: "30px",
+    margin: "10px auto"
 
 });
 
 
 const ComplaintUserMessages = () => {
-    const navigate =  useNavigate()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
 
@@ -40,27 +43,25 @@ const ComplaintUserMessages = () => {
 
     return (
 
-        <Box sx={{backgroundColor: "#fff", margin: "20px auto", padding:"10px", height:"400px"}}>
+        <Box sx={{backgroundColor: "#fff", margin: "20px auto", padding: "20px", height: "400px"}}>
             <Typography sx={{
                 color: "primary.main",
                 fontWeight: "800",
-                textTransform: 'capitalize',
-            }}>Сообщение</Typography>
-            {isPrevBtn&&<StyledButton onClick={hideButton} startIcon={<ChevronLeftIcon sx={{color:"primary.main"
+                marginBottom: "20px",
+                fontSize: "20px"
+
+            }}>Информация о жалобе</Typography>
+            {isPrevBtn && <StyledButton onClick={hideButton} startIcon={<ChevronLeftIcon sx={{
+                color: "primary.main"
             }}/>}>
-                <Typography sx = {{fontWeight:"800", textTransform:'capitalize'}}>Назад</Typography>
+                <Typography sx={{fontWeight: "800", textTransform: 'capitalize'}}>Назад</Typography>
             </StyledButton>}
             <UserMessageCard/>
-
-
-
-
 
 
         </Box>
     );
 };
-
 
 
 export default ComplaintUserMessages;

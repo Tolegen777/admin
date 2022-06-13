@@ -53,34 +53,34 @@ export const UserFilter = () => {
               justifyContent: "space-between",
             }}
           >
-            <Button
-              sx={{
-                height: "50px",
-                width: "100%",
-                backgroundColor: "primary.light",
-                color: "primary.main",
-                "&:hover": {
-                  backgroundColor: "primary.main",
-                  color: "primary.light",
-                },
-              }}
-            >
-              Фильтры
-              <Box
-                sx={{
-                  background: "#fff",
-                  width: "30px",
-                  height: "30px",
-                  borderRadius: "5px",
-                  ml: "40px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <ArrowSvg />
-              </Box>
-            </Button>
+            {/*<Button*/}
+            {/*  sx={{*/}
+            {/*    height: "50px",*/}
+            {/*    width: "100%",*/}
+            {/*    backgroundColor: "primary.light",*/}
+            {/*    color: "primary.main",*/}
+            {/*    "&:hover": {*/}
+            {/*      backgroundColor: "primary.main",*/}
+            {/*      color: "primary.light",*/}
+            {/*    },*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  Фильтры*/}
+            {/*  <Box*/}
+            {/*    sx={{*/}
+            {/*      background: "#fff",*/}
+            {/*      width: "30px",*/}
+            {/*      height: "30px",*/}
+            {/*      borderRadius: "5px",*/}
+            {/*      ml: "40px",*/}
+            {/*      display: "flex",*/}
+            {/*      justifyContent: "center",*/}
+            {/*      alignItems: "center",*/}
+            {/*    }}*/}
+            {/*  >*/}
+            {/*    <ArrowSvg />*/}
+            {/*  </Box>*/}
+            {/*</Button>*/}
           </Grid>
         </Grid>
       </Paper>

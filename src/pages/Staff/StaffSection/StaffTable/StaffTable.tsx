@@ -47,7 +47,8 @@ interface Props {
 const StaffTable:React.FC<Props> = ({ searchedName}) => {
 
     const {data:workers,isLoading,isError,isSuccess} = useGetStaffQuery("staff")
-    console.log(workers)
+
+    // console.log(workers)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
