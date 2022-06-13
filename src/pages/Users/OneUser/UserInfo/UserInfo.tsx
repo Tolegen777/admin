@@ -28,7 +28,7 @@ const UserInfo = () => {
         sx={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "flex-start",
         }}
       >
         <Box
@@ -36,10 +36,13 @@ const UserInfo = () => {
             backgroundColor: "#E2E2E2",
             width: "160px",
             height: "160px",
+            mr: "30px",
           }}
         />
-        <Stack>
-          <Typography variant="h20r">Имя пользователя</Typography>
+        <Stack justifyContent={"space-between"}>
+          <Typography variant="h20r" color={"secondary.light"}>
+            Имя пользователя
+          </Typography>
           <Typography variant="h28b">{data?.firstName}</Typography>
           <Box
             sx={{
@@ -68,7 +71,7 @@ const UserInfo = () => {
       </Grid>
 
       <Grid container item xs spacing={1}>
-        <Grid container item xs>
+        <Grid container item xs direction={"column"}>
           <Grid item xs sx={{ display: "flex", flexDirection: "column" }}>
             <Typography
               variant="h16r"
@@ -98,7 +101,7 @@ const UserInfo = () => {
           </Grid>
         </Grid>
 
-        <Grid container item xs direction={"column"}>
+        <Grid container item xs>
           <Grid item xs sx={{ display: "flex", flexDirection: "column" }}>
             <Typography
               variant="h16r"
@@ -121,7 +124,7 @@ const UserInfo = () => {
           </Grid>
         </Grid>
 
-        <Grid container item xs direction={"column"}>
+        <Grid container item xs>
           <Grid item xs sx={{ display: "flex", flexDirection: "column" }}>
             <Typography
               variant="h16r"
