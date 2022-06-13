@@ -15,12 +15,14 @@ import homeApi from "./rtk-api/home-rtk/homeApi";
 import staffApi from "./rtk-api/staff-rtk/staffApi";
 import regionApi from "./rtk-api/region-rtk/regionApi";
 import complaintApi from "./rtk-api/complaint-rtk/complaintApi";
-import userApi from "./rtk-api/user-rtk/userApi";
 import profileApi from "./rtk-api/profile-rtk/profileApi";
+import userApi from "./rtk-api/user-rtk/userApi";
+
 
 const rootReducer = combineReducers({
   auth: authReducer,
   [homeApi.reducerPath]: homeApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
   [staffApi.reducerPath]: staffApi.reducer,
   [regionApi.reducerPath]: regionApi.reducer,
   [complaintApi.reducerPath]: complaintApi.reducer,
@@ -36,7 +38,7 @@ export const store = configureStore({
   reducer: rootReducer,
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(homeApi.middleware),
+    getDefaultMiddleware().concat(homeApi.middleware, userApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

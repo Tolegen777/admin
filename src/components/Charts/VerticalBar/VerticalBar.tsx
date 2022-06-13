@@ -9,7 +9,11 @@ import {
 } from "chart.js";
 import { FC, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { IHomeAges } from "../HorizontalBar/HorizontalBar.types";
+import { COLORS_ORDER } from "../../../constants";
+import {
+  IHomeAges,
+  IHomePart,
+} from "../../../pages/Home/HomeSection/HomeSection.types";
 
 ChartJS.register(
   CategoryScale,
@@ -21,81 +25,102 @@ ChartJS.register(
 );
 
 interface Props {
-  data: IHomeAges;
+  count: number;
+  barData: IHomePart[];
 }
 
-const HorizontalBar: FC<Props> = ({ data }) => {
+const VerticalBar: FC<Props> = ({ barData, count }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
 
   const [chartOptions, setChartOptions] = useState({});
 
+  let color: number = -1;
+
+  const handleColor = () => {
+    color++;
+  };
+
+  let dataLabels: Array<string> = [];
+  barData.map((row) => {
+    dataLabels.push(((row.count * 100) / count).toFixed(1));
+  });
+
   useEffect(() => {
     setChartData({
-      labels: [
-        "— 18-22",
-        "— 22-25",
-        "— 25-30",
-        "— 30-40",
-        "— 40-50",
-        "— 50-65",
-        "— 65+",
-      ],
+      labels: barData.map((e) => {
+        return ` ${e.value}`;
+      }),
 
       datasets: [
         {
           //@ts-ignore
-          label: "Статистика по возрасту",
-          //@ts-ignore
-          data: [
-            //@ts-ignore
-            { y: "— 18-22", x: ageData.range1822 * 100 },
-            //@ts-ignore
-            { y: "— 22-25", x: ageData.range2225 * 100 },
-            //@ts-ignore
-            { y: "— 25-30", x: ageData.range2530 * 100 },
-            //@ts-ignore
-            { y: "— 30-40", x: ageData.range3040 * 100 },
-            //@ts-ignore
-            { y: "— 40-50", x: ageData.range4050 * 100 },
-            //@ts-ignore
-            { y: "— 50-65", x: ageData.range5065 * 100 },
-            //@ts-ignore
-            { y: "— 65+", x: ageData.range65 * 100 },
-          ],
+          data: barData.map((row) => {
+            return `${((row.count * 100) / count).toFixed(1)}`;
+          }),
 
           //@ts-ignore
-          backgroundColor: "#2398AB",
+          backgroundColor: barData.map((row) => {
+            handleColor();
+            return COLORS_ORDER[color];
+          }),
+
           //@ts-ignore
           borderRadius: 5,
         },
       ],
     });
     setChartOptions({
-      indexAxis: "y" as const,
+      indexAxis: "x" as const,
       responsive: true,
+      scales: {
+        y: {
+          ticks: {
+            callback: function (value: any, index: any, ticks: any) {
+              return "- " + value + "%";
+            },
+          },
+          grid: {
+            display: false,
+          },
+          title: {
+            color: "#2398AB", // not working color
+          },
+        },
+        x: {
+          grid: {
+            display: false,
+          },
+        },
+      },
+      elements: {
+        bar: {
+          borderWidth: 1,
+        },
+      },
       plugins: {
         legend: {
-          display: true,
-          position: "top",
-        },
-        title: {
-          display: true,
-          text: "Custom Chart Subtitle",
+          display: false,
         },
         tooltip: {
           enabled: true,
+          callbacks: {
+            label: function (context: any) {
+              let label = context.dataset.label || "";
+
+              if (context.parsed.y !== null) {
+                label += context.parsed.y + "%";
+              }
+              return " " + label;
+            },
+          },
         },
       },
     });
   }, []);
 
-  return (
-    <div>
-      <Bar options={chartOptions} data={chartData} />
-    </div>
-  );
+  return <Bar options={chartOptions} data={chartData} />;
 };
 
-export default HorizontalBar;
+export default VerticalBar;

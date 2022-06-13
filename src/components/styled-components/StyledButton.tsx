@@ -3,42 +3,74 @@ import { styled } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { alpha } from "@mui/material";
 
-export const MainButton = styled((props: ButtonProps) => <Button {...props} />)(
-  ({ theme }) => ({
-    width: "100%",
-    height: "50px",
-    backgroundColor: "#2398AB",
-    borderRadius: "5px",
-    fontSize: "20px",
-    fontWeight: 600,
-    color: "#FFF",
-    justifyContent: "flex-start",
-    textTransform: "capitalize",
-
-    transition: theme.transitions.create([
-      "border-color",
-      "background-color",
-      "box-shadow",
-    ]),
-
-    "&:focus, &:hover": {
-      boxShadow: `${alpha(theme.palette.primary.main, 0.9)} 0 0 0 0.2rem`,
-      borderColor: theme.palette.primary.main,
-      color: "#2398AB",
-      backgroundColor: theme.palette.primary.light,
-    },
-
-    ".Mui-disabled": {
-      color: "#fff",
-      backgroundColor: "#fff",
-    },
-  })
-);
-
-export const SecondaryButton = styled((props: ButtonProps) => (
-  <Button {...props} />
+export const MainButton = styled((props: ButtonProps) => (
+  <Button variant="outlined" fullWidth {...props} />
 ))(({ theme }) => ({
-  width: "100%",
+  height: "50px",
+  backgroundColor: "#2398AB",
+  borderRadius: "5px",
+  fontSize: "20px",
+  fontWeight: 600,
+  color: "#FFF",
+  textTransform: "capitalize",
+  justifyContent: "center",
+  alignItems: "center",
+
+  transition: theme.transitions.create([
+    "border-color",
+    "background-color",
+    "box-shadow",
+  ]),
+
+  "&:focus, &:hover": {
+    boxShadow: `${alpha(theme.palette.primary.main, 0.9)} 0 0 0 0.2rem`,
+    borderColor: theme.palette.primary.main,
+    color: "#2398AB",
+    backgroundColor: theme.palette.primary.light,
+  },
+
+  ".Mui-disabled": {
+    color: "#fff",
+    backgroundColor: "#fff",
+  },
+}));
+
+export const MainButtons = styled((props: ButtonProps) => (
+  <Button fullWidth {...props} />
+))(({ theme }) => ({
+  height: "50px",
+  backgroundColor: "#2398AB",
+  borderRadius: "5px",
+  fontSize: "20px",
+  fontWeight: 600,
+  color: "#FFF",
+  textTransform: "capitalize",
+  justifyContent: "center",
+  alignItems: "center",
+
+  transition: theme.transitions.create([
+    "border-color",
+    "background-color",
+    "box-shadow",
+  ]),
+
+  "&:focus, &:hover": {
+    boxShadow: `${alpha(theme.palette.primary.main, 0.9)} 0 0 0 0.2rem`,
+    borderColor: theme.palette.primary.main,
+    color: "#2398AB",
+    backgroundColor: theme.palette.primary.light,
+  },
+
+  ".Mui-disabled": {
+    color: "#fff",
+    backgroundColor: "#fff",
+  },
+}));
+
+// OLD BUTTONS
+export const SecondaryButton = styled((props: ButtonProps) => (
+  <Button fullWidth {...props} />
+))(({ theme }) => ({
   height: "50px",
   backgroundColor: "#E4FFF9",
   borderRadius: "5px",
@@ -56,9 +88,8 @@ export const SecondaryButton = styled((props: ButtonProps) => (
 }));
 
 export const WarningButton = styled((props: ButtonProps) => (
-  <Button {...props} />
+  <Button fullWidth {...props} />
 ))(({ theme }) => ({
-  width: "100%",
   height: "50px",
   backgroundColor: "#FFEFEF",
   borderRadius: "5px",

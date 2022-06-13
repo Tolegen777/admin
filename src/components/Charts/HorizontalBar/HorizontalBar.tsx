@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { FC, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { IHomeAges } from "./HorizontalBar.types";
+import { IHomeAges } from "../../../pages/Home/HomeSection/HomeSection.types";
 
 ChartJS.register(
   CategoryScale,
@@ -21,10 +21,11 @@ ChartJS.register(
 );
 
 interface Props {
+  count: number;
   barData: IHomeAges;
 }
 
-const HorizontalBar: FC<Props> = ({ barData }) => {
+const HorizontalBar: FC<Props> = ({ count, barData }) => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -79,10 +80,6 @@ const HorizontalBar: FC<Props> = ({ barData }) => {
         legend: {
           display: true,
           position: "top",
-        },
-        title: {
-          display: true,
-          text: "Custom Chart Subtitle",
         },
         tooltip: {
           enabled: true,

@@ -1,6 +1,6 @@
 // library
-import {Suspense, useEffect, useState} from "react";
-import {Box, Stack, Typography} from "@mui/material";
+import { Suspense, useEffect, useState } from "react";
+import { Box, Stack, Typography } from "@mui/material";
 import {
     Navigate,
     Route,
@@ -10,20 +10,15 @@ import {
 } from "react-router-dom";
 
 // pages
-import HomeSection from "./HomeSection";
 
 // main-Style
-import {HeaderBlock, Poster} from "../mainStyle";
+import { HeaderBlock, Poster } from "../mainStyle";
 
-import {useGetHomeQuery} from "../../redux/store/rtk-api/home-rtk/homeEndpoints";
-import {useGetMyProfileQuery} from "../../redux/store/rtk-api/profile-rtk/profileEndpoints";
-import {setProfileId} from "../../redux/store/reducers/profile/profile.slice";
-import {useDispatch} from "react-redux";
+import { useGetHomeQuery } from "../../redux/store/rtk-api/home-rtk/homeEndpoints";
+import { HomeSection } from "./HomeSection";
 
 export default function Home() {
-    const data = useGetHomeQuery("")
-    const dispatch = useDispatch()
-
+    const data = useGetHomeQuery("");
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -37,13 +32,7 @@ export default function Home() {
                 <Poster>Главная</Poster>
             </HeaderBlock>
             <Suspense fallback={<div>Загрузка...</div>}>
-                <HomeSection/>
-                <div className="App">
-                    {/*{data&&data.data&&<Chart chartData={obj} />}*/}
-
-                </div>
-
-
+                <HomeSection />
             </Suspense>
         </Box>
     );

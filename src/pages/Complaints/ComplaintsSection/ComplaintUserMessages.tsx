@@ -34,15 +34,14 @@ const ComplaintUserMessages = () => {
     const dispatch = useDispatch()
 
 
-    const isPrevBtn = useTypedSelector(state => state.complaint.isShowPrevButton)
-
-    const hideButton = () => {
-        dispatch(setButtonVisibility(false));
-        dispatch(setOneUserMessageVisibility(true))
-    }
+    // const isPrevBtn = useTypedSelector(state => state.complaint.isShowPrevButton)
+    //
+    // const hideButton = () => {
+    //     dispatch(setButtonVisibility(false));
+    //     dispatch(setOneUserMessageVisibility(true))
+    // }
 
     return (
-
         <Box sx={{backgroundColor: "#fff", margin: "20px auto", padding: "20px", height: "400px"}}>
             <Typography sx={{
                 color: "primary.main",
@@ -50,17 +49,26 @@ const ComplaintUserMessages = () => {
                 marginBottom: "20px",
                 fontSize: "20px"
 
-            }}>Информация о жалобе</Typography>
-            {isPrevBtn && <StyledButton onClick={hideButton} startIcon={<ChevronLeftIcon sx={{
-                color: "primary.main"
-            }}/>}>
+            }}>Информация о жалобе
+            </Typography>
+
+            <Typography sx={{fontWeight: "800", textTransform: 'capitalize'}}>Назад</Typography>
+
+            <Box sx={{backgroundColor: "#fff", margin: "20px auto", padding: "10px", height: "400px"}}>
+                <Typography sx={{
+                    color: "primary.main",
+                    fontWeight: "800",
+                    textTransform: 'capitalize',
+                }}>Сообщение</Typography>
                 <Typography sx={{fontWeight: "800", textTransform: 'capitalize'}}>Назад</Typography>
-            </StyledButton>}
-            <UserMessageCard/>
+                <UserMessageCard/>
 
 
         </Box>
-    );
+</Box>
+
+)
+    ;
 };
 
 

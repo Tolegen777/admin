@@ -11,9 +11,9 @@ import userPhoto from "../../../assets/images/peoplePhoto.jpeg";
 import styled from "@emotion/styled";
 import {useDispatch} from "react-redux";
 import {setComplainedUserData} from "../../../redux/store/reducers/complaint/complaint.slice";
-import {useGetUserProfileQuery} from "../../../redux/store/rtk-api/user-rtk/userEndpoints";
+import {useGetOneProfileQuery} from "../../../redux/store/rtk-api/user-rtk/userEndpoints";
 import {setUserData} from "../../../redux/store/reducers/user/user.slice";
-import {IUserResponse} from "../../../redux/store/rtk-api/user-rtk/user.type";
+import {IGetOneProfile} from "../../../redux/store/rtk-api/user-rtk/user.type";
 
 type PropsType = {
     complaint: IComplaint
@@ -70,7 +70,7 @@ const ComplainedDataPart: React.FC<PropsType> = ({complaint, activeValue}) => {
     const [isPerformed, setPerformed] = useState(false)
     // --
 //debugger
-    const {data: userData, isLoading, isError} = useGetUserProfileQuery(complaint?.culprit?.id)
+    const {data: userData, isLoading, isError} = useGetOneProfileQuery(String(complaint?.culprit?.id ))
 
 
     return (
@@ -96,7 +96,7 @@ const ComplainedDataPart: React.FC<PropsType> = ({complaint, activeValue}) => {
 type PropsType2 = {
     complaint: IComplaint
     activeValue: string
-    userData: IUserResponse | undefined
+    userData: IGetOneProfile | undefined
 }
 
 const ComplaintListPart: React.FC<PropsType2> = ({complaint, activeValue, userData}) => {

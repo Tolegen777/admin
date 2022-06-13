@@ -1,18 +1,26 @@
-
+import { IGetOneProfile, IGetProfiles } from "./user.type";
 import userApi from "./userApi";
-import {IUserResponse} from "./user.type";
 
 export const userEndpoints = userApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUserProfile: builder.query<IUserResponse,number | null>({
-      query: (id) => ({
-        url: `user/${id}`,
-        method:"GET"
+    getProfiles: builder.query<IGetProfiles, object>({
+      query: (filters) => ({
+        url: `/profile/list`,
+        params: {
+          ...filters,
+        },
       }),
       providesTags: ["user"],
     }),
-
+    getOneProfile: builder.query<IGetOneProfile, string>({
+      query: (userId) => ({
+        url: `/profile/user/${userId}`,
+      }),
+      providesTags: ["user"],
+    }),
   }),
 });
 
-export const {useGetUserProfileQuery} = userEndpoints;
+export const { useGetProfilesQuery, useGetOneProfileQuery } = userEndpoints;
+
+//useGetUserProfileQuery

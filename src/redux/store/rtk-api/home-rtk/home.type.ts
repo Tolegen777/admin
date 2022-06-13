@@ -1,6 +1,6 @@
 interface IHomePart {
   value: string | null;
-  count: string;
+  count: number;
 }
 
 interface IHomeAges {

@@ -11,15 +11,10 @@ import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../../redux/store";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
-import {
-    StyledBodyCell,
-    StyledBodyCellFirst, StyledBodyCellLast,
-    StyledBodyRow,
-    StyledHeadCell,
-    StyledHeadRow
-} from "../../Users/modules/UserTable/style";
+
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
+import {StyledBodyCell, StyledBodyCellFirst, StyledBodyRow} from "../../Users/MainUser/ListUser/ListUser.style";
 
 interface IMessage {
     id: number,
@@ -29,56 +24,6 @@ interface IMessage {
     time: string
 }
 
-const messages = [
-    {
-        id: 1,
-        img: "",
-        userName: "Marat",
-        statusDescription: "была в сети 1 час назад",
-        time: "12:32"
-
-    },
-    {
-        id: 2,
-        img: "",
-        userName: "Asel",
-        statusDescription: "была в сети 1 час назад",
-        time: "12:32"
-
-    },
-    {
-        id: 3,
-        img: "",
-        userName: "Asel",
-        statusDescription: "была в сети 1 час назад",
-        time: "12:32"
-
-    },
-    {
-        id: 4,
-        img: "",
-        userName: "Asel",
-        statusDescription: "была в сети 1 час назад",
-        time: "12:32"
-
-    },
-    {
-        id: 5,
-        img: "",
-        userName: "Asel",
-        statusDescription: "была в сети 1 час назад",
-        time: "12:32"
-
-    },
-    {
-        id: 6,
-        img: "",
-        userName: "Asel",
-        statusDescription: "была в сети 1 час назад",
-        time: "12:32"
-
-    }
-]
 
 const UserMessageCard = React.memo(() => {
 

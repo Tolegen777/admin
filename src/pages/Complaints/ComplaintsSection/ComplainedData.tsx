@@ -1,26 +1,44 @@
 import * as React from 'react';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-
 import {Button, CircularProgress, Grid, Typography} from "@mui/material";
 import styled from "@emotion/styled";
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import Paper from "@mui/material/Paper";
+
 // @ts-ignore
 import userPhoto from "./../../../assets/images/peoplePhoto.jpeg"
 import {useNavigate} from "react-router-dom";
-import {
-    StyledBodyCell,
-    StyledBodyCellFirst,
-    StyledBodyCellLast,
-    StyledBodyRow
-} from "../../Users/modules/UserTable/style";
+
+
 import {useGetComplaintsQuery} from "../../../redux/store/rtk-api/complaint-rtk/complaintEndpoints";
-import {IComplaint} from "../../../redux/store/rtk-api/complaint-rtk/complaint.type";
 import ComplainedDataPart from "./ComplainedDataPart";
-import {setComplainedUserData} from "../../../redux/store/reducers/complaint/complaint.slice";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
+
+const StyledButton1 = styled(Button)({
+
+    width: '160px',
+    height:'35px',
+    borderRadius: '5px',
+    color: "#fff",
+    backgroundColor: "primary.main",
+    '&:hover': {
+        border: "1px solid #2398AB",
+        color: "primary.main"
+    },
+    textTransform:"lowercase"
+});
+
+const StyledButton2 = styled(Button)({
+
+    width: '160px',
+    height:'35px',
+    borderRadius: '5px',
+    color: "red",
+    border: "1px solid red",
+    '&:hover': {
+        backgroundColor: "red",
+        color: "#fff"
+    },
+    textTransform:"lowercase"
+});
 
 type Props = {
     searchedName: string
