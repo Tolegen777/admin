@@ -11,20 +11,18 @@ const UserInfo = () => {
   return (
     <Grid
       container
-      columns={2}
+      columns={12}
+      justifyContent={"space-between"}
       sx={{
         height: "200px",
         borderRadius: "10px",
         p: "20px",
         backgroundColor: "#FFF",
-        display: "flex",
-        flexDirection: "row",
-        gap: "20px",
       }}
     >
       <Grid
         item
-        xs
+        xs={6}
         sx={{
           display: "flex",
           flexDirection: "row",
@@ -70,53 +68,70 @@ const UserInfo = () => {
         </Stack>
       </Grid>
 
-      <Grid container item xs spacing={1}>
-        <Grid container item xs direction={"column"}>
-          <Grid item xs sx={{ display: "flex", flexDirection: "column" }}>
-            <Typography
-              variant="h16r"
-              color="secondary.light"
-              textTransform="uppercase"
-            >
-              Номер телефона
-            </Typography>
-            <Typography variant="h20b">
-              8777 777 77 77 - НОМЕР НУЖНО ДОБАВИТЬ в GetOne
-            </Typography>
-          </Grid>
+      <Grid container item xs={5.7}>
+        <Grid container item xs direction={"column"} spacing={4}>
           <Grid
             item
             xs
-            spacing="10px"
+            justifyContent={"flex-start"}
             sx={{ display: "flex", flexDirection: "column" }}
           >
             <Typography
               variant="h16r"
               color="secondary.light"
               textTransform="uppercase"
+              sx={{ mb: "10px" }}
             >
-              Статус
+              Номер телефона
             </Typography>
-            <Typography variant="h20b">{data?.block} StatusData</Typography>
+            <Typography variant="h20b">Нужны данные</Typography>
           </Grid>
-        </Grid>
-
-        <Grid container item xs>
-          <Grid item xs sx={{ display: "flex", flexDirection: "column" }}>
+          <Grid
+            item
+            xs
+            justifyContent={"flex-start"}
+            sx={{ display: "flex", flexDirection: "column" }}
+          >
             <Typography
               variant="h16r"
               color="secondary.light"
               textTransform="uppercase"
+              sx={{ mb: "10px" }}
+            >
+              Статус
+            </Typography>
+            <Typography variant="h20b">{data?.block} Нужны данные</Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container item xs direction={"column"} spacing={4}>
+          <Grid
+            item
+            xs
+            justifyContent={"flex-start"}
+            sx={{ display: "flex", flexDirection: "column" }}
+          >
+            <Typography
+              variant="h16r"
+              color="secondary.light"
+              textTransform="uppercase"
+              sx={{ mb: "10px" }}
             >
               Дата рождения
             </Typography>
             <Typography variant="h20b">{data?.age}</Typography>
           </Grid>
-          <Grid item xs spacing="10px">
+          <Grid
+            item
+            xs
+            justifyContent={"flex-start"}
+            sx={{ display: "flex", flexDirection: "column" }}
+          >
             <Typography
               variant="h16r"
               color="secondary.light"
               textTransform="uppercase"
+              sx={{ mb: "10px" }}
             >
               Дети
             </Typography>
@@ -124,12 +139,18 @@ const UserInfo = () => {
           </Grid>
         </Grid>
 
-        <Grid container item xs>
-          <Grid item xs sx={{ display: "flex", flexDirection: "column" }}>
+        <Grid container item xs direction={"column"} spacing={4}>
+          <Grid
+            item
+            xs
+            justifyContent={"flex-start"}
+            sx={{ display: "flex", flexDirection: "column" }}
+          >
             <Typography
               variant="h16r"
               color="secondary.light"
               textTransform="uppercase"
+              sx={{ mb: "10px" }}
             >
               Пол
             </Typography>
@@ -138,17 +159,18 @@ const UserInfo = () => {
           <Grid
             item
             xs
-            spacing={1}
+            justifyContent={"flex-start"}
             sx={{ display: "flex", flexDirection: "column" }}
           >
             <Typography
               variant="h16r"
               color="secondary.light"
               textTransform="uppercase"
+              sx={{ mb: "10px" }}
             >
               Религия
             </Typography>
-            <Typography variant="h20b">Need to Add Religion</Typography>
+            <Typography variant="h20b">Нужны данные</Typography>
           </Grid>
         </Grid>
       </Grid>
