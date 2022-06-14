@@ -1,6 +1,6 @@
 // library
 import React, { useEffect, useRef, useState } from "react";
-import { CircularProgress, FormGroup, Typography } from "@mui/material";
+import { Button, CircularProgress, FormGroup, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 
@@ -90,12 +90,14 @@ const LoginForm: React.FC = () => {
                 <InputHelperText>{errors.password}</InputHelperText>
               )}
             </InputBox>
-            <FormCheckBox error={error}>
+            <FormCheckBox>
               <FormGroup>
                 <StyledCheckBox />
               </FormGroup>
             </FormCheckBox>
-            <ReforgedMainButton
+            <Button
+              variant="contained"
+              color="primary"
               disabled={status === ActionsEnum.LOADING}
               startIcon={
                 status === ActionsEnum.LOADING && (
@@ -105,7 +107,7 @@ const LoginForm: React.FC = () => {
               type="submit"
             >
               Войти
-            </ReforgedMainButton>
+            </Button>
           </>
         </form>
       </StackBlock>

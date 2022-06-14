@@ -65,7 +65,6 @@ export const FormCheckBox = (props: any) => (
     }}
   >
     {props.children}
-    <Typography color="primary.error">{props.error}</Typography>
   </Box>
 );
 
