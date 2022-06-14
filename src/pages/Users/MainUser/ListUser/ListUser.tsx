@@ -3,13 +3,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import {
-  Box,
-  Button,
-  Skeleton,
-  Stack,
-  TablePagination,
-} from "@mui/material";
+import { Box, Button, Skeleton, Stack, TablePagination } from "@mui/material";
 import React from "react";
 
 // style
@@ -67,20 +61,48 @@ const UserTable = () => {
   for (let i = 0; i < 4; i++) {
     items.push(
       <StyledBodyRow>
-        <StyledBodyCellFirst><Skeleton variant="text" animation="wave" width={"100%"} height={50} /></StyledBodyCellFirst>
+        <StyledBodyCellFirst>
+          <Skeleton
+            variant="text"
+            animation="wave"
+            width={"100%"}
+            height={50}
+          />
+        </StyledBodyCellFirst>
         <StyledBodyCell>
-          <Skeleton variant="rectangular" animation="wave" width={"100%"} height={50} />
+          <Skeleton
+            variant="rectangular"
+            animation="wave"
+            width={"100%"}
+            height={50}
+          />
         </StyledBodyCell>
         <StyledBodyCell>
-          <Skeleton variant="rectangular" animation="wave" width={"100%"} height={50} />
+          <Skeleton
+            variant="rectangular"
+            animation="wave"
+            width={"100%"}
+            height={50}
+          />
         </StyledBodyCell>
         <StyledBodyCell>
-          <Skeleton variant="rectangular" animation="wave" width={"100%"} height={50} />
+          <Skeleton
+            variant="rectangular"
+            animation="wave"
+            width={"100%"}
+            height={50}
+          />
         </StyledBodyCell>
         <StyledBodyCellLast>
-          <Skeleton variant="rectangular" animation="wave" width={"100%"} height={50} />
+          <Skeleton
+            variant="rectangular"
+            animation="wave"
+            width={"100%"}
+            height={50}
+          />
         </StyledBodyCellLast>
-      </StyledBodyRow>)
+      </StyledBodyRow>
+    );
   }
 
   return (
@@ -103,41 +125,37 @@ const UserTable = () => {
 
           <TableBody>
             {isLoading ? (
-              <>
-                {items}
-              </>
-            ) : (data?.profiles.map((profile) => (
-              <StyledBodyRow key={profile.id}>
-                <StyledBodyCellFirst>{profile.firstName}</StyledBodyCellFirst>
-                <StyledBodyCell>{profile.user.phone}</StyledBodyCell>
-                <StyledBodyCell>
-                  {profile.block === null ? "Джонибек" : "Maksat"}
-                </StyledBodyCell>
-                <StyledBodyCell>
-                  {
-                    profile.block
+              <>{items}</>
+            ) : (
+              data?.profiles.map((profile) => (
+                <StyledBodyRow key={profile.id}>
+                  <StyledBodyCellFirst>{profile.firstName}</StyledBodyCellFirst>
+                  <StyledBodyCell>{profile.user.phone}</StyledBodyCell>
+                  <StyledBodyCell>
+                    {profile.block === null ? "Джонибек" : "Maksat"}
+                  </StyledBodyCell>
+                  <StyledBodyCell>
+                    {profile.block
                       ? "Jonibek"
-                      : "Максат прислал мне фотку Джонибека"
-                  }
-                </StyledBodyCell>
-                <StyledBodyCellLast>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                      fontSize: "18px",
-                      borderRadius: "10px",
-                      px: "40px",
-                    }}
-                    onClick={() => navigate(`/app/users/one/${profile.id}`)}
-                  >
-                    Подробнее
-                  </Button>
-                </StyledBodyCellLast>
-              </StyledBodyRow>
-            ))
-            )
-            }
+                      : "Максат прислал мне фотку Джонибека"}
+                  </StyledBodyCell>
+                  <StyledBodyCellLast>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      sx={{
+                        fontSize: "18px",
+                        borderRadius: "10px",
+                        px: "40px",
+                      }}
+                      onClick={() => navigate(`/app/users/one/${profile.id}`)}
+                    >
+                      Подробнее
+                    </Button>
+                  </StyledBodyCellLast>
+                </StyledBodyRow>
+              ))
+            )}
           </TableBody>
         </Table>
         <TablePagination
@@ -148,7 +166,7 @@ const UserTable = () => {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          labelRowsPerPage="Товаров на одной странице:"
+          labelRowsPerPage="Пользователей на одной странице:"
         />
       </TableContainer>
     </>

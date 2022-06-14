@@ -22,19 +22,28 @@ const LeftSideBlock = () => {
             Инсар Еркинбаевs
           </Typography>
           <Box sx={{ width: "100%" }}>
-            <MainButton
+            <Button
+              variant="contained"
+              color="primary"
               startIcon={<PermIdentityOutlinedIcon />}
               sx={{ mb: "20px" }}
             >
               Аккаунт
-            </MainButton>
-            <SecondaryButton startIcon={<LockOutlinedIcon />}>
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              startIcon={<LockOutlinedIcon />}
+              sx={{ p: "10px", fontWeight: 600 }}
+            >
               Права доступа
-            </SecondaryButton>
+            </Button>
           </Box>
         </Stack>
         <Box>
-          <WarningButton sx={{ justifyContent: "center" }}>Выйти</WarningButton>
+          <Button variant="contained" color="error">
+            Выйти
+          </Button>
         </Box>
       </PaperContainer>
     </Grid>
