@@ -28,6 +28,7 @@ const OneUser = () => {
         <Grid item xs={7}>
           <ComplaintUserMessages />
         </Grid>
+
         <Grid item xs={5}>
           <VisitDiagram />
         </Grid>

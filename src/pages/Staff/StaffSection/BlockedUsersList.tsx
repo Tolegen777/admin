@@ -78,9 +78,9 @@ const BlockedUsersList = () => {
     const {data: myBlockedUsers, isLoading, isError} = useGetMyBlockedProfilesByIdQuery(workerId as number)
 
     if (myBlockedUsers) {
-        debugger
-        console.log(myBlockedUsers)
-        console.log(myBlockedUsers[0]?.avatar?.image)
+       // debugger
+       //  console.log(myBlockedUsers)
+       //  console.log(myBlockedUsers[0]?.avatar?.image)
 
     }
 

@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 interface IInitState {
     isShowPrevButton: boolean,
     isOneUserMessage: boolean,
-    id: number | null,
+    culpritId: number | null,
     firstName: string,
     secondName: string,
     middleName: string,
@@ -11,7 +11,8 @@ interface IInitState {
     phone: number | null
     complaintId: number | null
     complaintStatus: string,
-    messageText: string,
+    messageText: string | null,
+    isBlocked:boolean
     reporter: {
         firstName: string | null
         middleName: string | null
@@ -26,21 +27,22 @@ interface IInitState {
 const initialState: IInitState = {
     isShowPrevButton: false,
     isOneUserMessage: false,
-    id: null,
+    culpritId: null,
     firstName: '',
     secondName: '',
     middleName: '',
+    isBlocked:false,
     date: null,
     phone: null,
     complaintId: null,
     complaintStatus: '',
-    messageText: '',
+    messageText: null,
     reporter: {
-        firstName: '',
-        middleName: '',
-        secondName: '',
+        firstName: null,
+        middleName: null,
+        secondName: null,
     },
-    comment: ''
+    comment: null
 
 }
 
@@ -56,9 +58,16 @@ const complaintSlice = createSlice({
             state.isOneUserMessage = payload
         },
         setComplainedUserData: (state, {payload}) => {
-            // debugger
+            state.reporter.firstName = null
+            state.reporter.secondName = null
+            state.reporter.middleName = null
+            state.messageText = null
+            state.comment = null
             if (payload.culprit?.id) {
-                state.id = payload.culprit.id
+                state.culpritId = payload.culprit.id
+            }
+            if (payload.culprit?.user) {
+                state.phone = payload.culprit?.user.phone
             }
             if (payload.culprit?.firstName) {
                 state.firstName = payload.culprit.firstName
@@ -72,16 +81,19 @@ const complaintSlice = createSlice({
             if (payload.culprit?.date) {
                 state.date = payload.culprit.date
             }
+            if (payload.culprit?.block) {
+                state.isBlocked = payload?.culprit?.block.block
+            }
             if (payload.message?.text) {
                 state.messageText = payload.message.text
             }
-            if (payload.reporter && payload.reporter.firstName != null) {
+            if (payload.reporter) {
                 state.reporter.firstName = payload.reporter?.firstName
             }
-            if (payload.reporter && payload.reporter.middleName != null) {
+            if (payload.reporter) {
                 state.reporter.middleName = payload.reporter?.middleName
             }
-            if (payload.reporter && payload.reporter.secondName != null) {
+            if (payload.reporter) {
                 state.reporter.secondName = payload.reporter?.secondName
             }
             if (payload.text) {

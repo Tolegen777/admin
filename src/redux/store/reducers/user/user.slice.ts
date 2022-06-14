@@ -1,32 +1,25 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 interface IInitState {
-    id:number | null
-   phone:string | null
+    role: string | null
+
 }
 
 const initialState: IInitState = {
-    id:null,
-   phone:''
-
+    role: null,
 }
 
 const userSlice = createSlice({
     name: 'user/',
     initialState,
     reducers: {
-        setUserData:(state,{payload}) => {
-
-            if (payload.phone){
-                state.phone = payload.phone
-            }
-            if (payload.id){
-                state.id = payload.id
-            }
+        setRole: (state, {payload}) => {
+            //debugger
+            state.role = payload
         }
     }
 })
 
-export const {setUserData} = userSlice.actions
+export const {setRole} = userSlice.actions
 
 export default userSlice.reducer

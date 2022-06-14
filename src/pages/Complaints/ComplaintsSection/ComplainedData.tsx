@@ -7,7 +7,10 @@ import userPhoto from "./../../../assets/images/peoplePhoto.jpeg"
 import {useNavigate} from "react-router-dom";
 
 
-import {useGetComplaintsQuery} from "../../../redux/store/rtk-api/complaint-rtk/complaintEndpoints";
+import {
+    useChangeComplaintStatusMutation,
+    useGetComplaintsQuery
+} from "../../../redux/store/rtk-api/complaint-rtk/complaintEndpoints";
 import ComplainedDataPart from "./ComplainedDataPart";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
@@ -50,7 +53,26 @@ const ComplainedData: React.FC<Props> = React.memo(({searchedName, activeValue})
     const dispatch = useDispatch()
 
     const {data: complaints, isLoading, isError, refetch} = useGetComplaintsQuery("")
-    //debugger
+
+
+
+    // if (complaints){
+    //     // eslint-disable-next-line array-callback-return
+    //     complaints?.complaints.map(complaint=>{
+    //         if (complaint?.culprit?.block?.block){
+    //           changeComplaintStatus({id:complaint.id, status:"COMPLETED"})
+    //         }
+    //
+    //     })
+    // }
+    // console.log(complaints)
+    // console.log("complaints")
+    // if (complaints){
+    //     complaints.map((complaint,ind)=>{
+    //
+    //
+    //     })
+    // }
     useEffect(() => {
         refetch()
     }, [])

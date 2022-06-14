@@ -17,6 +17,9 @@ import Edit from "../Staff/StaffSection/Edit";
 import Worker from "../Staff/StaffSection/Worker";
 import CreateWorker from "../Staff/StaffSection/CreateWorker";
 import Create from "../Staff/StaffSection/Create";
+import {useGetRoleQuery} from "../../redux/store/rtk-api/user-rtk/userEndpoints";
+import {useDispatch} from "react-redux";
+import {setRole} from "../../redux/store/reducers/user/user.slice";
 
 // import Profile from "./Profile";
 // import Users from "./Users";
@@ -28,6 +31,22 @@ import Create from "../Staff/StaffSection/Create";
 // import Edit from "../../components/pages/staff/Edit";
 
 const Main = () => {
+
+  const {data:role,isLoading,isError} = useGetRoleQuery("")
+  debugger
+  const dispatch = useDispatch()
+
+  if (role){
+    if (role.filter((r,ind)=>{
+      return r.value==="SUPER-ADMIN"
+    }).length>0){
+      dispatch(setRole("SUPER-ADMIN"))
+    } else {
+      dispatch(setRole("WORKER"))
+    }
+  }
+
+
   return (
     <>
       <Routes>

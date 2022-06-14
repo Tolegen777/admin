@@ -44,8 +44,9 @@ export const convertDate = (day: string, month: string, year: string) => {
 
 const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
     const [date, setDate] = React.useState<Date | null>(null);
-    const [createWorker, {isLoading, isError, isSuccess}] = useCreateStaffMutation()
+    const [createWorker, {isLoading, isError, isSuccess, error}] = useCreateStaffMutation()
     const [isAlertOpen, setAlertOpen] = useState(false)
+
 
     const validationSchema = yup.object({
         firstName: yup
@@ -59,9 +60,9 @@ const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
             .required('Это обязательное поле!'),
         iin: yup
             .string()
+            .required('Это обязательное поле!')
             .min(11, 'Данные написаны неправильно!')
-            .max(13, 'Данные написаны неправильно!')
-            .required('Это обязательное поле!'),
+            .max(13, 'Данные написаны неправильно!'),
         date: yup
             .string()
             .required('Это обязательное поле!'),
@@ -70,7 +71,9 @@ const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
             .required('Это обязательное поле!'),
         cityId: yup
             .number()
-            .required('Это обязательное поле!'),
+            .required('Это обязательное поле!')
+            .typeError('Это обязательное поле!')
+            .positive('Данные написаны неправильно'),
         street: yup
             .string()
             .required('Это обязательное поле!'),
@@ -79,7 +82,9 @@ const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
             .required('Это обязательное поле!'),
         floor: yup
             .number()
-            .required('Это обязательное поле!'),
+            .required('Это обязательное поле!')
+            .typeError('Поле должно быть числом')
+            .positive('Данные написаны неправильно'),
         apartment: yup
             .string()
             .required('Это обязательное поле!'),
@@ -131,7 +136,7 @@ const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
         if (isAlertOpen) {
             const timer = setTimeout(() => {
                 setAlertOpen(false)
-            }, 3000);
+            }, 5000);
             return () => clearTimeout(timer);
         }
     }, [isAlertOpen]);
@@ -151,6 +156,7 @@ const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
         if (isError || isSuccess) {
             setAlertOpen(true)
         }
+
     }, [isSuccess, isError])
 
     useEffect(() => {
@@ -163,12 +169,14 @@ const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
         formik.setFieldValue('date', convertDate(value.getDate(), (value.getMonth() + 1), String(value.getUTCFullYear())))
     }
 
+
     return (
         <>
-            {isAlertOpen && isSuccess && <CustomAlert status={"success"} message={"Успех!"}
-                                                      title={"Сотудник успешно создан!"}/>}
+            {isAlertOpen && isSuccess && <CustomAlert status={"success"} title={"Успех!"}
+                                                      message={"Сотудник успешно создан!"}/>}
             {isAlertOpen && isError &&
-                <CustomAlert status={"error"} message={"Произошла ошибка!"} title={"Произошла ошибка!"}/>}
+                // @ts-ignore
+                <CustomAlert status={"error"} title={"Ошибка!"} message={error?error?.data?.message:"Произошла ошибка!"}/>}
             {isLoading && <CircularProgress/>}
             <WorkerProfileForm formik={formik} date={date} handleSet={handleSet} password={true}
                                mainText={"Информация о пользователе"}/>

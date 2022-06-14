@@ -12,6 +12,7 @@ import {
 import CustomWindow from "../../../components/reusedComponents/CustomWindow";
 import {setComplainedStatus} from "../../../redux/store/reducers/complaint/complaint.slice";
 import {useDispatch} from "react-redux";
+import {convertDate} from "../../../components/reusedComponents/commonFunctions";
 
 const StyledBoldTypography = styled(Typography)({
     fontSize:'15px',
@@ -45,15 +46,6 @@ const ComplaintUsersInfo = () => {
     const [isWindowOpen2,setWindowOpen2] = useState(false)
 
     const userData = useTypedSelector(state=>state.complaint)
-   // debugger
-
-
-    const userAdditionalData = useTypedSelector(state=>state.user)
-   // debugger
-
-    // console.log(userData)
-    const dispatch = useDispatch()
-
     const [blockUser,{isLoading,isSuccess, isError}] = useBlockUserMutation()
     const [changeComplaint,{isLoading:isLoading2,isSuccess:isSuccess2, isError:isError2}] = useChangeComplaintStatusMutation()
 
@@ -63,11 +55,11 @@ const ComplaintUsersInfo = () => {
     const texts = [
         {
             firstText:"Номер телефона",
-            description:userAdditionalData?.phone
+            description:userData.phone?String(userData.phone):""
         },
         {
-            firstText:"Дата рожения",
-            description:userData.date
+            firstText:"Дата рождения",
+            description:userData.date?convertDate(userData.date):""
         },
 
         {
@@ -80,7 +72,7 @@ const ComplaintUsersInfo = () => {
     return (
         <>
             {isWindowOpen&&<CustomWindow closeWindow={()=>setWindowOpen(false)} isWindowOpen={isWindowOpen} isError={isError}
-                                         isSuccess={isSuccess} isLoading={isLoading} label={"Вы действительно хотите заблокировать пользователя?"} blockUser={blockUser} blockUserId={userAdditionalData?.id} changeComplaint={changeComplaint}
+                                         isSuccess={isSuccess} isLoading={isLoading} label={"Вы действительно хотите заблокировать пользователя?"} blockUser={blockUser} blockUserId={userData?.culpritId} changeComplaint={changeComplaint}
                                          complaintId={userData.complaintId}
             />}
             {isWindowOpen2&&<CustomWindow closeWindow={()=>setWindowOpen2(false)} isWindowOpen={isWindowOpen2} isError={isError2}
@@ -94,13 +86,13 @@ const ComplaintUsersInfo = () => {
                             <Grid sx = {{margin: '5px 20px'}} >
                                 <StyledTypography>Информация на пользователя</StyledTypography>
                                 <Typography sx={{margin:"10px auto", fontSize:'20px', color:"primary.main", fontWeight:'800'}}>{`${userData?.secondName} ${userData?.firstName} ${userData?.middleName}`}</Typography>
-                                {(userData.complaintStatus===complaintStatus.NEW||userData.complaintStatus===complaintStatus.MODERATION)&&<Stack direction={"row"} spacing={2} sx={{marginTop: "20px"}}>
+                                {(!userData?.isBlocked&&userData.complaintStatus!==complaintStatus.CANCELED)&&<Stack direction={"row"} spacing={2} sx={{marginTop: "20px"}}>
                                     <MyStyledButton sx={{color: "#FD4444", backgroundColor: "#FFEFEF"}}
                                                     onClick={() => setWindowOpen(true)}>Заблокировать</MyStyledButton>
                                     <MyStyledButton sx={{color: "primary.main", backgroundColor: "primary.light"}}
                                                     onClick={() => setWindowOpen2(true)}>Отклонить</MyStyledButton>
                                 </Stack>}
-                                {(userData.complaintStatus===complaintStatus.COMPLETED)&&
+                                {(userData.complaintStatus===complaintStatus.COMPLETED||userData?.isBlocked)&&
                                     <Typography sx={{marginTop: "20px", color:"green"}}>Пользователь заблокирован!</Typography>
                                 }
                                 {(userData.complaintStatus===complaintStatus.CANCELED)&&

@@ -8,8 +8,6 @@ export const login = createAsyncThunk(
   async function (creds: ILogin, { rejectWithValue }) {
     try {
       const response = await AuthService.login(creds);
-      console.log(response);
-      console.log("response");
       localStorage.setItem("access_token", response.data.access_token);
       return response.data;
     } catch (e) {
@@ -30,6 +28,7 @@ export const checkAuth = createAsyncThunk<any>(
     }
   }
 );
+
 
 export const logout = createAsyncThunk<any>(
   "auth/logout",
