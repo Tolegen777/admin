@@ -38,10 +38,15 @@ const ComplaintUserPage = () => {
     const goToBack = ()=>{
      //   debugger
        // debugger
+
+        if (userData.isBlocked){
+            changeComplaint({id:userData.complaintId,status:"COMPLETED"})
+        }
         if (userData.complaintStatus==="NEW"){
             dispatch(setComplainedStatus("MODERATION"))
             changeComplaint({id:userData.complaintId,status:"MODERATION"})
         }
+
         navigate('/app/complaints')
     }
 

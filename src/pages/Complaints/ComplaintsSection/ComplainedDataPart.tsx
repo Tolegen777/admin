@@ -1,19 +1,15 @@
 import {IComplaint} from "../../../redux/store/rtk-api/complaint-rtk/complaint.type";
 import * as React from "react";
-import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TableCell from "@mui/material/TableCell";
-import {Box, Button, Grid, Typography} from "@mui/material";
+import {Button, Grid, Typography} from "@mui/material";
 // @ts-ignore
 import userPhoto from "../../../assets/images/peoplePhoto.jpeg";
 import styled from "@emotion/styled";
 import {useDispatch} from "react-redux";
 import {setComplainedUserData} from "../../../redux/store/reducers/complaint/complaint.slice";
-import {useGetOneProfileQuery} from "../../../redux/store/rtk-api/user-rtk/userEndpoints";
-import {setUserData} from "../../../redux/store/reducers/user/user.slice";
-import {IGetOneProfile} from "../../../redux/store/rtk-api/user-rtk/user.type";
 
 type PropsType = {
     complaint: IComplaint
@@ -63,29 +59,23 @@ const complaintStatus = {
 }
 
 const ComplainedDataPart: React.FC<PropsType> = ({complaint, activeValue}) => {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
 
-    // это временный код код --
-    const [isPerformed, setPerformed] = useState(false)
-    // --
+
 //debugger
-    const {data: userData, isLoading, isError} = useGetOneProfileQuery(String(complaint?.culprit?.id ))
-
-
+//     const {data: userData, isLoading, isError} = useGetOneProfileQuery(String(complaint?.culprit?.id ))
     return (
         <>
             {
                 activeValue === "Не обработанные" && complaint.status === "NEW" &&
-                <ComplaintListPart complaint={complaint} activeValue={activeValue} userData={userData}/>
+                <ComplaintListPart complaint={complaint} activeValue={activeValue}/>
             }
             {
                 activeValue === "Обработанные" && complaint.status !== "NEW" &&
-                <ComplaintListPart complaint={complaint} activeValue={activeValue} userData={userData}/>
+                <ComplaintListPart complaint={complaint} activeValue={activeValue}/>
             }
             {
                 activeValue === "Весь список" &&
-                <ComplaintListPart complaint={complaint} activeValue={activeValue} userData={userData}/>
+                <ComplaintListPart complaint={complaint} activeValue={activeValue}/>
             }
         </>
 
@@ -96,10 +86,9 @@ const ComplainedDataPart: React.FC<PropsType> = ({complaint, activeValue}) => {
 type PropsType2 = {
     complaint: IComplaint
     activeValue: string
-    userData: IGetOneProfile | undefined
 }
 
-const ComplaintListPart: React.FC<PropsType2> = ({complaint, activeValue, userData}) => {
+const ComplaintListPart: React.FC<PropsType2> = ({complaint}) => {
 
     //debugger
     const navigate = useNavigate()
@@ -107,16 +96,10 @@ const ComplaintListPart: React.FC<PropsType2> = ({complaint, activeValue, userDa
 
 
     const handleSetUserData = (data: IComplaint) => {
+        debugger
         if (data && data.culprit) {
             dispatch(setComplainedUserData(data))
-            //   debugger
-            // debugger
         }
-
-        if (userData) {
-            dispatch(setUserData(userData))
-        }
-
         navigate('user')
     }
 

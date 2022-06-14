@@ -9,6 +9,7 @@ import {useBlockWorkerMutation, useGetOneStaffQuery} from "../../../redux/store/
 import {useDispatch} from "react-redux";
 import {setMoreInfoForOneStaff} from "../../../redux/store/reducers/staff/staff.slice";
 import CustomWindow from "../../../components/reusedComponents/CustomWindow";
+import {convertDate} from "../../../components/reusedComponents/commonFunctions";
 
 
 const StyledBoldTypography = styled(Typography)({
@@ -48,14 +49,14 @@ const UsersInfo = () => {
         refetch()
     }, [])
 
-    const convertDate = (date: string) => {
-        if (date) {
-            return date.split('-').reverse().join('-')
-        } else return ""
 
-    }
     if (oneWorkerData) {
         dispatch(setMoreInfoForOneStaff(oneWorkerData))
+    }
+
+    if (oneWorkerData){
+        // console.log(oneWorkerData?.block?.block)
+        // console.log("oneWorkerData?.block?.block")
     }
     const texts = [
         {
@@ -64,7 +65,7 @@ const UsersInfo = () => {
         },
         {
             firstText: "Дата рожения",
-            description: oneWorkerData ? convertDate(oneWorkerData?.date?.slice(0, 10)) : ""
+            description: oneWorkerData ? convertDate(oneWorkerData?.date) : ""
         },
         {
             firstText: "должность",

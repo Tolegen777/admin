@@ -10,8 +10,8 @@ export const login = createAsyncThunk(
 
       const response = await AuthService.login(creds);
         //debugger
-        console.log(response)
-        console.log("response")
+        // console.log(response)
+        // console.log("response")
       localStorage.setItem("access_token", response.data.access_token);
       //debugger
       return response.data;

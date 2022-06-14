@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, InputAdornment, TextField, Typography} from "@mui/material";
+import {Box, FormHelperText, InputAdornment, TextField, Typography} from "@mui/material";
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -74,11 +74,12 @@ export const TextFieldComponent: React.FC<PropsType> = ({
 export interface PropsType2 {
     label: string,
     text: string,
-    isEdit:boolean
+    isEdit:boolean,
+    helperText:any
 
 }
 
-export const TextFieldComponent2: React.FC<PropsType> = ({value, label, id, name, formik, error, objects,isEdit}) => {
+export const TextFieldComponent2: React.FC<PropsType> = ({value, label, id, name, formik, error, objects,isEdit, helperText}) => {
     return (
         <Box sx={{marginTop: "10px"}}>
             {/*<FormControl sx={{ m: 1, width: 300 }}>*/}
@@ -102,9 +103,11 @@ export const TextFieldComponent2: React.FC<PropsType> = ({value, label, id, name
                     width: "250px"
                 }}
                 error={error}
+
                 // multiple
                 // MenuProps={MenuProps}
             >
+
                 {objects && objects.map((object: any) => (
                     <MenuItem
                         key={object.id}
@@ -114,6 +117,7 @@ export const TextFieldComponent2: React.FC<PropsType> = ({value, label, id, name
                     </MenuItem>
                 ))}
             </Select>
+            <FormHelperText sx={{color:"#FC4B4A"}}>{helperText}</FormHelperText>
             {/*</FormControl>*/}
         </Box>
 
@@ -137,8 +141,8 @@ export const TextFieldComponent3: React.FC<PropsType> = ({value, label, id, name
                 name={name}
                 value={value}
                 onChange={formik.handleChange}
-                error={formik.touched.password && Boolean(formik.errors.password)}
-                helperText={formik.touched.password && formik.errors.password}
+                error={error && Boolean(error)}
+                helperText={helperText}
 
             />
         </Box>

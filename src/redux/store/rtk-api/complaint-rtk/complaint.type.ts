@@ -23,7 +23,7 @@ export interface IComplaint {
     firstName: string | null,
     secondName: string | null,
     middleName: null | string,
-    block: boolean | null,
+    block: {id: number, text: any, block: boolean} | null,
     kids: number | null,
     date: string | null,
     iin: string | null

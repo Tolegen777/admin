@@ -28,9 +28,12 @@ import {
 
 // store
 import { logout } from "../../redux/store/reducers/auth/auth.action";
+import {useTypedSelector} from "../../redux/store";
 
 const DrawerAdmin = () => {
   const dispatch = useDispatch();
+
+  const role = useTypedSelector(state=>state.user.role)
 
   return (
     <Drawer
@@ -73,14 +76,14 @@ const DrawerAdmin = () => {
         </NavLink>
         <Box sx={{ width: "300px", height: "1px", background: "#2398AB" }} />
         <List sx={{ p: 0, pt: "40px" }}>
-          <StyledNavLink to="profile">
+          {role&&role==="WORKER"&&<StyledNavLink to="profile">
             <StyledListItem>
               <StyledListItemIcon>
-                <ProfileLogo />
+                <ProfileLogo/>
               </StyledListItemIcon>
               Профиль
             </StyledListItem>
-          </StyledNavLink>
+          </StyledNavLink>}
           <StyledNavLink to="home">
             <StyledListItem>
               <StyledListItemIcon>
@@ -105,14 +108,14 @@ const DrawerAdmin = () => {
               Список жалоб
             </StyledListItem>
           </StyledNavLink>
-          <StyledNavLink to="employees">
+          {role&&role==="SUPER-ADMIN"&&<StyledNavLink to="employees">
             <StyledListItem>
               <StyledListItemIcon>
-                <EmployeesLogo />
+                <EmployeesLogo/>
               </StyledListItemIcon>
               Персонал
             </StyledListItem>
-          </StyledNavLink>
+          </StyledNavLink>}
         </List>
       </Stack>
       <Stack>

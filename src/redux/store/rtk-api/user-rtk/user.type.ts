@@ -60,3 +60,11 @@ interface IProfile {
   user: IUser;
 }
 
+
+
+export interface IRole {
+  id: number,
+  value: string,
+  description: string
+}
+

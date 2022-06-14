@@ -52,15 +52,15 @@ const ComplaintUserMessages = () => {
             }}>Информация о жалобе
             </Typography>
 
-            <Typography sx={{fontWeight: "800", textTransform: 'capitalize'}}>Назад</Typography>
+
 
             <Box sx={{backgroundColor: "#fff", margin: "20px auto", padding: "10px", height: "400px"}}>
                 <Typography sx={{
                     color: "primary.main",
                     fontWeight: "800",
                     textTransform: 'capitalize',
+                    marginBottom:"10px"
                 }}>Сообщение</Typography>
-                <Typography sx={{fontWeight: "800", textTransform: 'capitalize'}}>Назад</Typography>
                 <UserMessageCard/>
 
 

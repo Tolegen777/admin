@@ -49,18 +49,18 @@ const staffSlice = createSlice({
 
         },
         setMoreInfoForOneStaff: (state, {payload}) => {
-            state.firstName = payload.firstName
-            state.secondName = payload.secondName
-            state.middleName = payload.middleName
-            state.date = payload.date
-            state.iin = payload.iin
-            state.phone = payload.user.phone
-            state.street = payload.place.street
-            state.floor = payload.place.floor
-            state.building = payload.place.building
-            state.apartment = payload.place.apartment
-            state.index = payload.place.index
-            state.cityId = payload.place.city.id
+            state.firstName = payload?.firstName
+            state.secondName = payload?.secondName
+            state.middleName = payload?.middleName
+            state.date = payload?.date
+            state.iin = payload?.iin
+            state.phone = payload?.user?.phone
+            state.street = payload?.place?.street
+            state.floor = payload?.place?.floor
+            state.building = payload?.place?.building
+            state.apartment = payload?.place?.apartment
+            state.index = payload?.place?.index
+            state.cityId = payload?.place?.city?.id
 
 
         },

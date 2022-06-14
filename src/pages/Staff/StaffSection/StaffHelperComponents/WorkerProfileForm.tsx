@@ -128,7 +128,8 @@ const WorkerProfileForm: React.FC<Props2> = ({formik, date, handleSet, password,
                                              error={formik.touched.cityId && Boolean(formik.errors.cityId)}
                                              helperText={formik.touched.cityId && formik.errors.cityId}
                                              isEdit = {isEdit&&isEdit}
-                                             objects={cities}/>
+                                             objects={cities}
+                        />
                         {isEdit && <EditIcon sx={{color: "primary.main",marginTop:"25px", marginLeft:"5px"}} fontSize={"small"}/>}
                     </Box>
 

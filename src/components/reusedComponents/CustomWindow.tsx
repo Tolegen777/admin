@@ -20,10 +20,6 @@ type PropsType = {
     complaintId?:number | null,
     changeComplaint?(data:any):void,
     updateProfile?():void
-
-
-
-
 }
 
 
@@ -65,6 +61,8 @@ const CustomWindow:React.FC<PropsType> = ({isWindowOpen,isLoading,isError,isSucc
     //
     // }
 
+
+
     return(
         <Dialog
             open={isWindowOpen}
@@ -72,7 +70,7 @@ const CustomWindow:React.FC<PropsType> = ({isWindowOpen,isLoading,isError,isSucc
         >
             {isLoading && <CircularProgress/>}
             {isError &&<CustomAlert title="Ошибка" status="error"
-                                               message="Возникла неизвестная ошибка!"/>}{ isSuccess && <CustomAlert title="Успешно" status="success" message="Операция успешно выполнено"/>}
+                                               message={"Возникла неизвестная ошибка!"}/>}{ isSuccess && <CustomAlert title="Успешно" status="success" message="Операция успешно выполнено"/>}
 
             <DialogTitle id="alert-dialog-title">
                 <CloseIcon sx={{float: 'right', cursor: 'pointer'}} onClick={closeWindow}/>

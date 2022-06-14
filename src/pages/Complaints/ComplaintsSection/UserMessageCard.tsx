@@ -34,7 +34,7 @@ const UserMessageCard = React.memo(() => {
     const rows = [
         {
             text: 'Кто подал жалобу:',
-            description: complaintData ? `${complaintData?.reporter?.firstName} ${complaintData?.reporter?.secondName} ${complaintData?.reporter?.middleName}` : ""
+            description: complaintData ? `${complaintData.reporter.firstName!==null?complaintData?.reporter?.firstName:''} ${complaintData.reporter.secondName!==null?complaintData?.reporter?.secondName:''} ${complaintData.reporter.middleName!==null?complaintData?.reporter?.middleName:''}` : ""
         },
         {
             text: 'Сообщение на которое было подана жалоба:',

@@ -1,4 +1,4 @@
-import { IGetOneProfile, IGetProfiles } from "./user.type";
+import {IGetOneProfile, IGetProfiles, IRole} from "./user.type";
 import userApi from "./userApi";
 
 export const userEndpoints = userApi.injectEndpoints({
@@ -18,9 +18,15 @@ export const userEndpoints = userApi.injectEndpoints({
       }),
       providesTags: ["user"],
     }),
+    getRole: builder.query<IRole[], string>({
+      query: () => ({
+        url: `/user/check`,
+      }),
+      providesTags: ["user"],
+    }),
   }),
 });
 
-export const { useGetProfilesQuery, useGetOneProfileQuery } = userEndpoints;
+export const { useGetProfilesQuery, useGetOneProfileQuery,useGetRoleQuery } = userEndpoints;
 
 //useGetUserProfileQuery

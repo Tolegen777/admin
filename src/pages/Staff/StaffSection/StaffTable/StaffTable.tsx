@@ -3,7 +3,7 @@ import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 
-import { Box, Button, Divider, Typography } from "@mui/material";
+import {Box, Button, CircularProgress, Divider, Typography} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setOneStaff } from "../../../../redux/store/reducers/staff/staff.slice";
@@ -27,53 +27,62 @@ const StaffTable: React.FC<Props> = ({ searchedName }) => {
     isLoading,
     isError,
     isSuccess,
+      error
   } = useGetStaffQuery("staff");
-  console.log(workers);
+  // console.log(workers);
 
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  return (
-    <TableContainer component={Box}>
-      <Table
-        sx={{ minWidth: 650, boxShadow: "none" }}
-        aria-label="simple table"
-      >
-        <TableHead sx={{ position: "relative" }}>
-          <StyledHeadRow>
-            <StyledHeadCell>Сотрудник</StyledHeadCell>
-            <StyledHeadCell>Телефон</StyledHeadCell>
-            <StyledHeadCell>ИИН</StyledHeadCell>
-            <StyledHeadCell>Уровень доступа</StyledHeadCell>
-          </StyledHeadRow>
-          <Divider
-            sx={{
-              ml: "17px",
-              position: "absolute",
-              width: "calc(100% - 32px)",
-              backgroundColor: "primary.main",
-            }}
-          />
-        </TableHead>
 
-        <TableBody>
-          {workers &&
-            workers.map((worker: IStaffResponse, ind) => {
-              if (
-                searchedName &&
-                worker.firstName
-                  .toLowerCase()
-                  .includes(searchedName.toLowerCase())
-              ) {
-                return <StaffTableInfo ind={ind} worker={worker} />;
-              } else if (!searchedName) {
-                return <StaffTableInfo ind={ind} worker={worker} />;
-              } else return;
-            })}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    return (
+      <>
+          {isLoading&&<CircularProgress/>}
+          {
+              // @ts-ignore
+              isError&&<div>{error?error?.data?.message:"Произошла ошибка"}</div>}
+          <TableContainer component={Box}>
+              <Table
+                  sx={{ minWidth: 650, boxShadow: "none" }}
+                  aria-label="simple table"
+              >
+                  <TableHead sx={{ position: "relative" }}>
+                      <StyledHeadRow>
+                          <StyledHeadCell>Сотрудник</StyledHeadCell>
+                          <StyledHeadCell>Телефон</StyledHeadCell>
+                          <StyledHeadCell>ИИН</StyledHeadCell>
+                          <StyledHeadCell>Уровень доступа</StyledHeadCell>
+                      </StyledHeadRow>
+                      <Divider
+                          sx={{
+                              ml: "17px",
+                              position: "absolute",
+                              width: "calc(100% - 32px)",
+                              backgroundColor: "primary.main",
+                          }}
+                      />
+                  </TableHead>
+
+                  <TableBody>
+                      {workers &&
+                          workers.map((worker: IStaffResponse, ind) => {
+                              if (
+                                  searchedName &&
+                                  worker.firstName
+                                      .toLowerCase()
+                                      .includes(searchedName.toLowerCase())
+                              ) {
+                                  return <StaffTableInfo ind={ind} worker={worker} />;
+                              } else if (!searchedName) {
+                                  return <StaffTableInfo ind={ind} worker={worker} />;
+                              } else return;
+                          })}
+                  </TableBody>
+              </Table>
+          </TableContainer>
+      </>
+
   );
 };
 
