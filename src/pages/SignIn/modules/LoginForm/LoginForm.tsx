@@ -101,7 +101,7 @@ const LoginForm: React.FC = () => {
               disabled={status === ActionsEnum.LOADING}
               startIcon={
                 status === ActionsEnum.LOADING && (
-                  <CircularProgress sx={{ color: "#fff" }} />
+                  <CircularProgress sx={{ color: "#FFF" }} />
                 )
               }
               type="submit"
