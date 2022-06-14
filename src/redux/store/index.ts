@@ -4,11 +4,10 @@ import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 //reducer
 import complaint from "./../store/reducers/complaint/complaint.slice";
-import user from "./../store/reducers/user/user.slice"
+import user from "./../store/reducers/user/user.slice";
 import staff from "./../store/reducers/staff/staff.slice";
 import authReducer from "./reducers/auth/auth.slice";
 import profile from "./reducers/profile/profile.slice";
-
 
 //rtk
 import homeApi from "./rtk-api/home-rtk/homeApi";
@@ -17,7 +16,6 @@ import regionApi from "./rtk-api/region-rtk/regionApi";
 import complaintApi from "./rtk-api/complaint-rtk/complaintApi";
 import profileApi from "./rtk-api/profile-rtk/profileApi";
 import userApi from "./rtk-api/user-rtk/userApi";
-
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -31,7 +29,7 @@ const rootReducer = combineReducers({
   complaint,
   staff,
   user,
-  profile
+  profile,
 });
 
 export const store = configureStore({

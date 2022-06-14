@@ -1,6 +1,6 @@
 // library
 import React, { useEffect, useRef, useState } from "react";
-import {CircularProgress, FormGroup, Typography} from "@mui/material";
+import { CircularProgress, FormGroup, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 
@@ -90,7 +90,7 @@ const LoginForm: React.FC = () => {
                 <InputHelperText>{errors.password}</InputHelperText>
               )}
             </InputBox>
-            <FormCheckBox>
+            <FormCheckBox error={error}>
               <FormGroup>
                 <StyledCheckBox />
               </FormGroup>

@@ -56,8 +56,16 @@ export const InputHelperText = (props: any) => (
 );
 
 export const FormCheckBox = (props: any) => (
-  <Box sx={{ width: "240px", mb: "clamp(20px, 1.5625vw, 30px)" }}>
+  <Box
+    sx={{
+      width: "240px",
+      mb: "clamp(20px, 1.5625vw, 30px)",
+      display: "flex",
+      justifyContent: "space-between",
+    }}
+  >
     {props.children}
+    <Typography color="primary.error">{props.error}</Typography>
   </Box>
 );
 
