@@ -17,6 +17,8 @@ import { ReactComponent as EmployeesLogo } from "../../assets/svg/Vectoremployee
 // @ts-ignore: Ts че ты хочешь?
 import { ReactComponent as LogoutLogo } from "../../assets/svg/Vectorlogout.svg";
 
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+
 //style
 import {
   StyledBox,
@@ -28,12 +30,12 @@ import {
 
 // store
 import { logout } from "../../redux/store/reducers/auth/auth.action";
-import {useTypedSelector} from "../../redux/store";
+import { useTypedSelector } from "../../redux/store";
 
 const DrawerAdmin = () => {
   const dispatch = useDispatch();
 
-  const role = useTypedSelector(state=>state.user.role)
+  const role = useTypedSelector((state) => state.user.role);
 
   return (
     <Drawer
@@ -76,14 +78,16 @@ const DrawerAdmin = () => {
         </NavLink>
         <Box sx={{ width: "300px", height: "1px", background: "#2398AB" }} />
         <List sx={{ p: 0, pt: "40px" }}>
-          {role&&role==="WORKER"&&<StyledNavLink to="profile">
-            <StyledListItem>
-              <StyledListItemIcon>
-                <ProfileLogo/>
-              </StyledListItemIcon>
-              Профиль
-            </StyledListItem>
-          </StyledNavLink>}
+          {role && role === "WORKER" && (
+            <StyledNavLink to="profile">
+              <StyledListItem>
+                <StyledListItemIcon>
+                  <ProfileLogo />
+                </StyledListItemIcon>
+                Профиль
+              </StyledListItem>
+            </StyledNavLink>
+          )}
           <StyledNavLink to="home">
             <StyledListItem>
               <StyledListItemIcon>
@@ -108,23 +112,32 @@ const DrawerAdmin = () => {
               Список жалоб
             </StyledListItem>
           </StyledNavLink>
-          {role&&role==="SUPER-ADMIN"&&<StyledNavLink to="employees">
+          {role && role === "SUPER-ADMIN" && (
+            <StyledNavLink to="employees">
+              <StyledListItem>
+                <StyledListItemIcon>
+                  <EmployeesLogo />
+                </StyledListItemIcon>
+                Персонал
+              </StyledListItem>
+            </StyledNavLink>
+          )}
+          <StyledNavLink to="management">
             <StyledListItem>
               <StyledListItemIcon>
-                <EmployeesLogo/>
+                <SettingsOutlinedIcon color="primary" />
               </StyledListItemIcon>
-              Персонал
+              Управление
             </StyledListItem>
-          </StyledNavLink>}
+          </StyledNavLink>
         </List>
       </Stack>
       <Stack>
         <List>
           <StyledNavLink to="">
             <StyledListItem
-                // @ts-ignore
-                onClick={() => dispatch(logout())}
-
+              // @ts-ignore
+              onClick={() => dispatch(logout())}
               sx={{ color: "#F18989", mb: "35px" }}
             >
               <StyledListItemIcon>
