@@ -13,22 +13,14 @@ import { Box, BoxProps, styled } from "@mui/system";
 import { MainButton } from "../../../../components/styled-components/StyledButton";
 
 export const GridBlock = styled((props: GridProps) => (
-  <Grid container item {...props} />
+  <Grid container item flexDirection={"column"} direction="row" {...props} />
 ))(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
   padding: "clamp(50px, 7.8125vw, 150px)",
   width: "100%",
   height: "460px",
   alignItems: "center",
   justifyContent: "center",
 }));
-
-export const StackBlock = styled((props: StackProps) => <Stack {...props} />)(
-  ({ theme }) => ({
-    width: "clamp(500px, 31.25vw, 600px)",
-  })
-);
 
 export const Headline = styled((props: TypographyProps) => (
   <Typography variant="h4" color="primary" {...props} />

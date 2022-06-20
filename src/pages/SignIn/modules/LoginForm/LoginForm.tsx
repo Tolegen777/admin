@@ -1,6 +1,12 @@
 // library
 import React, { useEffect, useRef, useState } from "react";
-import { Button, CircularProgress, FormGroup, Typography } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  FormGroup,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 
@@ -23,15 +29,15 @@ import {
   InputHelperText,
   InputUpperLabel,
   ReforgedMainButton,
-  StackBlock,
   StyledCheckBox,
 } from "./style";
+import { setStatus } from "../../../../redux/store/reducers/auth/auth.slice";
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
-  const { isAuth, error, status } = useTypedSelector((state) => state.auth);
 
-  const [loading, setLoading] = useState(false);
+  const { isAuth, error, status } = useTypedSelector((state) => state.auth);
+  const [isLimit, setIsLimit] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -39,9 +45,21 @@ const LoginForm: React.FC = () => {
       password: "", // 12345
     },
     onSubmit: async (values) => {
+      if (isLimit) {
+        setIsLimit(false);
+      }
+
       // @ts-ignore
       dispatch(login(values));
-      setLoading(true);
+
+      if (ActionsEnum.LOADING) {
+        setTimeout(() => {
+          if (ActionsEnum.LOADING) {
+            setIsLimit(true);
+            dispatch(setStatus(ActionsEnum.LIMIT));
+          }
+        }, 3000);
+      }
     },
     validationSchema: loginSchema,
   });
@@ -57,7 +75,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <GridBlock>
-      <StackBlock>
+      <Stack sx={{ width: "clamp(250px, 100%, 600px)" }}>
         <Headline>Вход</Headline>
         <form onSubmit={handleSubmit}>
           <>
@@ -108,9 +126,14 @@ const LoginForm: React.FC = () => {
             >
               Войти
             </Button>
+            {status === ActionsEnum.LIMIT && (
+              <Typography sx={{ mt: "20px" }} color="error">
+                Превышено время ожидания! Попробуйте еще раз
+              </Typography>
+            )}
           </>
         </form>
-      </StackBlock>
+      </Stack>
     </GridBlock>
   );
 };
