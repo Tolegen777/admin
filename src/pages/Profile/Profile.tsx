@@ -37,8 +37,8 @@ const Profile = () => {
       </HeaderBlock>
       <Suspense fallback={<div>Загрузка...</div>}>
         <Routes>
-          {/* <Route index element={<EditPage/>}/> */}
-          <Route index element={<ProfileSection />} />
+           <Route index element={<EditPage/>}/>
+          {/*<Route index element={<ProfileSection />} />*/}
         </Routes>
       </Suspense>
     </Box>
