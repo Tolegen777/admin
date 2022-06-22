@@ -10,9 +10,7 @@ export class AuthService {
   }
 
   static async refresh(): Promise<AxiosResponse<ILoginResponse>> {
-    return axios.get<ILoginResponse>(`${DEV_API}auth/refresh`, {
-      //withCredentials: true,
-    });
+    return axios.get<ILoginResponse>(`${DEV_API}auth/refresh`);
   }
 
   static async logout(): Promise<AxiosResponse<ILoginResponse>> {

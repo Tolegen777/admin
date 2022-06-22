@@ -100,7 +100,10 @@ const UserInfo = () => {
             >
               Статус
             </Typography>
-            <Typography variant="h20b">{data?.block} Нужны данные</Typography>
+            <Typography variant="h20b">
+              {/* {data?.block?.block === true ? "Заблокирован" : "Не заблокирован"} */}
+              Need Status B
+            </Typography>
           </Grid>
         </Grid>
 

@@ -15,13 +15,20 @@ export interface IGetOneProfile {
   kids: number;
   date: null | string;
   iin: null | string;
-  block: null | string;
+  block: null | IBlockUser;
   region: IValue;
   category: IValue;
   hobbies: IValue[];
   gender: IValue;
   complaints: IComplains[];
   sendReports: [];
+}
+
+interface IBlockUser {
+  block: boolean;
+  id: number;
+  text: null | string;
+  workerProfile: null | string;
 }
 
 interface IValue {
@@ -60,11 +67,8 @@ interface IProfile {
   user: IUser;
 }
 
-
-
 export interface IRole {
-  id: number,
-  value: string,
-  description: string
+  id: number;
+  value: string;
+  description: string;
 }
-

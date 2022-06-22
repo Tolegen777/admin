@@ -58,7 +58,7 @@ const DrawerAdmin = () => {
     >
       <Stack>
         <NavLink
-          to="/app"
+          to="/app/home"
           style={{ textDecoration: "none", color: "#000", fontSize: "27px" }}
         >
           <Toolbar sx={{ justifyContent: "center", mt: "23px", mb: "23px" }}>
@@ -122,7 +122,7 @@ const DrawerAdmin = () => {
               </StyledListItem>
             </StyledNavLink>
           )}
-          <StyledNavLink to="management">
+          <StyledNavLink to="management/hobby/list">
             <StyledListItem>
               <StyledListItemIcon>
                 <SettingsOutlinedIcon color="primary" />

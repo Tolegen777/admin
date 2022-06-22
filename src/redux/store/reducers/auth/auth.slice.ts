@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ActionsEnum } from "../../enum";
-import { login, logout } from "./auth.action";
+import { login, logout, refresh } from "./auth.action";
 
 interface IInitState {
   isAuth: boolean;
@@ -40,6 +40,17 @@ const authReducer = createSlice({
       })
       .addCase(logout.fulfilled, () => {
         return initialState;
+      })
+      .addCase(refresh.pending, (state) => {
+        state.status = ActionsEnum.LOADING;
+      })
+      .addCase(refresh.fulfilled, (state, { payload }) => {
+        state.status = ActionsEnum.SUCCESS;
+        state.isAuth = true;
+      })
+      .addCase(refresh.rejected, (state, { payload }) => {
+        state.status = ActionsEnum.ERROR;
+        state.isAuth = false;
       });
   },
 });

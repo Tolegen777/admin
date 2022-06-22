@@ -16,6 +16,21 @@ export const login = createAsyncThunk(
   }
 );
 
+export const refresh = createAsyncThunk<any>(
+  "auth/refresh",
+  async function (_, { rejectWithValue }) {
+    try {
+      const response = await AuthService.refresh();
+      localStorage.setItem("access_token", response.data.access_token);
+      return response.data;
+    } catch (e: any) {
+      console.log(e);
+      throw rejectWithValue("Не авторизован");
+    }
+  }
+);
+
+// @ts-ignore
 export const checkAuth = createAsyncThunk<any>(
   "auth/refresh",
   async function (_, { rejectWithValue }) {
@@ -28,7 +43,6 @@ export const checkAuth = createAsyncThunk<any>(
     }
   }
 );
-
 
 export const logout = createAsyncThunk<any>(
   "auth/logout",

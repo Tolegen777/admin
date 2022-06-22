@@ -24,14 +24,8 @@ const OneUser = () => {
         Назад
       </Button>
       <UserInfo />
-      <Grid container>
-        <Grid item xs={7}>
-          <ComplaintUserMessages />
-        </Grid>
-
-        <Grid item xs={5}>
-          <VisitDiagram />
-        </Grid>
+      <Grid container item>
+        <ComplaintUserMessages />
       </Grid>
     </Box>
   );
