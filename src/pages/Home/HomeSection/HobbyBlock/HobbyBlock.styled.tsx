@@ -57,7 +57,7 @@ export const InfoBlock = styled((props: BoxProps) => <Box {...props} />)(
     justifyContent: "center",
     alignItems: "flex-start",
     height: "90%",
-    overflowY: "scroll",
+    overflowY: "auto",
     position: "relative",
 
     // Scroll

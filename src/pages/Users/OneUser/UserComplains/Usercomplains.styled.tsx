@@ -14,7 +14,7 @@ interface Props {
 }
 
 //TABLE
-export const StyledHeadRow: React.FC<Props> = ({ children }) => {
+const HeadRow: React.FC<Props> = ({ children }) => {
   return (
     <TableRow
       sx={{
@@ -28,10 +28,13 @@ export const StyledHeadRow: React.FC<Props> = ({ children }) => {
     </TableRow>
   );
 };
-export const StyledHeadCell: React.FC<Props> = ({ children }) => {
+const HeadCell: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
+      align="center"
       sx={{
+        maxWidth: "50px",
+        width: "0px",
         height: "40px",
         fontSize: "18px",
         color: "primary.main",
@@ -45,7 +48,7 @@ export const StyledHeadCell: React.FC<Props> = ({ children }) => {
 };
 
 //Body
-export const StyledBodyRow: React.FC<Props> = ({ children }) => {
+const BodyRow: React.FC<Props> = ({ children }) => {
   return (
     <TableRow
       sx={{
@@ -59,7 +62,7 @@ export const StyledBodyRow: React.FC<Props> = ({ children }) => {
     </TableRow>
   );
 };
-export const StyledBodyCellFirst: React.FC<Props> = ({ children }) => {
+const BodyCellFirst: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
       sx={{
@@ -94,7 +97,7 @@ export const StyledBodyCellFirst: React.FC<Props> = ({ children }) => {
     </TableCell>
   );
 };
-export const StyledBodyCell: React.FC<Props> = ({ children }) => {
+const BodyCell: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
       sx={{
@@ -126,7 +129,7 @@ export const StyledBodyCell: React.FC<Props> = ({ children }) => {
     </TableCell>
   );
 };
-export const StyledBodyCellLast: React.FC<Props> = ({ children }) => {
+const BodyCellLast: React.FC<Props> = ({ children }) => {
   return (
     <TableCell
       sx={{
@@ -161,15 +164,21 @@ export const StyledBodyCellLast: React.FC<Props> = ({ children }) => {
   );
 };
 
-export const TableDivider = styled((props: DividerProps) => (
-  <Divider {...props} />
-))(({ theme }) => ({
-  ml: "17px",
-  position: "absolute",
-  width: "calc(100% - 32px)",
-  backgroundColor: "primary.main",
-}));
+const TableDivider = styled((props: DividerProps) => <Divider {...props} />)(
+  ({ theme }) => ({
+    ml: "17px",
+    position: "absolute",
+    width: "calc(100% - 32px)",
+    backgroundColor: "primary.main",
+  })
+);
 
 export const Styled = {
   TableDivider,
+  HeadRow,
+  HeadCell,
+  BodyRow,
+  BodyCellFirst,
+  BodyCell,
+  BodyCellLast,
 };

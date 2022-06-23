@@ -3,9 +3,7 @@ import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 // import { Outlet } from "react-router-dom";
 
-
 //components
-// asds
 
 import { LayoutContainer } from "./style";
 import DrawerAdmin from "../drawer/DrawerAdmin";

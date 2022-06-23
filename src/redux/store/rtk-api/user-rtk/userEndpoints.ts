@@ -1,4 +1,4 @@
-import {IGetOneProfile, IGetProfiles, IRole} from "./user.type";
+import { IGetOneProfile, IGetProfiles, IRole } from "./user.type";
 import userApi from "./userApi";
 
 export const userEndpoints = userApi.injectEndpoints({
@@ -27,6 +27,7 @@ export const userEndpoints = userApi.injectEndpoints({
   }),
 });
 
-export const { useGetProfilesQuery, useGetOneProfileQuery,useGetRoleQuery } = userEndpoints;
+export const { useGetProfilesQuery, useGetOneProfileQuery, useGetRoleQuery } =
+  userEndpoints;
 
 //useGetUserProfileQuery

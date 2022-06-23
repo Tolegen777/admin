@@ -1,12 +1,12 @@
 import axios from "axios";
 import { mainModule } from "process";
+import { AuthService } from "../redux/service/auth/auth.service";
 
 export const DEV_API = "http://146.190.22.28/";
 // export const PROD_API = "https://";
 
 export const $api = axios.create({
   baseURL: DEV_API,
-  // withCredentials: true,
 });
 
 $api.interceptors.request.use((config) => {
