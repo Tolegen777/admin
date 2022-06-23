@@ -20,8 +20,8 @@ export interface IGetOneProfile {
   category: IValue;
   hobbies: IValue[];
   gender: IValue;
-  complaints: IComplains[];
-  sendReports: [];
+  complaints: IComplain[];
+  sendReports: ISendReport[];
 }
 
 interface IBlockUser {
@@ -36,14 +36,57 @@ interface IValue {
   value: string;
 }
 
-interface IComplains {
+export interface IComplain {
   createdAt: string;
   updateAt: string;
   id: number;
   text: string;
   status: string;
-  reporter: null | string;
+  reporter: null | IReporter;
   message: null | string;
+}
+interface IReporter {
+  age: number;
+  createdAt: string;
+  date: null | string;
+  description: string;
+  firstName: string;
+  id: number;
+  iin: null | string;
+  kids: number;
+  middleName: null | string;
+  secondName: string;
+  updateAt: string;
+}
+
+export interface ISendReport {
+  createdAt: string;
+  culprit: ICulprit;
+  id: number;
+  message: IMessage;
+  status: string;
+  text: string;
+  updateAt: string;
+}
+interface ICulprit {
+  age: number;
+  createdAt: string;
+  date: null | string;
+  description: string;
+  firstName: string;
+  id: number;
+  iin: string | null;
+  kids: number;
+  middleName: null | string;
+  secondName: null | string;
+  updateAt: string;
+}
+interface IMessage {
+  createAt: string;
+  id: number;
+  read: boolean;
+  text: string;
+  updatedAt: string;
 }
 
 interface IUser {

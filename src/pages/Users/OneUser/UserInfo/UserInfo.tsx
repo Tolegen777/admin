@@ -1,13 +1,15 @@
 import { Box, Grid, Typography, Button, Stack } from "@mui/material";
+import { FC } from "react";
 import { useParams } from "react-router-dom";
+import { IGetOneProfile } from "../../../../redux/store/rtk-api/user-rtk/user.type";
 import { useGetOneProfileQuery } from "../../../../redux/store/rtk-api/user-rtk/userEndpoints";
 
-const UserInfo = () => {
-  const params = useParams();
-  const { userId } = params;
+interface Props {
+  data?: IGetOneProfile;
+  isLoading: boolean;
+}
 
-  const { data, isLoading } = useGetOneProfileQuery(userId ? userId : "");
-
+const UserInfo: FC<Props> = ({ data, isLoading }) => {
   return (
     <Grid
       container
@@ -50,20 +52,9 @@ const UserInfo = () => {
               maxWidth: "500px",
             }}
           >
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ flex: 1, fontSize: "18px" }}
-            >
-              Перейти в чат
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              sx={{ flex: 1.3, fontSize: "18px" }}
-            >
-              Информация о жалобе
-            </Button>
+            {data?.block?.block
+              ? "Пользователь Заблокирован"
+              : "Пользователь не Заблокирован"}
           </Box>
         </Stack>
       </Grid>

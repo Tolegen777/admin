@@ -1,5 +1,5 @@
-import { Box, Button, Grid } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 // import ComplaintUserMessages from "../../Complaints/ComplaintsSection/ComplaintUserMessages";
 // import ComplaintUsersInfo from "../../Complaints/ComplaintsSection/ComplaintUsersInfo";
 import VisitDiagram from "../../Complaints/ComplaintsSection/VisitDiagram";
@@ -8,12 +8,21 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import UserInfo from "./UserInfo";
 import ComplaintUsersInfo from "../../Complaints/ComplaintsSection/ComplaintUsersInfo";
 import ComplaintUserMessages from "../../Complaints/ComplaintsSection/ComplaintUserMessages";
+import { useGetOneProfileQuery } from "../../../redux/store/rtk-api/user-rtk/userEndpoints";
+import UserComplains from "./UserComplains";
+import UserSendReport from "./UserSendReport";
 
 const OneUser = () => {
   const navigate = useNavigate();
+  const params = useParams();
+
+  const { userId } = params;
+  const { data, isLoading } = useGetOneProfileQuery(userId ? userId : "");
 
   return (
-    <Box sx={{ backgroundColor: "#E4FFF9" }}>
+    <Box
+      sx={{ height: "calc(100vh - 59px - 100px)", backgroundColor: "#E4FFF9" }}
+    >
       <Button
         variant="contained"
         color="inherit"
@@ -23,9 +32,12 @@ const OneUser = () => {
       >
         Назад
       </Button>
-      <UserInfo />
-      <Grid container item>
-        <ComplaintUserMessages />
+      <UserInfo data={data} isLoading={isLoading} />
+      <Grid container spacing={3} sx={{ mt: "15px" }} columns={12}>
+        {/* <ComplaintUserMessages /> */}
+        <UserComplains data={data?.complaints} isLoading={isLoading} />
+
+        <UserSendReport data={data?.sendReports} isLoading={isLoading} />
       </Grid>
     </Box>
   );
