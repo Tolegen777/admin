@@ -166,6 +166,22 @@ const HomeSection = () => {
             </StyledPaper>
           </Box>
         </Grid>
+
+        {/* Тест */}
+        <Grid item xs={5}>
+          <Box sx={{ height: "100%" }}>
+            <StyledPaper
+              sx={{
+                paddingTop: "25px",
+                paddingLeft: "30px",
+                paddingRight: "30px",
+              }}
+            >
+              <Typography variant="h3">Статистика по возрасту</Typography>
+              {data && <AgesBlock count={data.count} agesData={data.ages} />}
+            </StyledPaper>
+          </Box>
+        </Grid>
       </Grid>
     </>
   );
