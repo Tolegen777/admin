@@ -54,8 +54,9 @@ const Profile = () => {
           <Route path={"hadith"} element={<ManagementSection />}>
             <Route index element={<ManagementSection />} />
             <Route path={"list"} element={<ManagementSection />} />
-            <Route path={"one/:hadithId"} element={<ManagementSection />} />
+            <Route path={"hadithes/:hadithId"} element={<ManagementSection />} />
             <Route path={"create"} element={<ManagementSection />} />
+            <Route path={"description/:oneHadithId"} element={<ManagementSection />} />
           </Route>
           <Route path={"*"} element={<Error />} />
         </Routes>

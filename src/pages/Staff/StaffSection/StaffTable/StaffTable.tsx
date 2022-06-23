@@ -7,7 +7,7 @@ import {Box, Button, CircularProgress, Divider, Typography} from "@mui/material"
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setOneStaff } from "../../../../redux/store/reducers/staff/staff.slice";
-import React from "react";
+import React, {useEffect} from "react";
 import { useGetStaffQuery } from "../../../../redux/store/rtk-api/staff-rtk/staffEndpoints";
 import { IStaffResponse } from "../../../../redux/store/rtk-api/staff-rtk/staff.type";
 import StaffTableInfo from "../StaffTableInfo";
@@ -27,9 +27,13 @@ const StaffTable: React.FC<Props> = ({ searchedName }) => {
     isLoading,
     isError,
     isSuccess,
-      error
+      error,
+      refetch
   } = useGetStaffQuery("staff");
   // console.log(workers);
+    useEffect(()=>{
+        refetch()
+    },[])
 
 
   const navigate = useNavigate();

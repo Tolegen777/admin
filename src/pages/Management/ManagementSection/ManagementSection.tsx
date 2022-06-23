@@ -82,7 +82,10 @@ const ManagementSection = () => {
     if (location.pathname === "/app/management/hadith/create") {
       setValue(2);
     }
-    if (location.pathname === "/app/management/hadith/one/:hadithId") {
+    if (location.pathname === "/app/management/hadith/hadithes/:hadithId") {
+      setValue(2);
+    }
+    if (location.pathname === "/app/management/hadith/hadith/description") {
       setValue(2);
     }
   }, [location]);

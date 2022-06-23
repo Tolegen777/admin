@@ -16,6 +16,9 @@ import regionApi from "./rtk-api/region-rtk/regionApi";
 import complaintApi from "./rtk-api/complaint-rtk/complaintApi";
 import profileApi from "./rtk-api/profile-rtk/profileApi";
 import userApi from "./rtk-api/user-rtk/userApi";
+import hobbyApi from "./rtk-api/hobby-rtk/hobbyApi";
+import cityApi from "./rtk-api/city-rtk/cityApi";
+import hadithApi from "./rtk-api/hadis-rtk/hadithApi";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -26,6 +29,9 @@ const rootReducer = combineReducers({
   [complaintApi.reducerPath]: complaintApi.reducer,
   [userApi.reducerPath]: userApi.reducer,
   [profileApi.reducerPath]: profileApi.reducer,
+  [hobbyApi.reducerPath]: hobbyApi.reducer,
+  [cityApi.reducerPath]: cityApi.reducer,
+  [hadithApi.reducerPath]: hadithApi.reducer,
   complaint,
   staff,
   user,

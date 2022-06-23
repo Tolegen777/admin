@@ -3,39 +3,29 @@ import {
   Navigate,
   Route,
   Routes,
-  useLocation,
-  useNavigate,
 } from "react-router-dom";
-import CreateHobby from "./CreateHobby";
-import ListHobby from "./ListHobby";
-import { OneHobby } from "./OneHobby";
+import {
+  useCreateHobbyMutation,
+  useDeleteHobbyMutation,
+  useGetHobbiesQuery
+} from "../../../../redux/store/rtk-api/hobby-rtk/hobbyEndpoints";
+import ReusedManagement from "../../../../components/reusedComponents/ReusedManagement";
 
 const HobbyTab = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
 
-  return (
+    return (
     <Box>
       <Stack direction={"row"} sx={{ justifyContent: "space-between" }}>
-        <Typography sx={{ fontSize: "25px", mb: "15px" }}>
-          {location.pathname === "/app/management/hobby/create"
-            ? "Добавление Хобби"
-            : "Хобби"}
+        <Typography sx={{ fontSize: "25px", mb: "15px", color:"primary.main", fontWeight:600 }}>
+          Хобби
         </Typography>
-        <Button
-          variant="contained"
-          onClick={() => navigate("/app/management/hobby/list")}
-          sx={{ width: "160px", height: "45px", fontSize: "12px" }}
-        >
-          Список Хобби
-        </Button>
+
       </Stack>
 
       <Routes>
         <Route index element={<Navigate to="list" />} />
-        <Route path={"list"} element={<ListHobby />} />
-        <Route path={"one/:hobbyId"} element={<OneHobby />} />
-        <Route path={"create"} element={<CreateHobby />} />
+        <Route path={"list"} element={<ReusedManagement fetch={useGetHobbiesQuery} create={useCreateHobbyMutation}
+        remove={useDeleteHobbyMutation} elem={"Хобби"}/>} />
       </Routes>
     </Box>
   );

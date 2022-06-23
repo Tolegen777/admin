@@ -136,7 +136,7 @@ const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
         if (isAlertOpen) {
             const timer = setTimeout(() => {
                 setAlertOpen(false)
-            }, 5000);
+            }, 3000);
             return () => clearTimeout(timer);
         }
     }, [isAlertOpen]);
@@ -172,6 +172,7 @@ const CreateWorker: React.FC<Props> = ({handleSubmitWorkerData}) => {
 
     return (
         <>
+
             {isAlertOpen && isSuccess && <CustomAlert status={"success"} title={"Успех!"}
                                                       message={"Сотудник успешно создан!"}/>}
             {isAlertOpen && isError &&
