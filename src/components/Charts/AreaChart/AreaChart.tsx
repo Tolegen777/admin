@@ -1,96 +1,69 @@
+import React, { FC } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Title,
   Tooltip,
+  Filler,
   Legend,
 } from "chart.js";
-import { FC, useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
-import { IHomeAges } from "../../../pages/Home/HomeSection/HomeSection.types";
+import { Line } from "react-chartjs-2";
+import { IHomePart } from "../../../pages/Home/HomeSection/HomeSection.types";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Title,
   Tooltip,
+  Filler,
   Legend
 );
 
 interface Props {
+  barData: IHomePart[];
   count: number;
-  barData: IHomeAges;
 }
 
 const AreaChart: FC<Props> = ({ count, barData }) => {
-  const [chartData, setChartData] = useState({
-    datasets: [],
-  });
+  const current = new Date();
+  const cDate = `${current.getDate()}/${
+    current.getMonth() + 1
+  }/${current.getFullYear()}`;
 
-  const [chartOptions, setChartOptions] = useState({});
+  console.log();
 
-  useEffect(() => {
-    setChartData({
-      labels: [
-        "— 18-22",
-        "— 22-25",
-        "— 25-30",
-        "— 30-40",
-        "— 40-50",
-        "— 50-65",
-        "— 65+",
-      ],
+  const data = {
+    labels: barData.map((e) => {
+      return e.value;
+    }),
 
-      datasets: [
-        {
-          //@ts-ignore
-          label: "Статистика по возрасту",
-          //@ts-ignore
-          data: [
-            //@ts-ignore
-            { y: "— 18-22", x: barData.range1822 * 100 },
-            //@ts-ignore
-            { y: "— 22-25", x: barData.range2225 * 100 },
-            //@ts-ignore
-            { y: "— 25-30", x: barData.range2530 * 100 },
-            //@ts-ignore
-            { y: "— 30-40", x: barData.range3040 * 100 },
-            //@ts-ignore
-            { y: "— 40-50", x: barData.range4050 * 100 },
-            //@ts-ignore
-            { y: "— 50-65", x: barData.range5065 * 100 },
-            //@ts-ignore
-            { y: "— 65+", x: barData.range65 * 100 },
-          ],
-
-          //@ts-ignore
-          backgroundColor: "#2398AB",
-          //@ts-ignore
-          borderRadius: 5,
-          //@ts-ignore
-          fill: false,
-        },
-      ],
-    });
-    setChartOptions({
-      indexAxis: "y" as const,
-      responsive: true,
-      plugins: {
-        legend: {
-          display: true,
-          position: "top",
-        },
-        tooltip: {
-          enabled: true,
-        },
+    datasets: [
+      {
+        fill: true,
+        data: barData.map((row) => {
+          return row.count;
+        }),
+        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
-    });
-  }, []);
+    ],
+  };
 
-  return <Bar options={chartOptions} data={chartData} />;
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+
+  return <Line options={options} data={data} />;
 };
 
 export default AreaChart;

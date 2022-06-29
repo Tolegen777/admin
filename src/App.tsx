@@ -11,10 +11,11 @@ import Error from "./pages/Error";
 import { useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { refresh } from "./redux/store/reducers/auth/auth.action";
+import { MainContext } from "./context";
+import { defaultState } from "./context/MainContext";
 
 function App() {
   const { isAuth } = useTypedSelector((state) => state.auth);
-  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (localStorage.getItem("access_token")) {
@@ -25,6 +26,12 @@ function App() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  // Context
+  const [lastPage, setLastPage] = React.useState(defaultState.lastPage);
+  const setPage = (value: number) => {
+    setLastPage(value);
+  };
+
   return (
     <>
       {isMobile ? (
@@ -32,18 +39,20 @@ function App() {
           Сайт недоступен на мобильных устройствах
         </div>
       ) : (
-        <Routes>
-          {/* <Route path="/" element={<Navigate to={isAuth ? "/app" : "/auth"} />} /> */}
-          <Route
-            path="/app/*"
-            element={isAuth ? <Main /> : <Navigate to="/auth" />}
-          />
-          <Route
-            path="/auth"
-            element={isAuth ? <Navigate to="/app" /> : <LoginPaper />}
-          />
-          <Route path="*" element={<Navigate to={"/app"} />} />
-        </Routes>
+        <MainContext.Provider value={{ lastPage, setPage }}>
+          <Routes>
+            {/* <Route path="/" element={<Navigate to={isAuth ? "/app" : "/auth"} />} /> */}
+            <Route
+              path="/app/*"
+              element={isAuth ? <Main /> : <Navigate to="/auth" />}
+            />
+            <Route
+              path="/auth"
+              element={isAuth ? <Navigate to="/app" /> : <LoginPaper />}
+            />
+            <Route path="*" element={<Navigate to={"/app"} />} />
+          </Routes>
+        </MainContext.Provider>
       )}
     </>
   );

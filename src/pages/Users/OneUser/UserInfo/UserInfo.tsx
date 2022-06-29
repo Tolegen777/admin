@@ -1,15 +1,30 @@
 import { Box, Grid, Typography, Button, Stack } from "@mui/material";
 import { FC } from "react";
 import { useParams } from "react-router-dom";
+import { useBlockUserMutation } from "../../../../redux/store/rtk-api/complaint-rtk/complaintEndpoints";
 import { IGetOneProfile } from "../../../../redux/store/rtk-api/user-rtk/user.type";
 import { useGetOneProfileQuery } from "../../../../redux/store/rtk-api/user-rtk/userEndpoints";
 
 interface Props {
-  data?: IGetOneProfile;
-  isLoading: boolean;
+  query: any;
 }
 
-const UserInfo: FC<Props> = ({ data, isLoading }) => {
+const UserInfo: FC<Props> = ({ query }) => {
+  const params = useParams();
+
+  const { userId } = params;
+
+  const { data, isLoading, refetch } = query(userId);
+
+  const [block, { isLoading: blockLoading }] = useBlockUserMutation();
+
+  const handleBlock = () => {
+    block(Number(userId));
+    refetch();
+  };
+  
+  
+
   return (
     <Grid
       container
@@ -55,6 +70,14 @@ const UserInfo: FC<Props> = ({ data, isLoading }) => {
             {data?.block?.block
               ? "Пользователь Заблокирован"
               : "Пользователь не Заблокирован"}
+
+            <Button
+              onClick={() => handleBlock()}
+              variant="contained"
+              color="primary"
+            >
+              БЛОКАТЬ
+            </Button>
           </Box>
         </Stack>
       </Grid>

@@ -1,4 +1,4 @@
-import { IHome } from "./home.type";
+import { IGetVisit, IHome } from "./home.type";
 import homeApi from "./homeApi";
 
 export const homeEndpoints = homeApi.injectEndpoints({
@@ -9,7 +9,15 @@ export const homeEndpoints = homeApi.injectEndpoints({
       }),
       providesTags: ["home"],
     }),
+    getVisit: builder.mutation<number, IGetVisit>({
+      query: (body) => ({
+        url: `/user/statistic`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["visitInfo"],
+    }),
   }),
 });
 
-export const { useGetHomeQuery } = homeEndpoints;
+export const { useGetHomeQuery, useGetVisitMutation } = homeEndpoints;

@@ -23,3 +23,9 @@ export interface IHome {
   cities: IHomePart[];
   count: number;
 }
+
+export interface IGetVisit {
+  dateFrom?: string | null;
+  dateTo?: string | null;
+  userId: number;
+}

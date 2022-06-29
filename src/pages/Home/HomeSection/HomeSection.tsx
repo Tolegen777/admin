@@ -1,23 +1,22 @@
-// LibraryAdd
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, Button, Grid, Paper, Stack, Typography } from "@mui/material";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import TextField from "@mui/material/TextField";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
-// components
-import { HorizontalBar } from "../../../components/Charts";
+import { useGetHomeQuery } from "../../../redux/store/rtk-api/home-rtk/homeEndpoints";
+
+import { StyledPaper } from "./style";
+
 import { DoughnutChart } from "../../../components/Charts/Doughnut";
 import { HorizontalColorBar } from "../../../components/Charts/HorizontalColorBar";
 
-import { useGetHomeQuery } from "../../../redux/store/rtk-api/home-rtk/homeEndpoints";
 import AgesBlock from "./AgesBlock";
-
 import CityBlock from "./CityBlock";
 import GenderBlock from "./GenderBlock";
 import HobbyBlock from "./HobbyBlock";
 import ReligionBlock from "./ReligionBlock";
 import StatusBlock from "./StatusBlock";
-
-// style
-import { StyledPaper } from "./style";
+import VisitBlock from "./VisitBlock";
 
 const HomeSection = () => {
   const { data, isLoading } = useGetHomeQuery("");
@@ -177,8 +176,7 @@ const HomeSection = () => {
                 paddingRight: "30px",
               }}
             >
-              <Typography variant="h3">Статистика по возрасту</Typography>
-              {data && <AgesBlock count={data.count} agesData={data.ages} />}
+              {data && <VisitBlock count={data.count} />}
             </StyledPaper>
           </Box>
         </Grid>

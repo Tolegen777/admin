@@ -20,10 +20,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useGetProfilesQuery } from "../../../../redux/store/rtk-api/user-rtk/userEndpoints";
 import Filter from "../../modules/Filter";
+import { MainContext } from "../../../../context";
 
 const UserTable = () => {
+  const { lastPage, setPage: setLastPage } = React.useContext(MainContext);
+
   const navigate = useNavigate();
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState(lastPage);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -55,6 +58,12 @@ const UserTable = () => {
     { ...query, page: page + 1, limit: rowsPerPage },
     { refetchOnMountOrArgChange: true }
   );
+
+  const handleClick = (profileId: number) => {
+    setLastPage(page);
+    // setPage(lastPage);
+    navigate(`/app/users/one/${profileId}`);
+  };
 
   const items = [];
 
@@ -148,7 +157,7 @@ const UserTable = () => {
                         borderRadius: "10px",
                         px: "40px",
                       }}
-                      onClick={() => navigate(`/app/users/one/${profile.id}`)}
+                      onClick={() => handleClick(profile.id)}
                     >
                       Подробнее
                     </Button>

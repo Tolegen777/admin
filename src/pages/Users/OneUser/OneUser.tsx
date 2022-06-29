@@ -32,7 +32,7 @@ const OneUser = () => {
       >
         Назад
       </Button>
-      <UserInfo data={data} isLoading={isLoading} />
+      <UserInfo query={useGetOneProfileQuery} />
       <Grid container spacing={3} sx={{ mt: "15px" }} columns={12}>
         {/* <ComplaintUserMessages /> */}
         <UserComplains data={data?.complaints} isLoading={isLoading} />
