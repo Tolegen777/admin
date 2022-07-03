@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { IHomePart } from "../../../pages/Home/HomeSection/HomeSection.types";
+import { IVisitChart } from "../../../pages/Home/HomeSection/VisitBlock/VisitBlock.types";
 
 ChartJS.register(
   CategoryScale,
@@ -25,21 +26,14 @@ ChartJS.register(
 );
 
 interface Props {
-  barData: IHomePart[];
+  barData: IVisitChart[];
   count: number;
 }
 
 const AreaChart: FC<Props> = ({ count, barData }) => {
-  const current = new Date();
-  const cDate = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()}`;
-
-  console.log();
-
   const data = {
     labels: barData.map((e) => {
-      return e.value;
+      return e.month;
     }),
 
     datasets: [
@@ -48,8 +42,8 @@ const AreaChart: FC<Props> = ({ count, barData }) => {
         data: barData.map((row) => {
           return row.count;
         }),
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
+        borderColor: "#2398AB",
+        backgroundColor: "#E4FFF9",
       },
     ],
   };
@@ -59,6 +53,13 @@ const AreaChart: FC<Props> = ({ count, barData }) => {
     plugins: {
       legend: {
         display: false,
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
       },
     },
   };

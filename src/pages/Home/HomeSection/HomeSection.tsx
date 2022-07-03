@@ -17,6 +17,7 @@ import HobbyBlock from "./HobbyBlock";
 import ReligionBlock from "./ReligionBlock";
 import StatusBlock from "./StatusBlock";
 import VisitBlock from "./VisitBlock";
+import ComplaintBlock from "./ComplaintBlock";
 
 const HomeSection = () => {
   const { data, isLoading } = useGetHomeQuery("");
@@ -44,13 +45,11 @@ const HomeSection = () => {
           <StyledPaper
             sx={{
               paddingTop: "25px",
+              paddingLeft: "30px",
               paddingRight: "30px",
             }}
           >
-            <Typography variant="h3">Посещение</Typography>
-            {data && statusData && (
-              <HorizontalColorBar count={data.count} barData={statusData} />
-            )}
+            {data && <VisitBlock count={data.count} />}
           </StyledPaper>
         </Grid>
 
@@ -124,13 +123,10 @@ const HomeSection = () => {
             sx={{
               paddingTop: "25px",
               paddingLeft: "30px",
-              paddingRight: "30px",
+              paddingRight: "15px",
             }}
           >
-            <Typography variant="h3">Недавние жалобы</Typography>
-            {data && statusData && (
-              <HorizontalColorBar count={data.count} barData={statusData} />
-            )}
+            {data && <ComplaintBlock count={data.count} />}
           </StyledPaper>
         </Grid>
 
@@ -167,19 +163,9 @@ const HomeSection = () => {
         </Grid>
 
         {/* Тест */}
-        <Grid item xs={5}>
-          <Box sx={{ height: "100%" }}>
-            <StyledPaper
-              sx={{
-                paddingTop: "25px",
-                paddingLeft: "30px",
-                paddingRight: "30px",
-              }}
-            >
-              {data && <VisitBlock count={data.count} />}
-            </StyledPaper>
-          </Box>
-        </Grid>
+        {/* <Grid item xs={5}>
+          <Box sx={{ height: "100%" }}>TEST</Box>
+        </Grid> */}
       </Grid>
     </>
   );

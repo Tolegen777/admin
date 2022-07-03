@@ -24,6 +24,9 @@ export const ChartContainer = styled((props: BoxProps) => <Box {...props} />)(
   ({ theme }) => ({
     width: "100%",
     height: "99%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   })
 );
 
