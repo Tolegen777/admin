@@ -1,6 +1,6 @@
 import axios from "axios";
 
-console.log('Here is api')
+console.log('Here is api!')
 export const DEV_API = "http://146.190.22.28/";
 // export const PROD_API = "https://";
 
